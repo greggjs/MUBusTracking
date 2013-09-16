@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9DD8E96817E69977009C4B20"
+               BlueprintIdentifier = "9DCB4A2117E6B3020096698D"
                BuildableName = "MU Bus Tracking.app"
                BlueprintName = "MU Bus Tracking"
                ReferencedContainer = "container:MU Bus Tracking.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9DD8E99117E69978009C4B20"
+               BlueprintIdentifier = "9DCB4A4117E6B3020096698D"
                BuildableName = "MU Bus TrackingTests.octest"
                BlueprintName = "MU Bus TrackingTests"
                ReferencedContainer = "container:MU Bus Tracking.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DD8E96817E69977009C4B20"
+            BlueprintIdentifier = "9DCB4A2117E6B3020096698D"
             BuildableName = "MU Bus Tracking.app"
             BlueprintName = "MU Bus Tracking"
             ReferencedContainer = "container:MU Bus Tracking.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DD8E96817E69977009C4B20"
+            BlueprintIdentifier = "9DCB4A2117E6B3020096698D"
             BuildableName = "MU Bus Tracking.app"
             BlueprintName = "MU Bus Tracking"
             ReferencedContainer = "container:MU Bus Tracking.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DD8E96817E69977009C4B20"
+            BlueprintIdentifier = "9DCB4A2117E6B3020096698D"
             BuildableName = "MU Bus Tracking.app"
             BlueprintName = "MU Bus Tracking"
             ReferencedContainer = "container:MU Bus Tracking.xcodeproj">

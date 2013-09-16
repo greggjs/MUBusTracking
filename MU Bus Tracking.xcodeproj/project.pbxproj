@@ -7,160 +7,147 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9DD8E96D17E69977009C4B20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96C17E69977009C4B20 /* UIKit.framework */; };
-		9DD8E96F17E69977009C4B20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96E17E69977009C4B20 /* Foundation.framework */; };
-		9DD8E97117E69977009C4B20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E97017E69977009C4B20 /* CoreGraphics.framework */; };
-		9DD8E97717E69977009C4B20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E97517E69977009C4B20 /* InfoPlist.strings */; };
-		9DD8E97917E69977009C4B20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E97817E69977009C4B20 /* main.m */; };
-		9DD8E97D17E69977009C4B20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E97C17E69977009C4B20 /* AppDelegate.m */; };
-		9DD8E97F17E69977009C4B20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E97E17E69977009C4B20 /* Default.png */; };
-		9DD8E98117E69977009C4B20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E98017E69977009C4B20 /* Default@2x.png */; };
-		9DD8E98317E69977009C4B20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E98217E69977009C4B20 /* Default-568h@2x.png */; };
-		9DD8E98617E69977009C4B20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E98417E69977009C4B20 /* MainStoryboard.storyboard */; };
-		9DD8E98917E69977009C4B20 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E98817E69977009C4B20 /* MasterViewController.m */; };
-		9DD8E98C17E69977009C4B20 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E98B17E69977009C4B20 /* DetailViewController.m */; };
-		9DD8E99417E69978009C4B20 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E99317E69978009C4B20 /* SenTestingKit.framework */; };
-		9DD8E99517E69978009C4B20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96C17E69977009C4B20 /* UIKit.framework */; };
-		9DD8E99617E69978009C4B20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96E17E69977009C4B20 /* Foundation.framework */; };
-		9DD8E99E17E69978009C4B20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E99C17E69978009C4B20 /* InfoPlist.strings */; };
-		9DD8E9A117E69978009C4B20 /* MU_Bus_TrackingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E9A017E69978009C4B20 /* MU_Bus_TrackingTests.m */; };
+		9DCB4A2617E6B3020096698D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2517E6B3020096698D /* UIKit.framework */; };
+		9DCB4A2817E6B3020096698D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2717E6B3020096698D /* Foundation.framework */; };
+		9DCB4A2A17E6B3020096698D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2917E6B3020096698D /* CoreGraphics.framework */; };
+		9DCB4A3017E6B3020096698D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A2E17E6B3020096698D /* InfoPlist.strings */; };
+		9DCB4A3217E6B3020096698D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3117E6B3020096698D /* main.m */; };
+		9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3517E6B3020096698D /* AppDelegate.m */; };
+		9DCB4A3817E6B3020096698D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3717E6B3020096698D /* Default.png */; };
+		9DCB4A3A17E6B3020096698D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3917E6B3020096698D /* Default@2x.png */; };
+		9DCB4A3C17E6B3020096698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3B17E6B3020096698D /* Default-568h@2x.png */; };
+		9DCB4A4417E6B3030096698D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A4317E6B3030096698D /* SenTestingKit.framework */; };
+		9DCB4A4517E6B3030096698D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2517E6B3020096698D /* UIKit.framework */; };
+		9DCB4A4617E6B3030096698D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2717E6B3020096698D /* Foundation.framework */; };
+		9DCB4A4E17E6B3030096698D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A4C17E6B3030096698D /* InfoPlist.strings */; };
+		9DCB4A5117E6B3030096698D /* MU_Bus_TrackingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4A5017E6B3030096698D /* MU_Bus_TrackingTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9DD8E99717E69978009C4B20 /* PBXContainerItemProxy */ = {
+		9DCB4A4717E6B3030096698D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9DD8E96117E69977009C4B20 /* Project object */;
+			containerPortal = 9DCB4A1A17E6B3020096698D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DD8E96817E69977009C4B20;
+			remoteGlobalIDString = 9DCB4A2117E6B3020096698D;
 			remoteInfo = "MU Bus Tracking";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9DD8E96917E69977009C4B20 /* MU Bus Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MU Bus Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DD8E96C17E69977009C4B20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9DD8E96E17E69977009C4B20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9DD8E97017E69977009C4B20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9DD8E97417E69977009C4B20 /* MU Bus Tracking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MU Bus Tracking-Info.plist"; sourceTree = "<group>"; };
-		9DD8E97617E69977009C4B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9DD8E97817E69977009C4B20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9DD8E97A17E69977009C4B20 /* MU Bus Tracking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MU Bus Tracking-Prefix.pch"; sourceTree = "<group>"; };
-		9DD8E97B17E69977009C4B20 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9DD8E97C17E69977009C4B20 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9DD8E97E17E69977009C4B20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		9DD8E98017E69977009C4B20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		9DD8E98217E69977009C4B20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		9DD8E98517E69977009C4B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		9DD8E98717E69977009C4B20 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		9DD8E98817E69977009C4B20 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		9DD8E98A17E69977009C4B20 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		9DD8E98B17E69977009C4B20 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		9DD8E99217E69978009C4B20 /* MU Bus TrackingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MU Bus TrackingTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9DD8E99317E69978009C4B20 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9DD8E99B17E69978009C4B20 /* MU Bus TrackingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MU Bus TrackingTests-Info.plist"; sourceTree = "<group>"; };
-		9DD8E99D17E69978009C4B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9DD8E99F17E69978009C4B20 /* MU_Bus_TrackingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MU_Bus_TrackingTests.h; sourceTree = "<group>"; };
-		9DD8E9A017E69978009C4B20 /* MU_Bus_TrackingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MU_Bus_TrackingTests.m; sourceTree = "<group>"; };
+		9DCB4A2217E6B3020096698D /* MU Bus Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MU Bus Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DCB4A2517E6B3020096698D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9DCB4A2717E6B3020096698D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9DCB4A2917E6B3020096698D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9DCB4A2D17E6B3020096698D /* MU Bus Tracking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MU Bus Tracking-Info.plist"; sourceTree = "<group>"; };
+		9DCB4A2F17E6B3020096698D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DCB4A3117E6B3020096698D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9DCB4A3317E6B3020096698D /* MU Bus Tracking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MU Bus Tracking-Prefix.pch"; sourceTree = "<group>"; };
+		9DCB4A3417E6B3020096698D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9DCB4A3517E6B3020096698D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9DCB4A3717E6B3020096698D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9DCB4A3917E6B3020096698D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9DCB4A3B17E6B3020096698D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9DCB4A4217E6B3030096698D /* MU Bus TrackingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MU Bus TrackingTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DCB4A4317E6B3030096698D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9DCB4A4B17E6B3030096698D /* MU Bus TrackingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MU Bus TrackingTests-Info.plist"; sourceTree = "<group>"; };
+		9DCB4A4D17E6B3030096698D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DCB4A4F17E6B3030096698D /* MU_Bus_TrackingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MU_Bus_TrackingTests.h; sourceTree = "<group>"; };
+		9DCB4A5017E6B3030096698D /* MU_Bus_TrackingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MU_Bus_TrackingTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9DD8E96617E69977009C4B20 /* Frameworks */ = {
+		9DCB4A1F17E6B3020096698D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD8E96D17E69977009C4B20 /* UIKit.framework in Frameworks */,
-				9DD8E96F17E69977009C4B20 /* Foundation.framework in Frameworks */,
-				9DD8E97117E69977009C4B20 /* CoreGraphics.framework in Frameworks */,
+				9DCB4A2617E6B3020096698D /* UIKit.framework in Frameworks */,
+				9DCB4A2817E6B3020096698D /* Foundation.framework in Frameworks */,
+				9DCB4A2A17E6B3020096698D /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9DD8E98E17E69978009C4B20 /* Frameworks */ = {
+		9DCB4A3E17E6B3020096698D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD8E99417E69978009C4B20 /* SenTestingKit.framework in Frameworks */,
-				9DD8E99517E69978009C4B20 /* UIKit.framework in Frameworks */,
-				9DD8E99617E69978009C4B20 /* Foundation.framework in Frameworks */,
+				9DCB4A4417E6B3030096698D /* SenTestingKit.framework in Frameworks */,
+				9DCB4A4517E6B3030096698D /* UIKit.framework in Frameworks */,
+				9DCB4A4617E6B3030096698D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9DD8E96017E69977009C4B20 = {
+		9DCB4A1917E6B3020096698D = {
 			isa = PBXGroup;
 			children = (
-				9DD8E97217E69977009C4B20 /* MU Bus Tracking */,
-				9DD8E99917E69978009C4B20 /* MU Bus TrackingTests */,
-				9DD8E96B17E69977009C4B20 /* Frameworks */,
-				9DD8E96A17E69977009C4B20 /* Products */,
+				9DCB4A2B17E6B3020096698D /* MU Bus Tracking */,
+				9DCB4A4917E6B3030096698D /* MU Bus TrackingTests */,
+				9DCB4A2417E6B3020096698D /* Frameworks */,
+				9DCB4A2317E6B3020096698D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9DD8E96A17E69977009C4B20 /* Products */ = {
+		9DCB4A2317E6B3020096698D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9DD8E96917E69977009C4B20 /* MU Bus Tracking.app */,
-				9DD8E99217E69978009C4B20 /* MU Bus TrackingTests.octest */,
+				9DCB4A2217E6B3020096698D /* MU Bus Tracking.app */,
+				9DCB4A4217E6B3030096698D /* MU Bus TrackingTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9DD8E96B17E69977009C4B20 /* Frameworks */ = {
+		9DCB4A2417E6B3020096698D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9DD8E96C17E69977009C4B20 /* UIKit.framework */,
-				9DD8E96E17E69977009C4B20 /* Foundation.framework */,
-				9DD8E97017E69977009C4B20 /* CoreGraphics.framework */,
-				9DD8E99317E69978009C4B20 /* SenTestingKit.framework */,
+				9DCB4A2517E6B3020096698D /* UIKit.framework */,
+				9DCB4A2717E6B3020096698D /* Foundation.framework */,
+				9DCB4A2917E6B3020096698D /* CoreGraphics.framework */,
+				9DCB4A4317E6B3030096698D /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9DD8E97217E69977009C4B20 /* MU Bus Tracking */ = {
+		9DCB4A2B17E6B3020096698D /* MU Bus Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				9DD8E97B17E69977009C4B20 /* AppDelegate.h */,
-				9DD8E97C17E69977009C4B20 /* AppDelegate.m */,
-				9DD8E98417E69977009C4B20 /* MainStoryboard.storyboard */,
-				9DD8E98717E69977009C4B20 /* MasterViewController.h */,
-				9DD8E98817E69977009C4B20 /* MasterViewController.m */,
-				9DD8E98A17E69977009C4B20 /* DetailViewController.h */,
-				9DD8E98B17E69977009C4B20 /* DetailViewController.m */,
-				9DD8E97317E69977009C4B20 /* Supporting Files */,
+				9DCB4A3417E6B3020096698D /* AppDelegate.h */,
+				9DCB4A3517E6B3020096698D /* AppDelegate.m */,
+				9DCB4A2C17E6B3020096698D /* Supporting Files */,
 			);
 			path = "MU Bus Tracking";
 			sourceTree = "<group>";
 		};
-		9DD8E97317E69977009C4B20 /* Supporting Files */ = {
+		9DCB4A2C17E6B3020096698D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DD8E97417E69977009C4B20 /* MU Bus Tracking-Info.plist */,
-				9DD8E97517E69977009C4B20 /* InfoPlist.strings */,
-				9DD8E97817E69977009C4B20 /* main.m */,
-				9DD8E97A17E69977009C4B20 /* MU Bus Tracking-Prefix.pch */,
-				9DD8E97E17E69977009C4B20 /* Default.png */,
-				9DD8E98017E69977009C4B20 /* Default@2x.png */,
-				9DD8E98217E69977009C4B20 /* Default-568h@2x.png */,
+				9DCB4A2D17E6B3020096698D /* MU Bus Tracking-Info.plist */,
+				9DCB4A2E17E6B3020096698D /* InfoPlist.strings */,
+				9DCB4A3117E6B3020096698D /* main.m */,
+				9DCB4A3317E6B3020096698D /* MU Bus Tracking-Prefix.pch */,
+				9DCB4A3717E6B3020096698D /* Default.png */,
+				9DCB4A3917E6B3020096698D /* Default@2x.png */,
+				9DCB4A3B17E6B3020096698D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9DD8E99917E69978009C4B20 /* MU Bus TrackingTests */ = {
+		9DCB4A4917E6B3030096698D /* MU Bus TrackingTests */ = {
 			isa = PBXGroup;
 			children = (
-				9DD8E99F17E69978009C4B20 /* MU_Bus_TrackingTests.h */,
-				9DD8E9A017E69978009C4B20 /* MU_Bus_TrackingTests.m */,
-				9DD8E99A17E69978009C4B20 /* Supporting Files */,
+				9DCB4A4F17E6B3030096698D /* MU_Bus_TrackingTests.h */,
+				9DCB4A5017E6B3030096698D /* MU_Bus_TrackingTests.m */,
+				9DCB4A4A17E6B3030096698D /* Supporting Files */,
 			);
 			path = "MU Bus TrackingTests";
 			sourceTree = "<group>";
 		};
-		9DD8E99A17E69978009C4B20 /* Supporting Files */ = {
+		9DCB4A4A17E6B3030096698D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DD8E99B17E69978009C4B20 /* MU Bus TrackingTests-Info.plist */,
-				9DD8E99C17E69978009C4B20 /* InfoPlist.strings */,
+				9DCB4A4B17E6B3030096698D /* MU Bus TrackingTests-Info.plist */,
+				9DCB4A4C17E6B3030096698D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -168,13 +155,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9DD8E96817E69977009C4B20 /* MU Bus Tracking */ = {
+		9DCB4A2117E6B3020096698D /* MU Bus Tracking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9DD8E9A417E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus Tracking" */;
+			buildConfigurationList = 9DCB4A5417E6B3030096698D /* Build configuration list for PBXNativeTarget "MU Bus Tracking" */;
 			buildPhases = (
-				9DD8E96517E69977009C4B20 /* Sources */,
-				9DD8E96617E69977009C4B20 /* Frameworks */,
-				9DD8E96717E69977009C4B20 /* Resources */,
+				9DCB4A1E17E6B3020096698D /* Sources */,
+				9DCB4A1F17E6B3020096698D /* Frameworks */,
+				9DCB4A2017E6B3020096698D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -182,80 +169,79 @@
 			);
 			name = "MU Bus Tracking";
 			productName = "MU Bus Tracking";
-			productReference = 9DD8E96917E69977009C4B20 /* MU Bus Tracking.app */;
+			productReference = 9DCB4A2217E6B3020096698D /* MU Bus Tracking.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9DD8E99117E69978009C4B20 /* MU Bus TrackingTests */ = {
+		9DCB4A4117E6B3020096698D /* MU Bus TrackingTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9DD8E9A717E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus TrackingTests" */;
+			buildConfigurationList = 9DCB4A5717E6B3030096698D /* Build configuration list for PBXNativeTarget "MU Bus TrackingTests" */;
 			buildPhases = (
-				9DD8E98D17E69978009C4B20 /* Sources */,
-				9DD8E98E17E69978009C4B20 /* Frameworks */,
-				9DD8E98F17E69978009C4B20 /* Resources */,
-				9DD8E99017E69978009C4B20 /* ShellScript */,
+				9DCB4A3D17E6B3020096698D /* Sources */,
+				9DCB4A3E17E6B3020096698D /* Frameworks */,
+				9DCB4A3F17E6B3020096698D /* Resources */,
+				9DCB4A4017E6B3020096698D /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9DD8E99817E69978009C4B20 /* PBXTargetDependency */,
+				9DCB4A4817E6B3030096698D /* PBXTargetDependency */,
 			);
 			name = "MU Bus TrackingTests";
 			productName = "MU Bus TrackingTests";
-			productReference = 9DD8E99217E69978009C4B20 /* MU Bus TrackingTests.octest */;
+			productReference = 9DCB4A4217E6B3030096698D /* MU Bus TrackingTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9DD8E96117E69977009C4B20 /* Project object */ = {
+		9DCB4A1A17E6B3020096698D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Jake Gregg";
 			};
-			buildConfigurationList = 9DD8E96417E69977009C4B20 /* Build configuration list for PBXProject "MU Bus Tracking" */;
+			buildConfigurationList = 9DCB4A1D17E6B3020096698D /* Build configuration list for PBXProject "MU Bus Tracking" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 9DD8E96017E69977009C4B20;
-			productRefGroup = 9DD8E96A17E69977009C4B20 /* Products */;
+			mainGroup = 9DCB4A1917E6B3020096698D;
+			productRefGroup = 9DCB4A2317E6B3020096698D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9DD8E96817E69977009C4B20 /* MU Bus Tracking */,
-				9DD8E99117E69978009C4B20 /* MU Bus TrackingTests */,
+				9DCB4A2117E6B3020096698D /* MU Bus Tracking */,
+				9DCB4A4117E6B3020096698D /* MU Bus TrackingTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9DD8E96717E69977009C4B20 /* Resources */ = {
+		9DCB4A2017E6B3020096698D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD8E97717E69977009C4B20 /* InfoPlist.strings in Resources */,
-				9DD8E97F17E69977009C4B20 /* Default.png in Resources */,
-				9DD8E98117E69977009C4B20 /* Default@2x.png in Resources */,
-				9DD8E98317E69977009C4B20 /* Default-568h@2x.png in Resources */,
-				9DD8E98617E69977009C4B20 /* MainStoryboard.storyboard in Resources */,
+				9DCB4A3017E6B3020096698D /* InfoPlist.strings in Resources */,
+				9DCB4A3817E6B3020096698D /* Default.png in Resources */,
+				9DCB4A3A17E6B3020096698D /* Default@2x.png in Resources */,
+				9DCB4A3C17E6B3020096698D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9DD8E98F17E69978009C4B20 /* Resources */ = {
+		9DCB4A3F17E6B3020096698D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD8E99E17E69978009C4B20 /* InfoPlist.strings in Resources */,
+				9DCB4A4E17E6B3030096698D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9DD8E99017E69978009C4B20 /* ShellScript */ = {
+		9DCB4A4017E6B3020096698D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -271,56 +257,46 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9DD8E96517E69977009C4B20 /* Sources */ = {
+		9DCB4A1E17E6B3020096698D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD8E97917E69977009C4B20 /* main.m in Sources */,
-				9DD8E97D17E69977009C4B20 /* AppDelegate.m in Sources */,
-				9DD8E98917E69977009C4B20 /* MasterViewController.m in Sources */,
-				9DD8E98C17E69977009C4B20 /* DetailViewController.m in Sources */,
+				9DCB4A3217E6B3020096698D /* main.m in Sources */,
+				9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9DD8E98D17E69978009C4B20 /* Sources */ = {
+		9DCB4A3D17E6B3020096698D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DD8E9A117E69978009C4B20 /* MU_Bus_TrackingTests.m in Sources */,
+				9DCB4A5117E6B3030096698D /* MU_Bus_TrackingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9DD8E99817E69978009C4B20 /* PBXTargetDependency */ = {
+		9DCB4A4817E6B3030096698D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9DD8E96817E69977009C4B20 /* MU Bus Tracking */;
-			targetProxy = 9DD8E99717E69978009C4B20 /* PBXContainerItemProxy */;
+			target = 9DCB4A2117E6B3020096698D /* MU Bus Tracking */;
+			targetProxy = 9DCB4A4717E6B3030096698D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9DD8E97517E69977009C4B20 /* InfoPlist.strings */ = {
+		9DCB4A2E17E6B3020096698D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9DD8E97617E69977009C4B20 /* en */,
+				9DCB4A2F17E6B3020096698D /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9DD8E98417E69977009C4B20 /* MainStoryboard.storyboard */ = {
+		9DCB4A4C17E6B3030096698D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9DD8E98517E69977009C4B20 /* en */,
-			);
-			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		9DD8E99C17E69978009C4B20 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9DD8E99D17E69978009C4B20 /* en */,
+				9DCB4A4D17E6B3030096698D /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -328,7 +304,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		9DD8E9A217E69978009C4B20 /* Debug */ = {
+		9DCB4A5217E6B3030096698D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -359,7 +335,7 @@
 			};
 			name = Debug;
 		};
-		9DD8E9A317E69978009C4B20 /* Release */ = {
+		9DCB4A5317E6B3030096698D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -384,7 +360,7 @@
 			};
 			name = Release;
 		};
-		9DD8E9A517E69978009C4B20 /* Debug */ = {
+		9DCB4A5517E6B3030096698D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -395,7 +371,7 @@
 			};
 			name = Debug;
 		};
-		9DD8E9A617E69978009C4B20 /* Release */ = {
+		9DCB4A5617E6B3030096698D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -406,7 +382,7 @@
 			};
 			name = Release;
 		};
-		9DD8E9A817E69978009C4B20 /* Debug */ = {
+		9DCB4A5817E6B3030096698D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MU Bus Tracking.app/MU Bus Tracking";
@@ -423,7 +399,7 @@
 			};
 			name = Debug;
 		};
-		9DD8E9A917E69978009C4B20 /* Release */ = {
+		9DCB4A5917E6B3030096698D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MU Bus Tracking.app/MU Bus Tracking";
@@ -443,32 +419,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9DD8E96417E69977009C4B20 /* Build configuration list for PBXProject "MU Bus Tracking" */ = {
+		9DCB4A1D17E6B3020096698D /* Build configuration list for PBXProject "MU Bus Tracking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DD8E9A217E69978009C4B20 /* Debug */,
-				9DD8E9A317E69978009C4B20 /* Release */,
+				9DCB4A5217E6B3030096698D /* Debug */,
+				9DCB4A5317E6B3030096698D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9DD8E9A417E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus Tracking" */ = {
+		9DCB4A5417E6B3030096698D /* Build configuration list for PBXNativeTarget "MU Bus Tracking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DD8E9A517E69978009C4B20 /* Debug */,
-				9DD8E9A617E69978009C4B20 /* Release */,
+				9DCB4A5517E6B3030096698D /* Debug */,
+				9DCB4A5617E6B3030096698D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		9DD8E9A717E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus TrackingTests" */ = {
+		9DCB4A5717E6B3030096698D /* Build configuration list for PBXNativeTarget "MU Bus TrackingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DD8E9A817E69978009C4B20 /* Debug */,
-				9DD8E9A917E69978009C4B20 /* Release */,
+				9DCB4A5817E6B3030096698D /* Debug */,
+				9DCB4A5917E6B3030096698D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9DD8E96117E69977009C4B20 /* Project object */;
+	rootObject = 9DCB4A1A17E6B3020096698D /* Project object */;
 }
