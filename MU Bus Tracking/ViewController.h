@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JTRevealSidebarV2Delegate.h"
 
-@interface ViewController : UIViewController
+#define EXPERIMENTAL_ORIENTATION_SUPPORT 1
+
+@class SidebarViewController;
+
+@interface ViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate> {
+#if EXPERIMENTAL_ORIENTATION_SUPPORT
+    CGPoint _containerOrigin;
+#endif
+}
+
+@property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
+@property (nonatomic, strong) UITableView *rightSidebarView;
+@property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
+@property (nonatomic, strong) UILabel     *label;
 
 @end
