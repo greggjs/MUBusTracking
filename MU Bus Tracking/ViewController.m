@@ -19,16 +19,17 @@
 
 - (void)loadView
 {
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86 longitude:151.20 zoom:6];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.505034 longitude:-84.735832 zoom:13];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
     
-    GMSMarker *marker = [[GMSMarker alloc]init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = mapView_;
+    
+    //GMSMarker *marker = [[GMSMarker alloc]init];
+    //marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
+    //marker.title = @"Sydney";
+    //marker.snippet = @"Australia";
+    //marker.map = mapView_;
 }
 
 - (void)viewDidLoad
