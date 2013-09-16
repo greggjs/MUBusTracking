@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
+		9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
+		9D31FA6717E76722000D2F36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6617E76722000D2F36 /* NewViewController.m */; };
+		9D31FA6817E76722000D2F36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6617E76722000D2F36 /* NewViewController.m */; };
 		9DCB4A2617E6B3020096698D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2517E6B3020096698D /* UIKit.framework */; };
 		9DCB4A2817E6B3020096698D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2717E6B3020096698D /* Foundation.framework */; };
 		9DCB4A2A17E6B3020096698D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2917E6B3020096698D /* CoreGraphics.framework */; };
@@ -58,6 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
+		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
+		9D31FA6617E76722000D2F36 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		9DCB4A2217E6B3020096698D /* MU Bus Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MU Bus Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB4A2517E6B3020096698D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DCB4A2717E6B3020096698D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -192,6 +200,10 @@
 				9DCB4AD317E6BEA90096698D /* ViewController.h */,
 				9DCB4AD417E6BEA90096698D /* ViewController.m */,
 				9DCB4AD517E6BEA90096698D /* ViewController.xib */,
+				9D31FA6117E76702000D2F36 /* SidebarViewController.h */,
+				9D31FA6217E76702000D2F36 /* SidebarViewController.m */,
+				9D31FA6517E76722000D2F36 /* NewViewController.h */,
+				9D31FA6617E76722000D2F36 /* NewViewController.m */,
 				9DCB4A2C17E6B3020096698D /* Supporting Files */,
 			);
 			path = "MU Bus Tracking";
@@ -360,6 +372,8 @@
 				9DCB4A6A17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6C17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
 				9DCB4AD617E6BEA90096698D /* ViewController.m in Sources */,
+				9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */,
+				9D31FA6717E76722000D2F36 /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +385,8 @@
 				9DCB4A6B17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6D17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
 				9DCB4AD717E6BEA90096698D /* ViewController.m in Sources */,
+				9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */,
+				9D31FA6817E76722000D2F36 /* NewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
