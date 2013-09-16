@@ -19,7 +19,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [GMSServices provideAPIKey:@"AIzaSyDNufTl_3_h50bJ3fbbiGWxLaff_TSy3aU"];
     // Override point for customization after application launch.
-    ViewController *controller = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    ViewController *controller = [[ViewController alloc] init];
+    controller.title= @"ViewController";
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     
 

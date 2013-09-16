@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
 #import "UIViewController+JTRevealSidebarV2.h"
 #import "UINavigationItem+JTRevealSidebarV2.h"
 #import "SidebarViewController.h"
 #import "NewViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 #if EXPERIEMENTAL_ORIENTATION_SUPPORT
 #import <QuartzCore/QuartzCore.h>
@@ -49,12 +49,16 @@
     //marker.title = @"Sydney";
     //marker.snippet = @"Australia";
     //marker.map = mapView_;
+     
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
     self.label.backgroundColor  = [UIColor clearColor];
     self.label.textColor        = [UIColor whiteColor];
@@ -196,7 +200,7 @@
 #pragma mark UITableViewDatasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 5;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
