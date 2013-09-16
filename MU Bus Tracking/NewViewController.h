@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NewViewController : NSObject
+
+@property (nonatomic, strong) UILabel       *label;
+@property (nonatomic, strong) UITableView   *rightSideView;
 
 @end
