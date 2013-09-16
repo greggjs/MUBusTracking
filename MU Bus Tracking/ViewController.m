@@ -58,7 +58,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    
+    // Add top label
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
     self.label.backgroundColor  = [UIColor clearColor];
     self.label.textColor        = [UIColor whiteColor];
@@ -66,20 +66,21 @@
     self.label.numberOfLines    = 2;
     [self.view addSubview:self.label];
     
+    // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
+    // Add right sidebar
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
-    
+    /*
     UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [pushButton setTitle:@"Push NewViewController" forState:UIControlStateNormal];
     [pushButton sizeToFit];
     [pushButton addTarget:self action:@selector(pushNewViewController:) forControlEvents:UIControlEventTouchUpInside];
     pushButton.frame = (CGRect){10, 150, self.view.frame.size.width - 20, pushButton.frame.size.height};
     [self.view addSubview:pushButton];
-    
+    */
     self.navigationItem.revealSidebarDelegate = self;
     
 }
-
 
 - (void)viewDidUnload
 {
