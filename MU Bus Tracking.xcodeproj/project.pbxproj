@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DD8E96D17E69977009C4B20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96C17E69977009C4B20 /* UIKit.framework */; };
+		9DD8E96F17E69977009C4B20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96E17E69977009C4B20 /* Foundation.framework */; };
+		9DD8E97117E69977009C4B20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E97017E69977009C4B20 /* CoreGraphics.framework */; };
+		9DD8E97717E69977009C4B20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E97517E69977009C4B20 /* InfoPlist.strings */; };
+		9DD8E97917E69977009C4B20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E97817E69977009C4B20 /* main.m */; };
+		9DD8E97D17E69977009C4B20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E97C17E69977009C4B20 /* AppDelegate.m */; };
+		9DD8E97F17E69977009C4B20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E97E17E69977009C4B20 /* Default.png */; };
+		9DD8E98117E69977009C4B20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E98017E69977009C4B20 /* Default@2x.png */; };
+		9DD8E98317E69977009C4B20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E98217E69977009C4B20 /* Default-568h@2x.png */; };
+		9DD8E98617E69977009C4B20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E98417E69977009C4B20 /* MainStoryboard.storyboard */; };
+		9DD8E98917E69977009C4B20 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E98817E69977009C4B20 /* MasterViewController.m */; };
+		9DD8E98C17E69977009C4B20 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E98B17E69977009C4B20 /* DetailViewController.m */; };
+		9DD8E99417E69978009C4B20 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E99317E69978009C4B20 /* SenTestingKit.framework */; };
+		9DD8E99517E69978009C4B20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96C17E69977009C4B20 /* UIKit.framework */; };
+		9DD8E99617E69978009C4B20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD8E96E17E69977009C4B20 /* Foundation.framework */; };
+		9DD8E99E17E69978009C4B20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD8E99C17E69978009C4B20 /* InfoPlist.strings */; };
+		9DD8E9A117E69978009C4B20 /* MU_Bus_TrackingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD8E9A017E69978009C4B20 /* MU_Bus_TrackingTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DD8E99717E69978009C4B20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DD8E96117E69977009C4B20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DD8E96817E69977009C4B20;
+			remoteInfo = "MU Bus Tracking";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DD8E96917E69977009C4B20 /* MU Bus Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MU Bus Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD8E96C17E69977009C4B20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9DD8E96E17E69977009C4B20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9DD8E97017E69977009C4B20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9DD8E97417E69977009C4B20 /* MU Bus Tracking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MU Bus Tracking-Info.plist"; sourceTree = "<group>"; };
+		9DD8E97617E69977009C4B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DD8E97817E69977009C4B20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9DD8E97A17E69977009C4B20 /* MU Bus Tracking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MU Bus Tracking-Prefix.pch"; sourceTree = "<group>"; };
+		9DD8E97B17E69977009C4B20 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9DD8E97C17E69977009C4B20 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9DD8E97E17E69977009C4B20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9DD8E98017E69977009C4B20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9DD8E98217E69977009C4B20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9DD8E98517E69977009C4B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		9DD8E98717E69977009C4B20 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		9DD8E98817E69977009C4B20 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		9DD8E98A17E69977009C4B20 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		9DD8E98B17E69977009C4B20 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		9DD8E99217E69978009C4B20 /* MU Bus TrackingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MU Bus TrackingTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD8E99317E69978009C4B20 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9DD8E99B17E69978009C4B20 /* MU Bus TrackingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MU Bus TrackingTests-Info.plist"; sourceTree = "<group>"; };
+		9DD8E99D17E69978009C4B20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DD8E99F17E69978009C4B20 /* MU_Bus_TrackingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MU_Bus_TrackingTests.h; sourceTree = "<group>"; };
+		9DD8E9A017E69978009C4B20 /* MU_Bus_TrackingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MU_Bus_TrackingTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DD8E96617E69977009C4B20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD8E96D17E69977009C4B20 /* UIKit.framework in Frameworks */,
+				9DD8E96F17E69977009C4B20 /* Foundation.framework in Frameworks */,
+				9DD8E97117E69977009C4B20 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD8E98E17E69978009C4B20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD8E99417E69978009C4B20 /* SenTestingKit.framework in Frameworks */,
+				9DD8E99517E69978009C4B20 /* UIKit.framework in Frameworks */,
+				9DD8E99617E69978009C4B20 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DD8E96017E69977009C4B20 = {
+			isa = PBXGroup;
+			children = (
+				9DD8E97217E69977009C4B20 /* MU Bus Tracking */,
+				9DD8E99917E69978009C4B20 /* MU Bus TrackingTests */,
+				9DD8E96B17E69977009C4B20 /* Frameworks */,
+				9DD8E96A17E69977009C4B20 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DD8E96A17E69977009C4B20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DD8E96917E69977009C4B20 /* MU Bus Tracking.app */,
+				9DD8E99217E69978009C4B20 /* MU Bus TrackingTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DD8E96B17E69977009C4B20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DD8E96C17E69977009C4B20 /* UIKit.framework */,
+				9DD8E96E17E69977009C4B20 /* Foundation.framework */,
+				9DD8E97017E69977009C4B20 /* CoreGraphics.framework */,
+				9DD8E99317E69978009C4B20 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DD8E97217E69977009C4B20 /* MU Bus Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				9DD8E97B17E69977009C4B20 /* AppDelegate.h */,
+				9DD8E97C17E69977009C4B20 /* AppDelegate.m */,
+				9DD8E98417E69977009C4B20 /* MainStoryboard.storyboard */,
+				9DD8E98717E69977009C4B20 /* MasterViewController.h */,
+				9DD8E98817E69977009C4B20 /* MasterViewController.m */,
+				9DD8E98A17E69977009C4B20 /* DetailViewController.h */,
+				9DD8E98B17E69977009C4B20 /* DetailViewController.m */,
+				9DD8E97317E69977009C4B20 /* Supporting Files */,
+			);
+			path = "MU Bus Tracking";
+			sourceTree = "<group>";
+		};
+		9DD8E97317E69977009C4B20 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DD8E97417E69977009C4B20 /* MU Bus Tracking-Info.plist */,
+				9DD8E97517E69977009C4B20 /* InfoPlist.strings */,
+				9DD8E97817E69977009C4B20 /* main.m */,
+				9DD8E97A17E69977009C4B20 /* MU Bus Tracking-Prefix.pch */,
+				9DD8E97E17E69977009C4B20 /* Default.png */,
+				9DD8E98017E69977009C4B20 /* Default@2x.png */,
+				9DD8E98217E69977009C4B20 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DD8E99917E69978009C4B20 /* MU Bus TrackingTests */ = {
+			isa = PBXGroup;
+			children = (
+				9DD8E99F17E69978009C4B20 /* MU_Bus_TrackingTests.h */,
+				9DD8E9A017E69978009C4B20 /* MU_Bus_TrackingTests.m */,
+				9DD8E99A17E69978009C4B20 /* Supporting Files */,
+			);
+			path = "MU Bus TrackingTests";
+			sourceTree = "<group>";
+		};
+		9DD8E99A17E69978009C4B20 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DD8E99B17E69978009C4B20 /* MU Bus TrackingTests-Info.plist */,
+				9DD8E99C17E69978009C4B20 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DD8E96817E69977009C4B20 /* MU Bus Tracking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD8E9A417E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus Tracking" */;
+			buildPhases = (
+				9DD8E96517E69977009C4B20 /* Sources */,
+				9DD8E96617E69977009C4B20 /* Frameworks */,
+				9DD8E96717E69977009C4B20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MU Bus Tracking";
+			productName = "MU Bus Tracking";
+			productReference = 9DD8E96917E69977009C4B20 /* MU Bus Tracking.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DD8E99117E69978009C4B20 /* MU Bus TrackingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD8E9A717E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus TrackingTests" */;
+			buildPhases = (
+				9DD8E98D17E69978009C4B20 /* Sources */,
+				9DD8E98E17E69978009C4B20 /* Frameworks */,
+				9DD8E98F17E69978009C4B20 /* Resources */,
+				9DD8E99017E69978009C4B20 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DD8E99817E69978009C4B20 /* PBXTargetDependency */,
+			);
+			name = "MU Bus TrackingTests";
+			productName = "MU Bus TrackingTests";
+			productReference = 9DD8E99217E69978009C4B20 /* MU Bus TrackingTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DD8E96117E69977009C4B20 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Jake Gregg";
+			};
+			buildConfigurationList = 9DD8E96417E69977009C4B20 /* Build configuration list for PBXProject "MU Bus Tracking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9DD8E96017E69977009C4B20;
+			productRefGroup = 9DD8E96A17E69977009C4B20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DD8E96817E69977009C4B20 /* MU Bus Tracking */,
+				9DD8E99117E69978009C4B20 /* MU Bus TrackingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DD8E96717E69977009C4B20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD8E97717E69977009C4B20 /* InfoPlist.strings in Resources */,
+				9DD8E97F17E69977009C4B20 /* Default.png in Resources */,
+				9DD8E98117E69977009C4B20 /* Default@2x.png in Resources */,
+				9DD8E98317E69977009C4B20 /* Default-568h@2x.png in Resources */,
+				9DD8E98617E69977009C4B20 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD8E98F17E69978009C4B20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD8E99E17E69978009C4B20 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9DD8E99017E69978009C4B20 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DD8E96517E69977009C4B20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD8E97917E69977009C4B20 /* main.m in Sources */,
+				9DD8E97D17E69977009C4B20 /* AppDelegate.m in Sources */,
+				9DD8E98917E69977009C4B20 /* MasterViewController.m in Sources */,
+				9DD8E98C17E69977009C4B20 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD8E98D17E69978009C4B20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD8E9A117E69978009C4B20 /* MU_Bus_TrackingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DD8E99817E69978009C4B20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DD8E96817E69977009C4B20 /* MU Bus Tracking */;
+			targetProxy = 9DD8E99717E69978009C4B20 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DD8E97517E69977009C4B20 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD8E97617E69977009C4B20 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9DD8E98417E69977009C4B20 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD8E98517E69977009C4B20 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		9DD8E99C17E69978009C4B20 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD8E99D17E69978009C4B20 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DD8E9A217E69978009C4B20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9DD8E9A317E69978009C4B20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DD8E9A517E69978009C4B20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
+				INFOPLIST_FILE = "MU Bus Tracking/MU Bus Tracking-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9DD8E9A617E69978009C4B20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
+				INFOPLIST_FILE = "MU Bus Tracking/MU Bus Tracking-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9DD8E9A817E69978009C4B20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MU Bus Tracking.app/MU Bus Tracking";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
+				INFOPLIST_FILE = "MU Bus TrackingTests/MU Bus TrackingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9DD8E9A917E69978009C4B20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MU Bus Tracking.app/MU Bus Tracking";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
+				INFOPLIST_FILE = "MU Bus TrackingTests/MU Bus TrackingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DD8E96417E69977009C4B20 /* Build configuration list for PBXProject "MU Bus Tracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD8E9A217E69978009C4B20 /* Debug */,
+				9DD8E9A317E69978009C4B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD8E9A417E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus Tracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD8E9A517E69978009C4B20 /* Debug */,
+				9DD8E9A617E69978009C4B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9DD8E9A717E69978009C4B20 /* Build configuration list for PBXNativeTarget "MU Bus TrackingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD8E9A817E69978009C4B20 /* Debug */,
+				9DD8E9A917E69978009C4B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DD8E96117E69977009C4B20 /* Project object */;
+}
