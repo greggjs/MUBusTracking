@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface NewViewController : NSObject
+@interface NewViewController : UIViewController
 
 @property (nonatomic, strong) UILabel       *label;
-@property (nonatomic, strong) UITableView   *rightSideView;
+@property (nonatomic, strong) UITableView   *rightSidebarView;
 
 @end

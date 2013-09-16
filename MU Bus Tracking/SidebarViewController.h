@@ -12,7 +12,7 @@
 @protocol SidebarViewControllerDelegate;
 
 @interface SidebarViewController : UITableViewController
-
+@property (nonatomic, assign) id <SidebarViewControllerDelegate> sidebarDelegate;
 @end
 
 @protocol SidebarViewControllerDelegate <NSObject>
