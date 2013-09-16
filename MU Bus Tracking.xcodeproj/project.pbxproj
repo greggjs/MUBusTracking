@@ -41,6 +41,10 @@
 		9DCB4A8917E6BBB90096698D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */; };
 		9DCB4A8A17E6BBB90096698D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */; };
 		9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */; };
+		9DCB4AD617E6BEA90096698D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD417E6BEA90096698D /* ViewController.m */; };
+		9DCB4AD717E6BEA90096698D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD417E6BEA90096698D /* ViewController.m */; };
+		9DCB4AD817E6BEA90096698D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD517E6BEA90096698D /* ViewController.xib */; };
+		9DCB4AD917E6BEA90096698D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD517E6BEA90096698D /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,9 @@
 		9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9DCB4AD317E6BEA90096698D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9DCB4AD417E6BEA90096698D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9DCB4AD517E6BEA90096698D /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +189,9 @@
 			children = (
 				9DCB4A3417E6B3020096698D /* AppDelegate.h */,
 				9DCB4A3517E6B3020096698D /* AppDelegate.m */,
+				9DCB4AD317E6BEA90096698D /* ViewController.h */,
+				9DCB4AD417E6BEA90096698D /* ViewController.m */,
+				9DCB4AD517E6BEA90096698D /* ViewController.xib */,
 				9DCB4A2C17E6B3020096698D /* Supporting Files */,
 			);
 			path = "MU Bus Tracking";
@@ -308,6 +318,7 @@
 				9DCB4A3A17E6B3020096698D /* Default@2x.png in Resources */,
 				9DCB4A3C17E6B3020096698D /* Default-568h@2x.png in Resources */,
 				9DCB4A7217E6BB3B0096698D /* GoogleMaps.bundle in Resources */,
+				9DCB4AD817E6BEA90096698D /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +328,7 @@
 			files = (
 				9DCB4A4E17E6B3030096698D /* InfoPlist.strings in Resources */,
 				9DCB4A7317E6BB3B0096698D /* GoogleMaps.bundle in Resources */,
+				9DCB4AD917E6BEA90096698D /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +359,7 @@
 				9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */,
 				9DCB4A6A17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6C17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
+				9DCB4AD617E6BEA90096698D /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +370,7 @@
 				9DCB4A5117E6B3030096698D /* MU_Bus_TrackingTests.m in Sources */,
 				9DCB4A6B17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6D17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
+				9DCB4AD717E6BEA90096698D /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
