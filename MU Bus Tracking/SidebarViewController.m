@@ -16,6 +16,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Put init params here...
+        
     }
     return self;
 }
@@ -47,7 +48,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -58,9 +59,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
-    
+    cell.textLabel.text = [NSString stringWithFormat:@"U%d", indexPath.row];
     return cell;
 }
 
@@ -72,7 +71,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sidebarDelegate) {
-        NSObject *object = [NSString stringWithFormat:@"ViewController%d", indexPath.row];
+        NSObject *object = [NSString stringWithFormat:@"U%d", indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
     }
 }

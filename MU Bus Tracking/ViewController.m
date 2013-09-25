@@ -203,8 +203,9 @@
         self.leftSidebarViewController = [[SidebarViewController alloc] init];
         self.leftSidebarViewController.sidebarDelegate = self;
         controller = self.leftSidebarViewController;
-        controller.title = @"LeftSidebarViewController";
+        controller.title = @"Routes";
     }
+    
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
@@ -263,7 +264,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (tableView == self.rightSidebarView) {
-        return @"RightSidebar";
+        return @"Options";
     }
     return nil;
 }
@@ -288,7 +289,7 @@
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
     controller.leftSelectedIndexPath      = indexPath;
-    controller.label.text = [NSString stringWithFormat:@"Selected %@ from LeftSidebarViewController", (NSString *)object];
+    //controller.label.text = [NSString stringWithFormat:@"Selected %@ from LeftSidebarViewController", (NSString *)object];
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     
