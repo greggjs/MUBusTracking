@@ -60,6 +60,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"U%d", indexPath.row];
+    cell.textLabel.textColor = [UIColor redColor];
     return cell;
 }
 

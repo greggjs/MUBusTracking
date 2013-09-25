@@ -71,15 +71,10 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
     // Add right sidebar
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
-    /*
-    UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [pushButton setTitle:@"Push NewViewController" forState:UIControlStateNormal];
-    [pushButton sizeToFit];
-    [pushButton addTarget:self action:@selector(pushNewViewController:) forControlEvents:UIControlEventTouchUpInside];
-    pushButton.frame = (CGRect){10, 150, self.view.frame.size.width - 20, pushButton.frame.size.height};
-    [self.view addSubview:pushButton];
-    */
+    
     self.navigationItem.revealSidebarDelegate = self;
+    
+    // Get bus location
     NSLog(@"viewDidLoad");
     self.respData = [NSMutableData data];
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=apiTest"]];
@@ -205,7 +200,7 @@
         controller = self.leftSidebarViewController;
         controller.title = @"Routes";
     }
-    
+    controller.view.backgroundColor = [UIColor blackColor];
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
@@ -222,6 +217,7 @@
         view.dataSource = self;
         view.delegate   = self;
     }
+    view.backgroundColor = [UIColor blackColor];
     view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
     view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     return view;
@@ -259,6 +255,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.textLabel.textColor = [UIColor redColor];
     return cell;
 }
 

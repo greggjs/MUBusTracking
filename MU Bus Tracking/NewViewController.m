@@ -96,7 +96,6 @@
         view = self.rightSidebarView = [[UITableView alloc] initWithFrame:CGRectMake(160, mainFrame.origin.y, 160, mainFrame.size.height) style:UITableViewStyleGrouped];
         view.dataSource = self;
         view.delegate   = self;
-        //view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
     }
     return view;
 }
