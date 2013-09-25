@@ -7,9 +7,12 @@
 //
 
 #import "SidebarViewController.h"
+   
 
 @implementation SidebarViewController
 @synthesize sidebarDelegate;
+@synthesize routeColor;
+@synthesize respData = _respData;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -74,6 +77,8 @@
     if (self.sidebarDelegate) {
         NSObject *object = [NSString stringWithFormat:@"U%d", indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
+        
+        
     }
 }
 @end

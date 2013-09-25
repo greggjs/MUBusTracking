@@ -24,4 +24,5 @@
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @property (nonatomic, strong) UILabel     *label;
 @property (nonatomic, strong) NSMutableData *respData;
+@property (nonatomic, strong) NSString *currentRoute;
 @end
