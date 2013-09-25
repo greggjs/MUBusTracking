@@ -101,17 +101,25 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+    NSLog(@"Succeeded! Received %d bytes of data",[self.respData length]);
+    
     NSError *err = nil;
     NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:self.respData options:NSJSONReadingMutableLeaves error:&err];
     
     for (id key in resp) {
+        NSString *busId = (NSString *)[key objectForKey:@"busId"];
+        NSString *latStr = (NSString *)[key objectForKey:@"lat"];
+        CGFloat lat = (CGFloat)[latStr floatValue];
+        NSString *lngStr = (NSString *)[key objectForKey:@"lng"];
+        CGFloat lng = (CGFloat)[lngStr floatValue];
+        NSLog(@"busId: %@ lat: %@ lng: %@", busId, latStr, lngStr);
         
-        id value = [resp objectForKey:key];
-        
-        NSString *keyAsString = (NSString *)key;
-        NSString *valueAsString = (NSString *)value;
-        NSLog(@"key: %@", keyAsString);
-        NSLog(@"value: %@", valueAsString);
+        GMSMarker *marker = [[GMSMarker alloc]init];
+        marker.position = CLLocationCoordinate2DMake(lat, lng);
+        marker.title = busId;
+        //marker.snippet = @"Late/Ontime?";
+        marker.map = mapView_;
         
     }
     
