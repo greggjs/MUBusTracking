@@ -29,6 +29,7 @@
 @synthesize rightSidebarView;
 @synthesize leftSelectedIndexPath;
 @synthesize label;
+@synthesize respData = _respData;
 
 - (id)init {
     self = [super init];
@@ -79,6 +80,40 @@
     [self.view addSubview:pushButton];
     */
     self.navigationItem.revealSidebarDelegate = self;
+    NSLog(@"viewDidLoad");
+    self.respData = [NSMutableData data];
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=apiTest"]];
+    [[NSURLConnection alloc] initWithRequest:req delegate:self];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"didReceiveResponse");
+    [self.respData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.respData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSError *err = nil;
+    NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:self.respData options:NSJSONReadingMutableLeaves error:&err];
+    
+    for (id key in resp) {
+        
+        id value = [resp objectForKey:key];
+        
+        NSString *keyAsString = (NSString *)key;
+        NSString *valueAsString = (NSString *)value;
+        NSLog(@"key: %@", keyAsString);
+        NSLog(@"value: %@", valueAsString);
+        
+    }
     
 }
 

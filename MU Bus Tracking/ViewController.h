@@ -23,5 +23,5 @@
 @property (nonatomic, strong) UITableView *rightSidebarView;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @property (nonatomic, strong) UILabel     *label;
-
+@property (nonatomic, strong) NSMutableData *respData;
 @end
