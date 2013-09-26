@@ -30,6 +30,11 @@
 @synthesize leftSelectedIndexPath;
 @synthesize label;
 @synthesize respData = _respData;
+NSURLConnection *apiTest;
+NSURLConnection *getStops;
+NSURLConnection *getRouteShape;
+NSURLConnection *getRoutePositions;
+NSURLConnection *getRouteColor;
 
 - (id)init {
     self = [super init];
@@ -59,13 +64,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    // Add top label
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
-    self.label.backgroundColor  = [UIColor clearColor];
-    self.label.textColor        = [UIColor whiteColor];
-    self.label.textAlignment    = UITextAlignmentCenter;
-    self.label.numberOfLines    = 2;
-    [self.view addSubview:self.label];
     
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
@@ -73,12 +71,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
     
     self.navigationItem.revealSidebarDelegate = self;
-    
+    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     // Get bus location
     NSLog(@"viewDidLoad");
     self.respData = [NSMutableData data];
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=apiTest"]];
-    [[NSURLConnection alloc] initWithRequest:req delegate:self];
+    apiTest = [[NSURLConnection alloc] initWithRequest:req delegate:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -102,20 +100,22 @@
     NSError *err = nil;
     NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:self.respData options:NSJSONReadingMutableLeaves error:&err];
     
-    for (id key in resp) {
-        NSString *busId = (NSString *)[key objectForKey:@"busId"];
-        NSString *latStr = (NSString *)[key objectForKey:@"lat"];
-        CGFloat lat = (CGFloat)[latStr floatValue];
-        NSString *lngStr = (NSString *)[key objectForKey:@"lng"];
-        CGFloat lng = (CGFloat)[lngStr floatValue];
-        NSLog(@"busId: %@ lat: %@ lng: %@", busId, latStr, lngStr);
+    if (connection == apiTest) {
+        for (id key in resp) {
+            NSString *busId = (NSString *)[key objectForKey:@"busId"];
+            NSString *latStr = (NSString *)[key objectForKey:@"lat"];
+            CGFloat lat = (CGFloat)[latStr floatValue];
+            NSString *lngStr = (NSString *)[key objectForKey:@"lng"];
+            CGFloat lng = (CGFloat)[lngStr floatValue];
+            NSLog(@"busId: %@ lat: %@ lng: %@", busId, latStr, lngStr);
         
-        GMSMarker *marker = [[GMSMarker alloc]init];
-        marker.position = CLLocationCoordinate2DMake(lat, lng);
-        marker.title = busId;
-        //marker.snippet = @"Late/Ontime?";
-        marker.map = mapView_;
+            GMSMarker *marker = [[GMSMarker alloc]init];
+            marker.position = CLLocationCoordinate2DMake(lat, lng);
+            marker.title = busId;
+            //marker.snippet = @"Late/Ontime?";
+            marker.map = mapView_;
         
+        }
     }
     
 }
@@ -200,7 +200,7 @@
         controller = self.leftSidebarViewController;
         controller.title = @"Routes";
     }
-    controller.view.backgroundColor = [UIColor blackColor];
+    controller.view.backgroundColor = [UIColor clearColor];
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
@@ -217,7 +217,7 @@
         view.dataSource = self;
         view.delegate   = self;
     }
-    view.backgroundColor = [UIColor blackColor];
+    view.backgroundColor = [UIColor clearColor];
     view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
     view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     return view;
@@ -256,6 +256,7 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
     cell.textLabel.textColor = [UIColor redColor];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

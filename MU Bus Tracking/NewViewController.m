@@ -67,6 +67,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

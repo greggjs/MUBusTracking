@@ -64,6 +64,7 @@
     }
     cell.textLabel.text = [NSString stringWithFormat:@"U%d", indexPath.row];
     cell.textLabel.textColor = [UIColor redColor];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
