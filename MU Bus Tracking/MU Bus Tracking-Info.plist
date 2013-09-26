@@ -30,6 +30,8 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<string>YES</string>
+	<key>UILaunchImageFile</key>
+	<string>image-iphone</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
