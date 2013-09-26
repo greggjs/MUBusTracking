@@ -32,12 +32,6 @@
 @synthesize rightSidebarView;
 @synthesize leftSelectedIndexPath;
 @synthesize label;
-@synthesize respData = _respData;
-NSURLConnection *apiTest;
-NSURLConnection *getStops;
-NSURLConnection *getRouteShape;
-NSURLConnection *getRoutePositions;
-NSURLConnection *getRouteColor;
 
 - (id)init {
     self = [super init];
@@ -48,16 +42,10 @@ NSURLConnection *getRouteColor;
 {
 
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.505034 longitude:-84.735832 zoom:13];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.736832 zoom:13.7];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
-
-    //GMSMarker *marker = [[GMSMarker alloc]init];
-    //marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    //marker.title = @"Sydney";
-    //marker.snippet = @"Australia";
-    //marker.map = mapView_;
      
 }
 
@@ -79,19 +67,32 @@ NSURLConnection *getRouteColor;
     
     // Make the bus web service call to get the location of a bus
     BusService *bs = [[BusService alloc] init];
+    // Make the route web service call to get the route coordinates
+    RouteService *rs = [[RouteService alloc] init];
     NSArray *buses = [bs getBuses];
     for(Bus *bus in buses){
         [self addBusToMapWithBus:bus];
+        NSArray *coords = [rs getRouteCoordinates:bus];
+        GMSPolyline *routeLine = [self createRoute:coords];
+        routeLine.map = mapView_;
+        routeLine.strokeColor = [self getRouteColor:bus.route];
+        routeLine.strokeWidth = 10.f;
+        routeLine.geodesic = YES;
     }
     
-    // Make the route web service call to get the route coordinates
-    RouteService *rs = [[RouteService alloc] init];
-    NSArray *blueRouteCoordinates = [rs getRouteCoordinates];
-    GMSPolyline *blueRoute= [self createRoute:blueRouteCoordinates];
-    blueRoute.map = mapView_;
-    blueRoute.strokeColor = [UIColor orangeColor];
-    blueRoute.strokeWidth = 10.f;
-    blueRoute.geodesic = YES;
+    // TEST CODE //
+    NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
+    for (NSString *bus in BUS_COLORS) {
+        NSArray *coords = [rs getRouteCoordinatesByColor:bus];
+        GMSPolyline *routeLine = [self createRoute:coords];
+        routeLine.map = mapView_;
+        routeLine.strokeColor = [self getRouteColor:bus];
+        routeLine.strokeWidth = 10.f;
+        routeLine.geodesic = YES;
+    }
+    
+    
+    // END TEST CODE //
 
 }
 
@@ -128,6 +129,22 @@ NSURLConnection *getRouteColor;
     GMSPolyline *route = [GMSPolyline polylineWithPath:path];
     
     return route;
+}
+
+-(UIColor*)getRouteColor:(NSString *)busColor {
+    if ([busColor isEqualToString:@"ORANGE"]) {
+        return [UIColor orangeColor];
+    } else if ([busColor isEqualToString:@"BLUE"]) {
+        return [UIColor blueColor];
+    } else if ([busColor isEqualToString:@"GREEN"]) {
+        return [UIColor greenColor];
+    } else if ([busColor isEqualToString:@"YELLOW"]) {
+        return [UIColor yellowColor];
+    } else if ([busColor isEqualToString:@"RED"]) {
+        return [UIColor redColor];
+    } else if ([busColor isEqualToString:@"PURPLE"]) {
+        return [UIColor purpleColor];
+    }
 }
 
 #if EXPERIEMENTAL_ORIENTATION_SUPPORT

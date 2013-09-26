@@ -43,13 +43,13 @@
                     [currentBus setLatitude:[busDict objectForKey:@"lat"]];
                     [currentBus setLongitude:[busDict objectForKey:@"lng"]];
                     [currentBus setRoute:[busDict objectForKey:@"routeId"]];
-                    NSString *busId = [busDict objectForKey:@"busIDd"];
-                    NSString *lat = [busDict objectForKey:@"lat"];
-                    NSString *lon = [busDict objectForKey:@"lon"];
-                    NSString *route = [busDict objectForKey:@"route"];
+                    NSString *busId = (NSString *)[busDict objectForKey:@"busIDd"];
+                    NSString *lat = (NSString *)[busDict objectForKey:@"lat"];
+                    NSString *lon = (NSString *)[busDict objectForKey:@"lon"];
+                    NSString *route = (NSString *)[busDict objectForKey:@"route"];
 
                     [busArray addObject:currentBus];
-                    NSLog(@"Bus Added: @, @, @, @",busId, lat, lon, route);
+                    NSLog(@"Bus Added: %@ %@ %@ %@",busId,lat,lon,route);
                 }
             } else {
                 NSLog(@"Parse error %@", requestError);
