@@ -7,6 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D2CB54217F47B1B005B4063 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB52F17F47B1B005B4063 /* appicon.png */; };
+		9D2CB54317F47B1B005B4063 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB52F17F47B1B005B4063 /* appicon.png */; };
+		9D2CB54417F47B1B005B4063 /* bus_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53017F47B1B005B4063 /* bus_blue.png */; };
+		9D2CB54517F47B1B005B4063 /* bus_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53017F47B1B005B4063 /* bus_blue.png */; };
+		9D2CB54617F47B1B005B4063 /* bus_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53117F47B1B005B4063 /* bus_green.png */; };
+		9D2CB54717F47B1B005B4063 /* bus_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53117F47B1B005B4063 /* bus_green.png */; };
+		9D2CB54817F47B1B005B4063 /* bus_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53217F47B1B005B4063 /* bus_orange.png */; };
+		9D2CB54917F47B1B005B4063 /* bus_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53217F47B1B005B4063 /* bus_orange.png */; };
+		9D2CB54A17F47B1B005B4063 /* bus_purple1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53317F47B1B005B4063 /* bus_purple1.png */; };
+		9D2CB54B17F47B1B005B4063 /* bus_purple1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53317F47B1B005B4063 /* bus_purple1.png */; };
+		9D2CB54C17F47B1B005B4063 /* bus_purple2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53417F47B1B005B4063 /* bus_purple2.png */; };
+		9D2CB54D17F47B1B005B4063 /* bus_purple2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53417F47B1B005B4063 /* bus_purple2.png */; };
+		9D2CB54E17F47B1B005B4063 /* bus_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53517F47B1B005B4063 /* bus_red.png */; };
+		9D2CB54F17F47B1B005B4063 /* bus_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53517F47B1B005B4063 /* bus_red.png */; };
+		9D2CB55017F47B1B005B4063 /* bus_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53617F47B1B005B4063 /* bus_yellow.png */; };
+		9D2CB55117F47B1B005B4063 /* bus_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53617F47B1B005B4063 /* bus_yellow.png */; };
+		9D2CB55217F47B1B005B4063 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53717F47B1B005B4063 /* bus.png */; };
+		9D2CB55317F47B1B005B4063 /* bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53717F47B1B005B4063 /* bus.png */; };
+		9D2CB55417F47B1B005B4063 /* busstop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53817F47B1B005B4063 /* busstop.png */; };
+		9D2CB55517F47B1B005B4063 /* busstop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53817F47B1B005B4063 /* busstop.png */; };
+		9D2CB55617F47B1B005B4063 /* image-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53917F47B1B005B4063 /* image-iphone.png */; };
+		9D2CB55717F47B1B005B4063 /* image-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53917F47B1B005B4063 /* image-iphone.png */; };
+		9D2CB55817F47B1B005B4063 /* miami-route-green-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */; };
+		9D2CB55917F47B1B005B4063 /* miami-route-green-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */; };
+		9D2CB55A17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */; };
+		9D2CB55B17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */; };
+		9D2CB55C17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */; };
+		9D2CB55D17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */; };
+		9D2CB55E17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */; };
+		9D2CB55F17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */; };
+		9D2CB56017F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */; };
+		9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */; };
+		9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
+		9D2CB56317F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
+		9D2CB56417F47B1B005B4063 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* splash.png */; };
+		9D2CB56517F47B1B005B4063 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* splash.png */; };
+		9D2CB56617F47B1B005B4063 /* splash2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* splash2.png */; };
+		9D2CB56717F47B1B005B4063 /* splash2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* splash2.png */; };
 		9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6717E76722000D2F36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6617E76722000D2F36 /* NewViewController.m */; };
@@ -66,6 +104,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D2CB52F17F47B1B005B4063 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		9D2CB53017F47B1B005B4063 /* bus_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_blue.png; sourceTree = "<group>"; };
+		9D2CB53117F47B1B005B4063 /* bus_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_green.png; sourceTree = "<group>"; };
+		9D2CB53217F47B1B005B4063 /* bus_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_orange.png; sourceTree = "<group>"; };
+		9D2CB53317F47B1B005B4063 /* bus_purple1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_purple1.png; sourceTree = "<group>"; };
+		9D2CB53417F47B1B005B4063 /* bus_purple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_purple2.png; sourceTree = "<group>"; };
+		9D2CB53517F47B1B005B4063 /* bus_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_red.png; sourceTree = "<group>"; };
+		9D2CB53617F47B1B005B4063 /* bus_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_yellow.png; sourceTree = "<group>"; };
+		9D2CB53717F47B1B005B4063 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus.png; sourceTree = "<group>"; };
+		9D2CB53817F47B1B005B4063 /* busstop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = busstop.png; sourceTree = "<group>"; };
+		9D2CB53917F47B1B005B4063 /* image-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-iphone.png"; sourceTree = "<group>"; };
+		9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-green-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-orange-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-purple-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-red-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-tan-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-turquoise-line.jpg"; sourceTree = "<group>"; };
+		9D2CB54017F47B1B005B4063 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		9D2CB54117F47B1B005B4063 /* splash2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash2.png; sourceTree = "<group>"; };
 		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
@@ -218,6 +275,25 @@
 		9DCB4A2C17E6B3020096698D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9D2CB52F17F47B1B005B4063 /* appicon.png */,
+				9D2CB53017F47B1B005B4063 /* bus_blue.png */,
+				9D2CB53117F47B1B005B4063 /* bus_green.png */,
+				9D2CB53217F47B1B005B4063 /* bus_orange.png */,
+				9D2CB53317F47B1B005B4063 /* bus_purple1.png */,
+				9D2CB53417F47B1B005B4063 /* bus_purple2.png */,
+				9D2CB53517F47B1B005B4063 /* bus_red.png */,
+				9D2CB53617F47B1B005B4063 /* bus_yellow.png */,
+				9D2CB53717F47B1B005B4063 /* bus.png */,
+				9D2CB53817F47B1B005B4063 /* busstop.png */,
+				9D2CB53917F47B1B005B4063 /* image-iphone.png */,
+				9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */,
+				9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */,
+				9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */,
+				9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */,
+				9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */,
+				9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */,
+				9D2CB54017F47B1B005B4063 /* splash.png */,
+				9D2CB54117F47B1B005B4063 /* splash2.png */,
 				9D31FA6917E77A4E000D2F36 /* ButtonMenu.png */,
 				9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */,
 				9DCB4A2D17E6B3020096698D /* MU Bus Tracking-Info.plist */,
@@ -341,6 +417,25 @@
 				9DCB4AD817E6BEA90096698D /* ViewController.xib in Resources */,
 				9D31FA6B17E77A4E000D2F36 /* ButtonMenu.png in Resources */,
 				9D31FA6D17E77A4E000D2F36 /* ButtonMenu@2x.png in Resources */,
+				9D2CB54217F47B1B005B4063 /* appicon.png in Resources */,
+				9D2CB54417F47B1B005B4063 /* bus_blue.png in Resources */,
+				9D2CB54617F47B1B005B4063 /* bus_green.png in Resources */,
+				9D2CB54817F47B1B005B4063 /* bus_orange.png in Resources */,
+				9D2CB54A17F47B1B005B4063 /* bus_purple1.png in Resources */,
+				9D2CB54C17F47B1B005B4063 /* bus_purple2.png in Resources */,
+				9D2CB54E17F47B1B005B4063 /* bus_red.png in Resources */,
+				9D2CB55017F47B1B005B4063 /* bus_yellow.png in Resources */,
+				9D2CB55217F47B1B005B4063 /* bus.png in Resources */,
+				9D2CB55417F47B1B005B4063 /* busstop.png in Resources */,
+				9D2CB55617F47B1B005B4063 /* image-iphone.png in Resources */,
+				9D2CB55817F47B1B005B4063 /* miami-route-green-line.jpg in Resources */,
+				9D2CB55A17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */,
+				9D2CB55C17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */,
+				9D2CB55E17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
+				9D2CB56017F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
+				9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */,
+				9D2CB56417F47B1B005B4063 /* splash.png in Resources */,
+				9D2CB56617F47B1B005B4063 /* splash2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +448,25 @@
 				9DCB4AD917E6BEA90096698D /* ViewController.xib in Resources */,
 				9D31FA6C17E77A4E000D2F36 /* ButtonMenu.png in Resources */,
 				9D31FA6E17E77A4E000D2F36 /* ButtonMenu@2x.png in Resources */,
+				9D2CB54317F47B1B005B4063 /* appicon.png in Resources */,
+				9D2CB54517F47B1B005B4063 /* bus_blue.png in Resources */,
+				9D2CB54717F47B1B005B4063 /* bus_green.png in Resources */,
+				9D2CB54917F47B1B005B4063 /* bus_orange.png in Resources */,
+				9D2CB54B17F47B1B005B4063 /* bus_purple1.png in Resources */,
+				9D2CB54D17F47B1B005B4063 /* bus_purple2.png in Resources */,
+				9D2CB54F17F47B1B005B4063 /* bus_red.png in Resources */,
+				9D2CB55117F47B1B005B4063 /* bus_yellow.png in Resources */,
+				9D2CB55317F47B1B005B4063 /* bus.png in Resources */,
+				9D2CB55517F47B1B005B4063 /* busstop.png in Resources */,
+				9D2CB55717F47B1B005B4063 /* image-iphone.png in Resources */,
+				9D2CB55917F47B1B005B4063 /* miami-route-green-line.jpg in Resources */,
+				9D2CB55B17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */,
+				9D2CB55D17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */,
+				9D2CB55F17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
+				9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
+				9D2CB56317F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */,
+				9D2CB56517F47B1B005B4063 /* splash.png in Resources */,
+				9D2CB56717F47B1B005B4063 /* splash2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
