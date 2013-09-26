@@ -13,6 +13,9 @@
 #import "NewViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "BusService.h"
+#import "RouteService.h"
+#import "Bus.h"
 
 #if EXPERIEMENTAL_ORIENTATION_SUPPORT
 #import <QuartzCore/QuartzCore.h>
@@ -71,7 +74,27 @@ NSURLConnection *getRouteColor;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
     
     self.navigationItem.revealSidebarDelegate = self;
-    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+    //self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+    
+    
+    // Make the bus web service call to get the location of a bus
+    BusService *bs = [[BusService alloc] init];
+    NSArray *buses = [bs getBuses];
+    for(Bus *bus in buses){
+        [self addBusToMapWithBus:bus];
+    }
+    
+    // Make the route web service call to get the route coordinates
+    RouteService *rs = [[RouteService alloc] init];
+    NSArray *blueRouteCoordinates = [rs getRouteCoordinates];
+    GMSPolyline *blueRoute= [self createRoute:blueRouteCoordinates];
+    blueRoute.map = mapView_;
+    blueRoute.strokeColor = [UIColor orangeColor];
+    blueRoute.strokeWidth = 10.f;
+    blueRoute.geodesic = YES;
+
+    
+    /*
     // Get bus location
     NSLog(@"viewDidLoad");
     self.respData = [NSMutableData data];
@@ -117,7 +140,7 @@ NSURLConnection *getRouteColor;
         
         }
     }
-    
+    */
 }
 
 - (void)viewDidUnload
@@ -126,6 +149,33 @@ NSURLConnection *getRouteColor;
     
     self.label = nil;
     self.rightSidebarView = nil;
+}
+
+#pragma mark - private methods
+
+-(void)addBusToMapWithBus:(Bus*)bus{
+    // Add the Marker to the map
+    CGFloat lat = (CGFloat)[bus.latitude floatValue];
+    CGFloat lng = (CGFloat)[bus.longitude floatValue];
+    
+    GMSMarker *marker = [[GMSMarker alloc]init];
+    marker.position = CLLocationCoordinate2DMake(lat, lng);
+    marker.title = bus.busID;
+    marker.map = mapView_;
+}
+
+-(GMSPolyline*)createRoute:(NSArray*) points{
+    GMSMutablePath *path = [GMSMutablePath path];
+    CLLocationCoordinate2D coordinate;
+    
+    for(int i =0; i < [points count]; i++){
+        [[points objectAtIndex:i] getValue:&coordinate];
+        [path addCoordinate:coordinate];
+    }
+    
+    GMSPolyline *route = [GMSPolyline polylineWithPath:path];
+    
+    return route;
 }
 
 #if EXPERIEMENTAL_ORIENTATION_SUPPORT

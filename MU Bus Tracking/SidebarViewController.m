@@ -13,7 +13,6 @@
 @synthesize sidebarDelegate;
 @synthesize routeColor;
 @synthesize respData = _respData;
-@synthesize mapView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -66,6 +65,33 @@
     cell.textLabel.text = [NSString stringWithFormat:@"U%d", indexPath.row];
     cell.textLabel.textColor = [UIColor redColor];
     cell.backgroundColor = [UIColor clearColor];
+    
+    UIImage *image;
+    switch (indexPath.row) {
+        case 0:
+            image = [UIImage imageNamed:@"bus_orange.png"];
+            break;
+        case 1:
+            image = [UIImage imageNamed:@"bus_red.png"];
+            break;
+        case 2:
+            image = [UIImage imageNamed:@"bus_purple1.png"];
+            break;
+        case 3:
+            image = [UIImage imageNamed:@"bus_green.png"];
+            break;
+        case 4:
+            image = [UIImage imageNamed:@"bus_yellow.png"];
+            break;
+        case 5:
+            image = [UIImage imageNamed:@"bus_blue.png"];
+            break;
+        default:
+            image = [UIImage imageNamed:@"bus_red.png"];
+            break;
+    }
+    cell.imageView.image = image;
+
     return cell;
 }
 
