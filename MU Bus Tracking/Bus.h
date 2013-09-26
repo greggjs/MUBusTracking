@@ -13,5 +13,7 @@
 @property (nonatomic, strong) NSString *busID;
 @property (nonatomic, strong) NSString *latitude;
 @property (nonatomic, strong) NSString *longitude;
+@property (nonatomic, strong) NSString *route;
+@property (nonatomic, strong) NSString *routeURL;
 
 @end

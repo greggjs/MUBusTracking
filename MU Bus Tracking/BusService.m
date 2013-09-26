@@ -8,46 +8,59 @@
 
 #import "BusService.h"
 #import "Bus.h"
-#define BUS_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=apiTest"
+#define API_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=apiTest"
+#define BLUE_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getBusPositions&route=BLUE"
 
 @implementation BusService
 
 -(NSArray*)getBuses{
+    NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
     //Create the request
-    NSString *urlString = BUS_URL;
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
-    [request setHTTPMethod:@"GET"];
+    int i = 0;
+    while (i < 6) {
+        NSString *urlString = @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getBusPositions&route=";
+        urlString = [urlString stringByAppendingString:(NSString *)[BUS_COLORS objectAtIndex:i]];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
+        [request setHTTPMethod:@"GET"];
     
-    //Make the request
-    NSURLResponse* response = [[NSURLResponse alloc] init];
-    NSError *requestError = nil;
-    NSData *adata = [NSURLConnection sendSynchronousRequest:request returningResponse: &response error: &requestError];
+        //Make the request
+        NSURLResponse* response = [[NSURLResponse alloc] init];
+        NSError *requestError = nil;
+        NSData *adata = [NSURLConnection sendSynchronousRequest:request returningResponse: &response error: &requestError];
     
-    //Handle the response
-    if(adata){
-        NSLog(@"Bus Response Success");
+        //Handle the response
+        if(adata){
+            NSLog(@"Bus Response Success");
         
-        NSError *parseError = nil;
-        NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:adata options:kNilOptions error:&parseError];
-        NSMutableArray *busArray = [[NSMutableArray alloc] init];
+            NSError *parseError = nil;
+            NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:adata options:kNilOptions error:&parseError];
+            NSMutableArray *busArray = [[NSMutableArray alloc] init];
         
-        if(resultsArray){
-            for(NSDictionary *busDict in resultsArray){
-                Bus *currentBus = [[Bus alloc] init];
-                [currentBus setBusID: [busDict objectForKey:@"busId"]];
-                [currentBus setLatitude:[busDict objectForKey:@"lat"]];
-                [currentBus setLongitude:[busDict objectForKey:@"lng"]];
-                
-                [busArray addObject:currentBus];
+            if(resultsArray){
+                for(NSDictionary *busDict in resultsArray){
+                    Bus *currentBus = [[Bus alloc] init];
+                    [currentBus setBusID: [busDict objectForKey:@"busId"]];
+                    [currentBus setLatitude:[busDict objectForKey:@"lat"]];
+                    [currentBus setLongitude:[busDict objectForKey:@"lng"]];
+                    [currentBus setRoute:[busDict objectForKey:@"routeId"]];
+                    NSString *busId = [busDict objectForKey:@"busIDd"];
+                    NSString *lat = [busDict objectForKey:@"lat"];
+                    NSString *lon = [busDict objectForKey:@"lon"];
+                    NSString *route = [busDict objectForKey:@"route"];
+
+                    [busArray addObject:currentBus];
+                    NSLog(@"Bus Added: @, @, @, @",busId, lat, lon, route);
+                }
+            } else {
+                NSLog(@"Parse error %@", requestError);
             }
-        } else {
-            NSLog(@"Parse error %@", requestError);
-        }
         
-        return [[NSArray alloc] initWithArray:busArray];
-    } else {
-        NSLog(@"Request error %@", requestError);
-        return nil;
+            return [[NSArray alloc] initWithArray:busArray];
+        } else {
+            NSLog(@"Request error %@", requestError);
+            return nil;
+        }
+        i++;
     }
     
 }

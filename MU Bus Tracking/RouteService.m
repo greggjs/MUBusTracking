@@ -7,12 +7,18 @@
 //
 
 #import "RouteService.h"
+#import "Bus.h"
 #import <CoreLocation/CoreLocation.h>
 #define BLUE_ROUTE_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=BLUE"
+#define ORANGE_ROUTE_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=ORANGE"
+#define PURPLE_ROUTE_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=PURPLE"
+#define GREEN_ROUTE_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=GREEN"
+#define RED_ROUTE_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=RED"
+#define YELLOW_ROUTE_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=YELLOW"
 
 @implementation RouteService
 
--(NSArray*)getRouteCoordinates{
+-(NSArray*)getRouteCoordinates { //:(Bus *)bus{
     //Create the request
     NSString *urlString = BLUE_ROUTE_URL;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];

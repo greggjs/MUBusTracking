@@ -93,54 +93,6 @@ NSURLConnection *getRouteColor;
     blueRoute.strokeWidth = 10.f;
     blueRoute.geodesic = YES;
 
-    
-    /*
-    // Get bus location
-    NSLog(@"viewDidLoad");
-    self.respData = [NSMutableData data];
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=apiTest"]];
-    apiTest = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didReceiveResponse");
-    [self.respData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.respData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
-    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-}
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    NSLog(@"Succeeded! Received %d bytes of data",[self.respData length]);
-    
-    NSError *err = nil;
-    NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:self.respData options:NSJSONReadingMutableLeaves error:&err];
-    
-    if (connection == apiTest) {
-        for (id key in resp) {
-            NSString *busId = (NSString *)[key objectForKey:@"busId"];
-            NSString *latStr = (NSString *)[key objectForKey:@"lat"];
-            CGFloat lat = (CGFloat)[latStr floatValue];
-            NSString *lngStr = (NSString *)[key objectForKey:@"lng"];
-            CGFloat lng = (CGFloat)[lngStr floatValue];
-            NSLog(@"busId: %@ lat: %@ lng: %@", busId, latStr, lngStr);
-        
-            GMSMarker *marker = [[GMSMarker alloc]init];
-            marker.position = CLLocationCoordinate2DMake(lat, lng);
-            marker.title = busId;
-            //marker.snippet = @"Late/Ontime?";
-            marker.map = mapView_;
-        
-        }
-    }
-    */
 }
 
 - (void)viewDidUnload
