@@ -13,6 +13,7 @@
 @synthesize sidebarDelegate;
 @synthesize routeColor;
 @synthesize respData = _respData;
+@synthesize mapView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -78,8 +79,8 @@
     if (self.sidebarDelegate) {
         NSObject *object = [NSString stringWithFormat:@"U%d", indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
-        
-        
     }
 }
+
+
 @end
