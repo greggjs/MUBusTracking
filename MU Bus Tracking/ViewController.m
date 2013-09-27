@@ -54,8 +54,18 @@
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
     
     self.navigationItem.revealSidebarDelegate = self;
-    //self.navigationController.navigationBar.barTintColor = [UIColor redColor];
     
+    // for when Mikey can use Xcode 5... iOS 7 bar
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] >= 7) {
+        /*
+        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+         */
+    } else {
+        self.navigationController.navigationBar.tintColor = [UIColor redColor];
+    }
     
     // Make the bus web service call to get the location of a bus
     BusService *bs = [[BusService alloc] init];
