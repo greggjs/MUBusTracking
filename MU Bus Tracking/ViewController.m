@@ -8,11 +8,6 @@
 
 #import "ViewController.h"
 
-
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-#import <QuartzCore/QuartzCore.h>
-#endif
-
 @interface ViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
 
@@ -154,46 +149,6 @@
     }
 }
 
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-
-// Doesn't support rotating to other orientation at this moment
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return YES;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    _containerOrigin = self.navigationController.view.frame.origin;
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    self.navigationController.view.layer.bounds       = (CGRect){-_containerOrigin.x, _containerOrigin.y, self.navigationController.view.frame.size};
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    self.navigationController.view.layer.bounds       = (CGRect){CGPointZero, self.navigationController.view.frame.size};
-    self.navigationController.view.frame              = (CGRect){_containerOrigin, self.navigationController.view.frame.size};
-    
-    NSLog(@"%@", self);
-}
-
-- (NSString *)description {
-    NSString *logMessage = [NSString stringWithFormat:@"ViewController {"];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.leftSidebarViewController.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.rightSidebarView];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.navigationBar];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <statusBarFrame> %@", NSStringFromCGRect([[UIApplication sharedApplication] statusBarFrame])];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <applicationFrame> %@", NSStringFromCGRect([[UIScreen mainScreen] applicationFrame])];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <preferredViewFrame> %@", NSStringFromCGRect(self.navigationController.applicationViewFrame)];
-    logMessage = [logMessage stringByAppendingFormat:@"\n}"];
-    return logMessage;
-}
-
-#endif
-
 #pragma mark Action
 
 - (void)revealLeftSidebar:(id)sender {
@@ -226,6 +181,7 @@
         controller = self.leftSidebarViewController;
         controller.title = @"Routes";
     }
+    
     controller.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"OpeH1.png"]]];
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
