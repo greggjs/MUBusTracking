@@ -61,7 +61,6 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"U%d", indexPath.row];
     cell.textLabel.textColor = [UIColor redColor];
     cell.backgroundColor = [UIColor clearColor];
     
@@ -111,7 +110,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sidebarDelegate) {
-        NSObject *object = [NSString stringWithFormat:@"U%d", indexPath.row];
+        NSString *title = [[NSString alloc]init];
+        switch(indexPath.row) {
+            case 0:
+                title = @"myMetro";
+                break;
+            case 1:
+                title = @"Campus Core";
+                break;
+            case 2:
+                title = @"Park & Ride";
+                break;
+            case 3:
+                title = @"Tollgate Loop";
+                break;
+            case 4:
+                title = @"City Loop";
+                break;
+            case 5:
+                title = @"Level 27 Express";
+                break;
+            case 6:
+                title = @"Level 27 After Hours";
+                break;
+            default:
+                break;
+        }
+        NSObject *object = [NSString stringWithFormat:title, indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
     }
 }

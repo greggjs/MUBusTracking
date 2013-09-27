@@ -98,6 +98,7 @@
     GMSMarker *marker = [[GMSMarker alloc]init];
     marker.position = CLLocationCoordinate2DMake(lat, lng);
     marker.title = bus.busID;
+    marker.icon = [UIImage imageNamed:@"bus.png"];
     marker.map = mapView_;
 }
 
@@ -122,6 +123,7 @@
         stop = [stops objectAtIndex:i];
         marker.position = stop.location;
         marker.title = stop.name;
+        marker.icon = [UIImage imageNamed:@"busstop.png"];
         marker.map = mapView_;
     }
 }
@@ -345,12 +347,6 @@
     NSArray *buses = [bs getBuses];
     for(Bus *bus in buses){
         [self addBusToMapWithBus:bus];
-        NSArray *coords = [rs getRouteCoordinates:bus];
-        GMSPolyline *routeLine = [self createRoute:coords];
-        routeLine.map = mapView_;
-        routeLine.strokeColor = [self getRouteColor:bus.route];
-        routeLine.strokeWidth = 10.f;
-        routeLine.geodesic = YES;
     }
     
     // TEST CODE //
