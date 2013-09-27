@@ -10,8 +10,6 @@
 
 @implementation SidebarViewController
 @synthesize sidebarDelegate;
-@synthesize routeColor;
-@synthesize respData = _respData;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -73,21 +71,27 @@
             cell.textLabel.text = [NSString stringWithFormat:@"All Routes"];
             break;
         case 1:
+            cell.textLabel.text = @"U1: Campus Core";
             image = [UIImage imageNamed:@"bus_orange.png"];
             break;
         case 2:
+            cell.textLabel.text = @"U2: Park & Ride";
             image = [UIImage imageNamed:@"bus_red.png"];
             break;
         case 3:
+            cell.textLabel.text = @"U3: Tollgate Loop";
             image = [UIImage imageNamed:@"bus_purple1.png"];
             break;
         case 4:
+            cell.textLabel.text = @"U4: City Loop";
             image = [UIImage imageNamed:@"bus_green.png"];
             break;
         case 5:
+            cell.textLabel.text = @"U5: Level 27 Express";
             image = [UIImage imageNamed:@"bus_yellow.png"];
             break;
         case 6:
+            cell.textLabel.text = @"U6: Level 27 After Hours";
             image = [UIImage imageNamed:@"bus_blue.png"];
             break;
         default:
@@ -109,52 +113,7 @@
     if (self.sidebarDelegate) {
         NSObject *object = [NSString stringWithFormat:@"U%d", indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
-        /*
-        
-         */
     }
 }
-
--(void)addBusToMapWithBus:(Bus*)bus{
-    // Add the Marker to the map
-    CGFloat lat = (CGFloat)[bus.latitude floatValue];
-    CGFloat lng = (CGFloat)[bus.longitude floatValue];
-    
-    GMSMarker *marker = [[GMSMarker alloc]init];
-    marker.position = CLLocationCoordinate2DMake(lat, lng);
-    marker.title = bus.busID;
-    //marker.map = mapView;
-}
-
--(GMSPolyline*)createRoute:(NSArray*) points{
-    GMSMutablePath *path = [GMSMutablePath path];
-    CLLocationCoordinate2D coordinate;
-    
-    for(int i =0; i < [points count]; i++){
-        [[points objectAtIndex:i] getValue:&coordinate];
-        [path addCoordinate:coordinate];
-    }
-    
-    GMSPolyline *route = [GMSPolyline polylineWithPath:path];
-    
-    return route;
-}
-
--(UIColor*)getRouteColor:(NSString *)busColor {
-    if ([busColor isEqualToString:@"ORANGE"]) {
-        return [UIColor orangeColor];
-    } else if ([busColor isEqualToString:@"BLUE"]) {
-        return [UIColor blueColor];
-    } else if ([busColor isEqualToString:@"GREEN"]) {
-        return [UIColor greenColor];
-    } else if ([busColor isEqualToString:@"YELLOW"]) {
-        return [UIColor yellowColor];
-    } else if ([busColor isEqualToString:@"RED"]) {
-        return [UIColor redColor];
-    } else if ([busColor isEqualToString:@"PURPLE"]) {
-        return [UIColor purpleColor];
-    }
-}
-
 
 @end

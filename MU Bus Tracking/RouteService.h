@@ -13,5 +13,4 @@
 
 -(NSArray*) getRouteCoordinates:(Bus *)bus;
 -(NSArray*) getRouteCoordinatesByColorString:(NSString *)color;
--(NSArray*) getRouteCoordinatesByColor:(UIColor *)color;
 @end

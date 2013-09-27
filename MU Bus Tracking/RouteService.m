@@ -13,7 +13,7 @@
 
 -(NSArray*)getRouteCoordinates:(Bus *)bus{
     //Create the request
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=";
+    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getRouteShape&route=";
     urlString = [urlString stringByAppendingString:bus.route];
     NSArray *ret = [self getRoute:urlString];
     return ret;
@@ -21,15 +21,7 @@
 
 -(NSArray*)getRouteCoordinatesByColorString:(NSString *)color{
     //Create the request
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=";
-    urlString = [urlString stringByAppendingString:color];
-    NSArray *ret = [self getRoute:urlString];
-    return ret;
-}
-
--(NSArray*)getRouteCoordinatesByColor:(UIColor *)color{
-    //Create the request
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=getRouteShape&route=";
+    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getRouteShape&route=";
     urlString = [urlString stringByAppendingString:color];
     NSArray *ret = [self getRoute:urlString];
     return ret;

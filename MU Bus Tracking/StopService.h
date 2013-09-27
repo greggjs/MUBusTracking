@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Bus.h"
+#import "Stop.h"
 
 @interface StopService : NSObject
 
--(NSArray*) getStopCooridinates;
+-(NSArray*) getStopCooridinates:(NSString*)color;
 
 @end

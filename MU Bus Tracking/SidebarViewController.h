@@ -17,9 +17,7 @@
 
 @interface SidebarViewController : UITableViewController
 @property (nonatomic, assign) id <SidebarViewControllerDelegate> sidebarDelegate;
-@property (nonatomic, strong) NSString *routeColor;
-@property (nonatomic, strong) NSMutableData *respData;
-@property (nonatomic, strong) GMSMapView *mapView;
+
 @end
 
 @protocol SidebarViewControllerDelegate <NSObject>

@@ -44,10 +44,10 @@
 		9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */; };
 		9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
 		9D2CB56317F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
-		9D2CB56417F47B1B005B4063 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* splash.png */; };
-		9D2CB56517F47B1B005B4063 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* splash.png */; };
-		9D2CB56617F47B1B005B4063 /* splash2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* splash2.png */; };
-		9D2CB56717F47B1B005B4063 /* splash2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* splash2.png */; };
+		9D2CB56417F47B1B005B4063 /* Default@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* Default@2x~iphone.png */; };
+		9D2CB56517F47B1B005B4063 /* Default@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* Default@2x~iphone.png */; };
+		9D2CB56617F47B1B005B4063 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* Default~iphone.png */; };
+		9D2CB56717F47B1B005B4063 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* Default~iphone.png */; };
 		9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6717E76722000D2F36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6617E76722000D2F36 /* NewViewController.m */; };
@@ -58,6 +58,8 @@
 		9D31FA6E17E77A4E000D2F36 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */; };
 		9D3A99EA17F4DAED006FA01E /* StopService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99E917F4DAED006FA01E /* StopService.m */; };
 		9D3A99EB17F4DAED006FA01E /* StopService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99E917F4DAED006FA01E /* StopService.m */; };
+		9D3A99F217F53F5C006FA01E /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F117F53F5C006FA01E /* Stop.m */; };
+		9D3A99F317F53F5C006FA01E /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F117F53F5C006FA01E /* Stop.m */; };
 		9DCB4A2617E6B3020096698D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2517E6B3020096698D /* UIKit.framework */; };
 		9DCB4A2817E6B3020096698D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2717E6B3020096698D /* Foundation.framework */; };
 		9DCB4A2A17E6B3020096698D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2917E6B3020096698D /* CoreGraphics.framework */; };
@@ -130,8 +132,8 @@
 		9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-red-line.jpg"; sourceTree = "<group>"; };
 		9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-tan-line.jpg"; sourceTree = "<group>"; };
 		9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-turquoise-line.jpg"; sourceTree = "<group>"; };
-		9D2CB54017F47B1B005B4063 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
-		9D2CB54117F47B1B005B4063 /* splash2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash2.png; sourceTree = "<group>"; };
+		9D2CB54017F47B1B005B4063 /* Default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~iphone.png"; sourceTree = "<group>"; };
+		9D2CB54117F47B1B005B4063 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
 		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
 		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
@@ -140,6 +142,8 @@
 		9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
 		9D3A99E817F4DAED006FA01E /* StopService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopService.h; sourceTree = "<group>"; };
 		9D3A99E917F4DAED006FA01E /* StopService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopService.m; sourceTree = "<group>"; };
+		9D3A99F017F53F5C006FA01E /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
+		9D3A99F117F53F5C006FA01E /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		9DCB4A2217E6B3020096698D /* MU Bus Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MU Bus Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB4A2517E6B3020096698D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DCB4A2717E6B3020096698D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -225,6 +229,8 @@
 			children = (
 				158661AE17F4D2750083BB68 /* Bus.h */,
 				158661AF17F4D2750083BB68 /* Bus.m */,
+				9D3A99F017F53F5C006FA01E /* Stop.h */,
+				9D3A99F117F53F5C006FA01E /* Stop.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -325,8 +331,8 @@
 				9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */,
 				9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */,
 				9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */,
-				9D2CB54017F47B1B005B4063 /* splash.png */,
-				9D2CB54117F47B1B005B4063 /* splash2.png */,
+				9D2CB54017F47B1B005B4063 /* Default@2x~iphone.png */,
+				9D2CB54117F47B1B005B4063 /* Default~iphone.png */,
 				9D31FA6917E77A4E000D2F36 /* ButtonMenu.png */,
 				9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */,
 				9DCB4A2D17E6B3020096698D /* MU Bus Tracking-Info.plist */,
@@ -466,8 +472,8 @@
 				9D2CB55E17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
 				9D2CB56017F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
 				9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */,
-				9D2CB56417F47B1B005B4063 /* splash.png in Resources */,
-				9D2CB56617F47B1B005B4063 /* splash2.png in Resources */,
+				9D2CB56417F47B1B005B4063 /* Default@2x~iphone.png in Resources */,
+				9D2CB56617F47B1B005B4063 /* Default~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,8 +502,8 @@
 				9D2CB55F17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
 				9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
 				9D2CB56317F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */,
-				9D2CB56517F47B1B005B4063 /* splash.png in Resources */,
-				9D2CB56717F47B1B005B4063 /* splash2.png in Resources */,
+				9D2CB56517F47B1B005B4063 /* Default@2x~iphone.png in Resources */,
+				9D2CB56717F47B1B005B4063 /* Default~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +541,7 @@
 				158661B017F4D2750083BB68 /* Bus.m in Sources */,
 				158661B417F4D2A90083BB68 /* BusService.m in Sources */,
 				158661B717F4D2DC0083BB68 /* RouteService.m in Sources */,
+				9D3A99F217F53F5C006FA01E /* Stop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +556,7 @@
 				9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */,
 				9D31FA6817E76722000D2F36 /* NewViewController.m in Sources */,
 				9D3A99EB17F4DAED006FA01E /* StopService.m in Sources */,
+				9D3A99F317F53F5C006FA01E /* Stop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

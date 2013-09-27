@@ -7,15 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIViewController+JTRevealSidebarV2.h"
-#import "UINavigationItem+JTRevealSidebarV2.h"
-#import "SidebarViewController.h"
-#import "NewViewController.h"
-#import "JTRevealSidebarV2Delegate.h"
-#import <GoogleMaps/GoogleMaps.h>
-#import "BusService.h"
-#import "RouteService.h"
-#import "Bus.h"
+
 
 #if EXPERIEMENTAL_ORIENTATION_SUPPORT
 #import <QuartzCore/QuartzCore.h>
@@ -69,15 +61,9 @@
     BusService *bs = [[BusService alloc] init];
     // Make the route web service call to get the route coordinates
     RouteService *rs = [[RouteService alloc] init];
-    NSArray *buses = [bs getBuses];
+    NSMutableArray *buses = [bs getBuses];
     for(Bus *bus in buses){
         [self addBusToMapWithBus:bus];
-        NSArray *coords = [rs getRouteCoordinates:bus];
-        GMSPolyline *routeLine = [self createRoute:coords];
-        routeLine.map = mapView_;
-        routeLine.strokeColor = [self getRouteColor:bus.route];
-        routeLine.strokeWidth = 10.f;
-        routeLine.geodesic = YES;
     }
     
     // TEST CODE //
@@ -90,8 +76,6 @@
         routeLine.strokeWidth = 10.f;
         routeLine.geodesic = YES;
     }
-    
-    
     // END TEST CODE //
 
 }
@@ -129,6 +113,17 @@
     GMSPolyline *route = [GMSPolyline polylineWithPath:path];
     
     return route;
+}
+
+-(void)plotStops:(NSArray*)stops:(NSString*)colorStr{
+    Stop *stop;
+    for (int i=0; i< [stops count]; i++) {
+        GMSMarker *marker = [[GMSMarker alloc]init];
+        stop = [stops objectAtIndex:i];
+        marker.position = stop.location;
+        marker.title = stop.name;
+        marker.map = mapView_;
+    }
 }
 
 -(UIColor*)getRouteColor:(NSString *)busColor {
@@ -311,6 +306,9 @@
     mapView_.myLocationEnabled = YES;
     controller.view = mapView_;
     //controller.label.text = [NSString stringWithFormat:@"Selected %@ from LeftSidebarViewController", (NSString *)object];
+    
+    sidebarViewController.sidebarDelegate = controller;
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     switch (indexPath.row) {
         case 0:
             [self showAllBuses];
@@ -337,9 +335,6 @@
             [self showBus:[UIColor orangeColor]:@"ORANGE"];
             break;
     }
-    sidebarViewController.sidebarDelegate = controller;
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-    
 }
 
 -(void)showAllBuses {
@@ -372,6 +367,18 @@
 }
 
 -(void)showBus:(UIColor *)color:(NSString *)colorStr{
+    BusService *bs = [[BusService alloc] init];
+    NSArray *curr = [bs getBusWithColor:colorStr];
+    if (curr) {
+        for (Bus *bus in curr) {
+            [self addBusToMapWithBus:bus];
+        }
+    }
+    
+    StopService *ss = [[StopService alloc] init];
+    NSArray *stops = [ss getStopCooridinates:colorStr];
+    [self plotStops:stops:colorStr];
+    
     RouteService *rs = [[RouteService alloc] init];
     NSArray *coords = [rs getRouteCoordinatesByColorString:colorStr];
     GMSPolyline *routeLine = [self createRoute:coords];
