@@ -1,33 +1,21 @@
 //
-//  RouteService.m
+//  StopService.m
 //  MU Bus Tracking
 //
-//  Created by Pete, Michael Kalial on 9/26/13.
+//  Created by Jake Gregg on 9/26/13.
 //  Copyright (c) 2013 Jake Gregg. All rights reserved.
 //
 
-#import "RouteService.h"
+#import "StopService.h"
 #import <CoreLocation/CoreLocation.h>
 
-@implementation RouteService
+@implementation StopService
 
--(NSArray*)getRouteCoordinates:(Bus *)bus{
+-(NSArray*)getStopCooridinates:(NSString *)color {
     //Create the request
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getRouteShape&route=";
-    urlString = [urlString stringByAppendingString:bus.route];
-    NSArray *ret = [self getRoute:urlString];
-    return ret;
-}
-
--(NSArray*)getRouteCoordinatesByColorString:(NSString *)color{
-    //Create the request
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getRouteShape&route=";
+    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getStops&route=";
     urlString = [urlString stringByAppendingString:color];
-    NSArray *ret = [self getRoute:urlString];
-    return ret;
-}
-
--(NSArray*)getRoute:(NSString *)urlString {
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];
     
@@ -48,10 +36,14 @@
             for(NSDictionary *pointDict in resultsArray){
                 
                 CLLocationCoordinate2D currentPoint;
-                currentPoint.latitude = [[pointDict objectForKey:@"lat"] doubleValue];
-                currentPoint.longitude = [[pointDict objectForKey:@"lng"] doubleValue];
+                currentPoint.latitude = [[pointDict objectForKey:@"stop_lat"] doubleValue];
+                currentPoint.longitude = [[pointDict objectForKey:@"stop_lon"] doubleValue];
+                Stop *stop = [[Stop alloc] init];
+                [stop setRoute:[pointDict objectForKey:@"route"]];
+                [stop setLocation:currentPoint];
+                [stop setName:[pointDict objectForKey:@"stop_name"]];
                 
-                [points addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
+                [points addObject:stop];
                 
             }
         } else {
@@ -64,4 +56,5 @@
         return nil;
     }
 }
+
 @end

@@ -8,13 +8,12 @@
 
 #import "BusService.h"
 #import "Bus.h"
-#define BUS_URL @"http://bus.csi.miamioh.edu/mobileOld/jsonHandler.php?func=apiTest"
 
 @implementation BusService
 
--(NSArray*)getBuses{
-    //Create the request
-    NSString *urlString = BUS_URL;
+-(NSArray*)getBusWithColor:(NSString*)color {
+    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getBusPositions&route=";
+    urlString = [urlString stringByAppendingString:color];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];
     
@@ -37,7 +36,7 @@
                 [currentBus setBusID: [busDict objectForKey:@"busId"]];
                 [currentBus setLatitude:[busDict objectForKey:@"lat"]];
                 [currentBus setLongitude:[busDict objectForKey:@"lng"]];
-                
+                [currentBus setRoute:[busDict objectForKey:@"routeId"]];
                 [busArray addObject:currentBus];
             }
         } else {
@@ -49,6 +48,19 @@
         NSLog(@"Request error %@", requestError);
         return nil;
     }
-    
+
+}
+
+-(NSMutableArray*)getBuses{
+    NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
+    //Create the request
+    NSMutableArray *buses = [[NSMutableArray alloc] init];
+    int i = 0;
+    while (i < 6) {
+        NSArray *curr = [self getBusWithColor:(NSString *)[BUS_COLORS objectAtIndex:i]];
+        [buses addObjectsFromArray:curr];
+        i++;
+    }
+    return buses;
 }
 @end
