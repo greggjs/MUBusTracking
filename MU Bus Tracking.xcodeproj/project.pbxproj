@@ -60,6 +60,8 @@
 		9D3A99EB17F4DAED006FA01E /* StopService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99E917F4DAED006FA01E /* StopService.m */; };
 		9D3A99F217F53F5C006FA01E /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F117F53F5C006FA01E /* Stop.m */; };
 		9D3A99F317F53F5C006FA01E /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F117F53F5C006FA01E /* Stop.m */; };
+		9D3A99F517F638BF006FA01E /* OpeH1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A99F417F638BF006FA01E /* OpeH1.png */; };
+		9D3A99F617F638BF006FA01E /* OpeH1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A99F417F638BF006FA01E /* OpeH1.png */; };
 		9DCB4A2617E6B3020096698D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2517E6B3020096698D /* UIKit.framework */; };
 		9DCB4A2817E6B3020096698D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2717E6B3020096698D /* Foundation.framework */; };
 		9DCB4A2A17E6B3020096698D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2917E6B3020096698D /* CoreGraphics.framework */; };
@@ -144,6 +146,7 @@
 		9D3A99E917F4DAED006FA01E /* StopService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopService.m; sourceTree = "<group>"; };
 		9D3A99F017F53F5C006FA01E /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		9D3A99F117F53F5C006FA01E /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		9D3A99F417F638BF006FA01E /* OpeH1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpeH1.png; sourceTree = "<group>"; };
 		9DCB4A2217E6B3020096698D /* MU Bus Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MU Bus Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB4A2517E6B3020096698D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DCB4A2717E6B3020096698D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -314,6 +317,7 @@
 		9DCB4A2C17E6B3020096698D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9D3A99F417F638BF006FA01E /* OpeH1.png */,
 				9D2CB52F17F47B1B005B4063 /* appicon.png */,
 				9D2CB53017F47B1B005B4063 /* bus_blue.png */,
 				9D2CB53117F47B1B005B4063 /* bus_green.png */,
@@ -471,6 +475,7 @@
 				9D2CB55C17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */,
 				9D2CB55E17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
 				9D2CB56017F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
+				9D3A99F517F638BF006FA01E /* OpeH1.png in Resources */,
 				9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */,
 				9D2CB56417F47B1B005B4063 /* Default@2x~iphone.png in Resources */,
 				9D2CB56617F47B1B005B4063 /* Default~iphone.png in Resources */,
@@ -498,6 +503,7 @@
 				9D2CB55717F47B1B005B4063 /* image-iphone.png in Resources */,
 				9D2CB55917F47B1B005B4063 /* miami-route-green-line.jpg in Resources */,
 				9D2CB55B17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */,
+				9D3A99F617F638BF006FA01E /* OpeH1.png in Resources */,
 				9D2CB55D17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */,
 				9D2CB55F17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
 				9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
