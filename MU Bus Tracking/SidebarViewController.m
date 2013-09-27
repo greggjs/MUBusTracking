@@ -7,12 +7,9 @@
 //
 
 #import "SidebarViewController.h"
-   
 
 @implementation SidebarViewController
 @synthesize sidebarDelegate;
-@synthesize routeColor;
-@synthesize respData = _respData;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,6 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,28 +61,36 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"U%d", indexPath.row];
     cell.textLabel.textColor = [UIColor redColor];
     cell.backgroundColor = [UIColor clearColor];
     
     UIImage *image;
     switch (indexPath.row) {
         case 0:
-            image = [UIImage imageNamed:@"bus_orange.png"];
+            cell.textLabel.text = [NSString stringWithFormat:@"All Routes"];
             break;
         case 1:
-            image = [UIImage imageNamed:@"bus_red.png"];
+            cell.textLabel.text = @"U1: Campus Core";
+            image = [UIImage imageNamed:@"bus_orange.png"];
             break;
         case 2:
-            image = [UIImage imageNamed:@"bus_purple1.png"];
+            cell.textLabel.text = @"U2: Park & Ride";
+            image = [UIImage imageNamed:@"bus_red.png"];
             break;
         case 3:
-            image = [UIImage imageNamed:@"bus_green.png"];
+            cell.textLabel.text = @"U3: Tollgate Loop";
+            image = [UIImage imageNamed:@"bus_purple1.png"];
             break;
         case 4:
-            image = [UIImage imageNamed:@"bus_yellow.png"];
+            cell.textLabel.text = @"U4: City Loop";
+            image = [UIImage imageNamed:@"bus_green.png"];
             break;
         case 5:
+            cell.textLabel.text = @"U5: Level 27 Express";
+            image = [UIImage imageNamed:@"bus_yellow.png"];
+            break;
+        case 6:
+            cell.textLabel.text = @"U6: Level 27 After Hours";
             image = [UIImage imageNamed:@"bus_blue.png"];
             break;
         default:
@@ -103,10 +110,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sidebarDelegate) {
-        NSObject *object = [NSString stringWithFormat:@"U%d", indexPath.row];
+        NSString *title = [[NSString alloc]init];
+        switch(indexPath.row) {
+            case 0:
+                title = @"myMetro";
+                break;
+            case 1:
+                title = @"Campus Core";
+                break;
+            case 2:
+                title = @"Park & Ride";
+                break;
+            case 3:
+                title = @"Tollgate Loop";
+                break;
+            case 4:
+                title = @"City Loop";
+                break;
+            case 5:
+                title = @"Level 27 Express";
+                break;
+            case 6:
+                title = @"Level 27 After Hours";
+                break;
+            default:
+                break;
+        }
+        NSObject *object = [NSString stringWithFormat:title, indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
     }
 }
-
 
 @end

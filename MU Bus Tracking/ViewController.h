@@ -7,6 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "UIViewController+JTRevealSidebarV2.h"
+#import "UINavigationItem+JTRevealSidebarV2.h"
+#import "SidebarViewController.h"
+#import "NewViewController.h"
+#import "JTRevealSidebarV2Delegate.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "BusService.h"
+#import "RouteService.h"
+#import "Bus.h"
+#import "Stop.h"
+#import "StopService.h"
 #import "JTRevealSidebarV2Delegate.h"
 
 #define EXPERIMENTAL_ORIENTATION_SUPPORT 1

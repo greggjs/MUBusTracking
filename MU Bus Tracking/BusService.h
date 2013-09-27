@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Bus.h"
+
 @interface BusService : NSObject
 
--(NSArray*) getBuses;
-
+-(NSMutableArray*) getBuses;
+-(NSArray*) getBusWithColor:(NSString*)color;
 @end
