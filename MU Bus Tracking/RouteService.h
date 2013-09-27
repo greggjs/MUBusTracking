@@ -12,5 +12,6 @@
 @interface RouteService : NSObject
 
 -(NSArray*) getRouteCoordinates:(Bus *)bus;
--(NSArray*) getRouteCoordinatesByColor:(NSString *)color;
+-(NSArray*) getRouteCoordinatesByColorString:(NSString *)color;
+-(NSArray*) getRouteCoordinatesByColor:(UIColor *)color;
 @end

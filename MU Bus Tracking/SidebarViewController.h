@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "Bus.h"
+#import "BusService.h"
+#import "RouteService.h"
 
 @protocol SidebarViewControllerDelegate;
 
@@ -16,6 +19,7 @@
 @property (nonatomic, assign) id <SidebarViewControllerDelegate> sidebarDelegate;
 @property (nonatomic, strong) NSString *routeColor;
 @property (nonatomic, strong) NSMutableData *respData;
+@property (nonatomic, strong) GMSMapView *mapView;
 @end
 
 @protocol SidebarViewControllerDelegate <NSObject>

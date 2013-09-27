@@ -7,7 +7,6 @@
 //
 
 #import "SidebarViewController.h"
-   
 
 @implementation SidebarViewController
 @synthesize sidebarDelegate;
@@ -27,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,7 +52,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,21 +70,24 @@
     UIImage *image;
     switch (indexPath.row) {
         case 0:
-            image = [UIImage imageNamed:@"bus_orange.png"];
+            cell.textLabel.text = [NSString stringWithFormat:@"All Routes"];
             break;
         case 1:
-            image = [UIImage imageNamed:@"bus_red.png"];
+            image = [UIImage imageNamed:@"bus_orange.png"];
             break;
         case 2:
-            image = [UIImage imageNamed:@"bus_purple1.png"];
+            image = [UIImage imageNamed:@"bus_red.png"];
             break;
         case 3:
-            image = [UIImage imageNamed:@"bus_green.png"];
+            image = [UIImage imageNamed:@"bus_purple1.png"];
             break;
         case 4:
-            image = [UIImage imageNamed:@"bus_yellow.png"];
+            image = [UIImage imageNamed:@"bus_green.png"];
             break;
         case 5:
+            image = [UIImage imageNamed:@"bus_yellow.png"];
+            break;
+        case 6:
             image = [UIImage imageNamed:@"bus_blue.png"];
             break;
         default:
@@ -105,6 +109,50 @@
     if (self.sidebarDelegate) {
         NSObject *object = [NSString stringWithFormat:@"U%d", indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];
+        /*
+        
+         */
+    }
+}
+
+-(void)addBusToMapWithBus:(Bus*)bus{
+    // Add the Marker to the map
+    CGFloat lat = (CGFloat)[bus.latitude floatValue];
+    CGFloat lng = (CGFloat)[bus.longitude floatValue];
+    
+    GMSMarker *marker = [[GMSMarker alloc]init];
+    marker.position = CLLocationCoordinate2DMake(lat, lng);
+    marker.title = bus.busID;
+    //marker.map = mapView;
+}
+
+-(GMSPolyline*)createRoute:(NSArray*) points{
+    GMSMutablePath *path = [GMSMutablePath path];
+    CLLocationCoordinate2D coordinate;
+    
+    for(int i =0; i < [points count]; i++){
+        [[points objectAtIndex:i] getValue:&coordinate];
+        [path addCoordinate:coordinate];
+    }
+    
+    GMSPolyline *route = [GMSPolyline polylineWithPath:path];
+    
+    return route;
+}
+
+-(UIColor*)getRouteColor:(NSString *)busColor {
+    if ([busColor isEqualToString:@"ORANGE"]) {
+        return [UIColor orangeColor];
+    } else if ([busColor isEqualToString:@"BLUE"]) {
+        return [UIColor blueColor];
+    } else if ([busColor isEqualToString:@"GREEN"]) {
+        return [UIColor greenColor];
+    } else if ([busColor isEqualToString:@"YELLOW"]) {
+        return [UIColor yellowColor];
+    } else if ([busColor isEqualToString:@"RED"]) {
+        return [UIColor redColor];
+    } else if ([busColor isEqualToString:@"PURPLE"]) {
+        return [UIColor purpleColor];
     }
 }
 

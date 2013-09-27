@@ -59,7 +59,7 @@
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
     // Add right sidebar
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
     
     self.navigationItem.revealSidebarDelegate = self;
     //self.navigationController.navigationBar.barTintColor = [UIColor redColor];
@@ -83,7 +83,7 @@
     // TEST CODE //
     NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
     for (NSString *bus in BUS_COLORS) {
-        NSArray *coords = [rs getRouteCoordinatesByColor:bus];
+        NSArray *coords = [rs getRouteCoordinatesByColorString:bus];
         GMSPolyline *routeLine = [self createRoute:coords];
         routeLine.map = mapView_;
         routeLine.strokeColor = [self getRouteColor:bus];
@@ -306,11 +306,79 @@
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
     controller.leftSelectedIndexPath      = indexPath;
-    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.736832 zoom:13.7];
+    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView_.myLocationEnabled = YES;
+    controller.view = mapView_;
     //controller.label.text = [NSString stringWithFormat:@"Selected %@ from LeftSidebarViewController", (NSString *)object];
+    switch (indexPath.row) {
+        case 0:
+            [self showAllBuses];
+            break;
+        case 1:
+            [self showBus:[UIColor orangeColor]:@"ORANGE"];
+            break;
+        case 2:
+            [self showBus:[UIColor redColor]:@"RED"];
+            break;
+        case 3:
+            [self showBus:[UIColor purpleColor]:@"PURPLE"];
+            break;
+        case 4:
+            [self showBus:[UIColor greenColor]:@"GREEN"];
+            break;
+        case 5:
+            [self showBus:[UIColor yellowColor]:@"YELLOW"];
+            break;
+        case 6:
+            [self showBus:[UIColor blueColor]:@"BLUE"];
+            break;
+        default:
+            [self showBus:[UIColor orangeColor]:@"ORANGE"];
+            break;
+    }
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     
+}
+
+-(void)showAllBuses {
+    // Make the bus web service call to get the location of a bus
+    BusService *bs = [[BusService alloc] init];
+    // Make the route web service call to get the route coordinates
+    RouteService *rs = [[RouteService alloc] init];
+    NSArray *buses = [bs getBuses];
+    for(Bus *bus in buses){
+        [self addBusToMapWithBus:bus];
+        NSArray *coords = [rs getRouteCoordinates:bus];
+        GMSPolyline *routeLine = [self createRoute:coords];
+        routeLine.map = mapView_;
+        routeLine.strokeColor = [self getRouteColor:bus.route];
+        routeLine.strokeWidth = 10.f;
+        routeLine.geodesic = YES;
+    }
+    
+    // TEST CODE //
+    NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
+    for (NSString *bus in BUS_COLORS) {
+        NSArray *coords = [rs getRouteCoordinatesByColorString:bus];
+        GMSPolyline *routeLine = [self createRoute:coords];
+        routeLine.map = mapView_;
+        routeLine.strokeColor = [self getRouteColor:bus];
+        routeLine.strokeWidth = 10.f;
+        routeLine.geodesic = YES;
+    }
+    
+}
+
+-(void)showBus:(UIColor *)color:(NSString *)colorStr{
+    RouteService *rs = [[RouteService alloc] init];
+    NSArray *coords = [rs getRouteCoordinatesByColorString:colorStr];
+    GMSPolyline *routeLine = [self createRoute:coords];
+    routeLine.map = mapView_;
+    routeLine.strokeColor = color;
+    routeLine.strokeWidth = 10.f;
+    routeLine.geodesic = YES;
 }
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
