@@ -8,11 +8,6 @@
 
 #import "ViewController.h"
 
-
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-#import <QuartzCore/QuartzCore.h>
-#endif
-
 @interface ViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
 
@@ -46,7 +41,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    self.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
@@ -58,11 +53,11 @@
     // for when Mikey can use Xcode 5... iOS 7 bar
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
-        /*
+        
         self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
         self.navigationController.navigationBar.barTintColor = [UIColor redColor];
-         */
+         
     } else {
         self.navigationController.navigationBar.tintColor = [UIColor redColor];
     }
@@ -154,46 +149,6 @@
     }
 }
 
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-
-// Doesn't support rotating to other orientation at this moment
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return YES;
-}
-
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    _containerOrigin = self.navigationController.view.frame.origin;
-}
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    self.navigationController.view.layer.bounds       = (CGRect){-_containerOrigin.x, _containerOrigin.y, self.navigationController.view.frame.size};
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    self.navigationController.view.layer.bounds       = (CGRect){CGPointZero, self.navigationController.view.frame.size};
-    self.navigationController.view.frame              = (CGRect){_containerOrigin, self.navigationController.view.frame.size};
-    
-    NSLog(@"%@", self);
-}
-
-- (NSString *)description {
-    NSString *logMessage = [NSString stringWithFormat:@"ViewController {"];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.leftSidebarViewController.view];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.rightSidebarView];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.navigationBar];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <statusBarFrame> %@", NSStringFromCGRect([[UIApplication sharedApplication] statusBarFrame])];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <applicationFrame> %@", NSStringFromCGRect([[UIScreen mainScreen] applicationFrame])];
-    logMessage = [logMessage stringByAppendingFormat:@"\n\t <preferredViewFrame> %@", NSStringFromCGRect(self.navigationController.applicationViewFrame)];
-    logMessage = [logMessage stringByAppendingFormat:@"\n}"];
-    return logMessage;
-}
-
-#endif
-
 #pragma mark Action
 
 - (void)revealLeftSidebar:(id)sender {
@@ -226,7 +181,8 @@
         controller = self.leftSidebarViewController;
         controller.title = @"Routes";
     }
-    controller.view.backgroundColor = [UIColor clearColor];
+    
+    controller.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"OpeH1.png"]]];
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
@@ -243,7 +199,7 @@
         view.dataSource = self;
         view.delegate   = self;
     }
-    view.backgroundColor = [UIColor clearColor];
+    
     view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
     view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
     return view;
@@ -281,7 +237,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    cell.textLabel.textColor = [UIColor redColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
@@ -309,7 +265,7 @@
     [self.navigationController setRevealedState:JTRevealedStateNo];
     
     ViewController *controller = [[ViewController alloc] init];
-    controller.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+    controller.view.backgroundColor = [UIColor clearColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
     controller.leftSelectedIndexPath      = indexPath;

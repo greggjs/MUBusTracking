@@ -19,9 +19,8 @@
 #import "Bus.h"
 #import "Stop.h"
 #import "StopService.h"
+#import "LeftViewController.h"
 #import "JTRevealSidebarV2Delegate.h"
-
-#define EXPERIMENTAL_ORIENTATION_SUPPORT 1
 
 @class SidebarViewController;
 
