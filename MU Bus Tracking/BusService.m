@@ -9,10 +9,12 @@
 #import "BusService.h"
 #import "Bus.h"
 
+// Old link: bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getBusPositions&route=
+
 @implementation BusService
 
 -(NSArray*)getBusWithColor:(NSString*)color {
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getBusPositions&route=";
+    NSString *urlString = @"http://bus.csi.muohio.edu/mymetroadmin/api/vehiclesOnRoute/ALL";
     urlString = [urlString stringByAppendingString:color];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];
@@ -33,9 +35,9 @@
         if(resultsArray){
             for(NSDictionary *busDict in resultsArray){
                 Bus *currentBus = [[Bus alloc] init];
-                [currentBus setBusID: [busDict objectForKey:@"busId"]];
-                [currentBus setLatitude:[busDict objectForKey:@"lat"]];
-                [currentBus setLongitude:[busDict objectForKey:@"lng"]];
+                [currentBus setBusID: [busDict objectForKey:@"vehicleId"]];
+                [currentBus setLatitude:[busDict objectForKey:@"latitude"]];
+                [currentBus setLongitude:[busDict objectForKey:@"longitude"]];
                 [currentBus setRoute:[busDict objectForKey:@"routeId"]];
                 [busArray addObject:currentBus];
             }

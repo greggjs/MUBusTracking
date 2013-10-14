@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Bus.h"
+#import "Route.h"
+#import "ColorService.h"
 
 @interface RouteService : NSObject
 
 -(NSArray*) getRouteCoordinates:(Bus *)bus;
 -(NSArray*) getRouteCoordinatesByColorString:(NSString *)color;
+-(NSMutableArray*) getAllRoutes;
 @end

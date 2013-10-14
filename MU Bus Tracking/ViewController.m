@@ -51,6 +51,7 @@
     self.navigationItem.revealSidebarDelegate = self;
     
     // for when Mikey can use Xcode 5... iOS 7 bar
+    // Color for Miami Red (in HEX: #CC0C2F
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         
@@ -67,11 +68,21 @@
     // Make the route web service call to get the route coordinates
     RouteService *rs = [[RouteService alloc] init];
     NSMutableArray *buses = [bs getBuses];
+    NSMutableArray *routes = [rs getAllRoutes];
+    
     for(Bus *bus in buses){
         [self addBusToMapWithBus:bus];
     }
     
+    for (Route *r in routes) {
+        GMSPolyline *routeLine = [self createRoute:r.shape];
+        routeLine.map = mapView_;
+        routeLine.strokeColor = r.color;
+        routeLine.strokeWidth = 10.f;
+        routeLine.geodesic = YES;
+    }
     // TEST CODE //
+    /*
     NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
     for (NSString *bus in BUS_COLORS) {
         NSArray *coords = [rs getRouteCoordinatesByColorString:bus];
@@ -81,6 +92,7 @@
         routeLine.strokeWidth = 10.f;
         routeLine.geodesic = YES;
     }
+     */
     // END TEST CODE //
 
 }

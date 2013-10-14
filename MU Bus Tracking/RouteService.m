@@ -27,6 +27,59 @@
     return ret;
 }
 
+-(NSArray*)getAllRoutes {
+    NSString *urlString = @"http://bus.csi.miamioh.edu/mymetroadmin/api/route/ALL";
+    //Make the request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
+    [request setHTTPMethod:@"GET"];
+    NSURLResponse* response = [[NSURLResponse alloc] init];
+    NSError *requestError = nil;
+    NSData *adata = [NSURLConnection sendSynchronousRequest:request returningResponse: &response error: &requestError];
+    
+    //Handle the response
+    if(adata){
+        NSLog(@"%@ Response Success", urlString);
+        
+        NSError *parseError = nil;
+        NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:adata options:kNilOptions error:&parseError];
+        NSMutableArray *routes = [[NSMutableArray alloc] init];
+        //NSMutableArray *points = [[NSMutableArray alloc] init];
+        ColorService *cs = [[ColorService alloc] init];
+        if(resultsArray){
+            for (NSDictionary *items in resultsArray) {
+                Route *temp = [Route alloc];
+                temp.busID = (NSString*)[items objectForKey:@"name"];
+                temp.name = (NSString*)[items objectForKey:@"longname"];
+                NSString *hexColor = (NSString*)[items objectForKey:@"color"];
+                temp.color = [cs getColorFromHexString:hexColor];
+                
+                NSMutableArray *points = (NSMutableArray*)[items objectForKey:@"shape"];
+                NSString* alert = [NSString stringWithFormat:@"%@", points];
+                NSLog(@"Points array: %@", alert);
+                if (points) {
+                    for(NSDictionary *pointDict in points){
+                    
+                        CLLocationCoordinate2D currentPoint;
+                        currentPoint.latitude = [[pointDict objectForKey:@"lat\""] doubleValue];
+                        currentPoint.longitude = [[pointDict objectForKey:@"lng\""] doubleValue];
+                        NSLog(@"Lat: %f Lon: %f", currentPoint.latitude, currentPoint.longitude);
+                        [points addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
+                    }
+                }
+                temp.shape = [[NSArray alloc] initWithArray:points];
+                [routes addObject:temp];
+            }
+        } else {
+            NSLog(@"Parse error %@", requestError);
+        }
+        
+        return [[NSArray alloc] initWithArray:routes];
+    } else {
+        NSLog(@"Request error %@", requestError);
+        return nil;
+    }
+}
+
 -(NSArray*)getRoute:(NSString *)urlString {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];
