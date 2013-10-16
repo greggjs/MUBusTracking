@@ -12,12 +12,13 @@
 #import "Bus.h"
 #import "BusService.h"
 #import "RouteService.h"
+#import "Route.h"
 
 @protocol SidebarViewControllerDelegate;
 
 @interface SidebarViewController : UITableViewController
 @property (nonatomic, assign) id <SidebarViewControllerDelegate> sidebarDelegate;
-
+@property (nonatomic, strong) NSArray* routes;
 @end
 
 @protocol SidebarViewControllerDelegate <NSObject>

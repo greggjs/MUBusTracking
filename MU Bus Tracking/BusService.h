@@ -10,6 +10,6 @@
 
 @interface BusService : NSObject
 
--(NSMutableArray*) getBuses;
--(NSArray*) getBusWithColor:(NSString*)color;
+-(NSArray*) getAllBuses;
+-(NSArray*) getBusOnRoute:(NSString*)route;
 @end

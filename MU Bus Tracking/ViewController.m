@@ -29,7 +29,7 @@
 {
 
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.736832 zoom:13.7];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.741032 zoom:13];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
@@ -51,37 +51,39 @@
     self.navigationItem.revealSidebarDelegate = self;
     
     // for when Mikey can use Xcode 5... iOS 7 bar
+    // Color for Miami Red (in HEX: #CC0C2F
+    ColorService *cs = [[ColorService alloc] init];
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         
         self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+        self.navigationController.navigationBar.barTintColor = [cs getColorFromHexString:@"CC0C2F"];
+        self.navigationController.navigationBar.translucent = NO;
          
     } else {
-        self.navigationController.navigationBar.tintColor = [UIColor redColor];
+        self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:@"CC0C2F"];
     }
     
     // Make the bus web service call to get the location of a bus
     BusService *bs = [[BusService alloc] init];
     // Make the route web service call to get the route coordinates
     RouteService *rs = [[RouteService alloc] init];
-    NSMutableArray *buses = [bs getBuses];
-    for(Bus *bus in buses){
+    _buses = [bs getAllBuses];
+    _routes = [rs getAllRoutes];
+    
+    for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
     
-    // TEST CODE //
-    NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
-    for (NSString *bus in BUS_COLORS) {
-        NSArray *coords = [rs getRouteCoordinatesByColorString:bus];
-        GMSPolyline *routeLine = [self createRoute:coords];
+    for (Route *r in _routes) {
+        NSArray *curr = r.shape;
+        GMSPolyline *routeLine = [self createRoute:curr];
         routeLine.map = mapView_;
-        routeLine.strokeColor = [self getRouteColor:bus];
+        routeLine.strokeColor = r.color;
         routeLine.strokeWidth = 10.f;
         routeLine.geodesic = YES;
     }
-    // END TEST CODE //
 
 }
 
@@ -133,22 +135,6 @@
     }
 }
 
--(UIColor*)getRouteColor:(NSString *)busColor {
-    if ([busColor isEqualToString:@"ORANGE"]) {
-        return [UIColor orangeColor];
-    } else if ([busColor isEqualToString:@"BLUE"]) {
-        return [UIColor blueColor];
-    } else if ([busColor isEqualToString:@"GREEN"]) {
-        return [UIColor greenColor];
-    } else if ([busColor isEqualToString:@"YELLOW"]) {
-        return [UIColor yellowColor];
-    } else if ([busColor isEqualToString:@"RED"]) {
-        return [UIColor redColor];
-    } else if ([busColor isEqualToString:@"PURPLE"]) {
-        return [UIColor purpleColor];
-    }
-}
-
 #pragma mark Action
 
 - (void)revealLeftSidebar:(id)sender {
@@ -180,9 +166,11 @@
         self.leftSidebarViewController.sidebarDelegate = self;
         controller = self.leftSidebarViewController;
         controller.title = @"Routes";
+        self.leftSidebarViewController.routes = _routes;
+        
     }
     
-    controller.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"OpeH1.png"]]];
+    //controller.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"OpeH1.png"]]];
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
@@ -223,7 +211,7 @@
 #pragma mark UITableViewDatasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [_routes count] + 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -264,88 +252,61 @@
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
     
-    ViewController *controller = [[ViewController alloc] init];
+    LeftViewController *controller = [[LeftViewController alloc] init];
+    controller.routes = _routes;
+    controller.buses = _buses;
     controller.view.backgroundColor = [UIColor clearColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
     controller.leftSelectedIndexPath      = indexPath;
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.736832 zoom:13.7];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.741032 zoom:13];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     controller.view = mapView_;
-    //controller.label.text = [NSString stringWithFormat:@"Selected %@ from LeftSidebarViewController", (NSString *)object];
     
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-    switch (indexPath.row) {
-        case 0:
-            [self showAllBuses];
-            break;
-        case 1:
-            [self showBus:[UIColor orangeColor]:@"ORANGE"];
-            break;
-        case 2:
-            [self showBus:[UIColor redColor]:@"RED"];
-            break;
-        case 3:
-            [self showBus:[UIColor purpleColor]:@"PURPLE"];
-            break;
-        case 4:
-            [self showBus:[UIColor greenColor]:@"GREEN"];
-            break;
-        case 5:
-            [self showBus:[UIColor yellowColor]:@"YELLOW"];
-            break;
-        case 6:
-            [self showBus:[UIColor blueColor]:@"BLUE"];
-            break;
-        default:
-            [self showBus:[UIColor orangeColor]:@"ORANGE"];
-            break;
-    }
+    if (indexPath.row==0)
+        [self showAllBuses];
+    else
+        [self showBus:_routes[indexPath.row-1]];
 }
 
 -(void)showAllBuses {
-    // Make the bus web service call to get the location of a bus
-    BusService *bs = [[BusService alloc] init];
-    // Make the route web service call to get the route coordinates
-    RouteService *rs = [[RouteService alloc] init];
-    NSArray *buses = [bs getBuses];
-    for(Bus *bus in buses){
+   
+    for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-    
-    // TEST CODE //
-    NSArray *BUS_COLORS = [NSArray arrayWithObjects:@"ORANGE", @"BLUE", @"YELLOW", @"GREEN", @"PURPLE", @"RED", nil];
-    for (NSString *bus in BUS_COLORS) {
-        NSArray *coords = [rs getRouteCoordinatesByColorString:bus];
-        GMSPolyline *routeLine = [self createRoute:coords];
+
+    for (Route *r in _routes) {
+        NSArray *curr = r.shape;
+        GMSPolyline *routeLine = [self createRoute:curr];
         routeLine.map = mapView_;
-        routeLine.strokeColor = [self getRouteColor:bus];
+        routeLine.strokeColor = r.color;
         routeLine.strokeWidth = 10.f;
         routeLine.geodesic = YES;
     }
     
 }
 
--(void)showBus:(UIColor *)color:(NSString *)colorStr{
+-(void)showBus:(Route *)route{
     BusService *bs = [[BusService alloc] init];
-    NSArray *curr = [bs getBusWithColor:colorStr];
+    NSArray *curr = [bs getBusOnRoute:route.name];
     if (curr) {
         for (Bus *bus in curr) {
             [self addBusToMapWithBus:bus];
         }
     }
     
-    StopService *ss = [[StopService alloc] init];
-    NSArray *stops = [ss getStopCooridinates:colorStr];
-    [self plotStops:stops:colorStr];
+    //StopService *ss = [[StopService alloc] init];
+    //NSArray *stops = [ss getStopCooridinates:colorStr];
+    //[self plotStops:stops:colorStr];
     
-    RouteService *rs = [[RouteService alloc] init];
-    NSArray *coords = [rs getRouteCoordinatesByColorString:colorStr];
+    //RouteService *rs = [[RouteService alloc] init];
+    NSArray *coords = route.shape;
     GMSPolyline *routeLine = [self createRoute:coords];
     routeLine.map = mapView_;
-    routeLine.strokeColor = color;
+    routeLine.strokeColor = route.color;
     routeLine.strokeWidth = 10.f;
     routeLine.geodesic = YES;
 }
