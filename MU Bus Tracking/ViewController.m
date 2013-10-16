@@ -52,15 +52,17 @@
     
     // for when Mikey can use Xcode 5... iOS 7 bar
     // Color for Miami Red (in HEX: #CC0C2F
+    ColorService *cs = [[ColorService alloc] init];
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         
         self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+        self.navigationController.navigationBar.barTintColor = [cs getColorFromHexString:@"CC0C2F"];
+        self.navigationController.navigationBar.translucent = NO;
          
     } else {
-        self.navigationController.navigationBar.tintColor = [UIColor redColor];
+        self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:@"CC0C2F"];
     }
     
     // Make the bus web service call to get the location of a bus
@@ -133,22 +135,6 @@
     }
 }
 
--(UIColor*)getRouteColor:(NSString *)busColor {
-    if ([busColor isEqualToString:@"ORANGE"]) {
-        return [UIColor orangeColor];
-    } else if ([busColor isEqualToString:@"BLUE"]) {
-        return [UIColor blueColor];
-    } else if ([busColor isEqualToString:@"GREEN"]) {
-        return [UIColor greenColor];
-    } else if ([busColor isEqualToString:@"YELLOW"]) {
-        return [UIColor yellowColor];
-    } else if ([busColor isEqualToString:@"RED"]) {
-        return [UIColor redColor];
-    } else if ([busColor isEqualToString:@"PURPLE"]) {
-        return [UIColor purpleColor];
-    }
-}
-
 #pragma mark Action
 
 - (void)revealLeftSidebar:(id)sender {
@@ -184,7 +170,7 @@
         
     }
     
-    controller.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"OpeH1.png"]]];
+    //controller.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"OpeH1.png"]]];
     controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
     controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
     return controller.view;
@@ -266,7 +252,9 @@
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
     
-    ViewController *controller = [[ViewController alloc] init];
+    LeftViewController *controller = [[LeftViewController alloc] init];
+    controller.routes = _routes;
+    controller.buses = _buses;
     controller.view.backgroundColor = [UIColor clearColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;

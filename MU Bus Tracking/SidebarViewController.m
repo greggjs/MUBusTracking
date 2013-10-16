@@ -61,14 +61,14 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor darkTextColor];
     cell.backgroundColor = [UIColor clearColor];
     
     if (indexPath.row == 0)
         cell.textLabel.text = @"All Routes";
     else
         cell.textLabel.text = ((Route*)_routes[indexPath.row-1]).longname;
-    
+    /*
     UIImage *image;
     
     switch (indexPath.row) {
@@ -98,7 +98,7 @@
     }
      
     cell.imageView.image = image;
-     
+    */
     return cell;
 }
 
