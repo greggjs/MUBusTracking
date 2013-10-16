@@ -13,7 +13,7 @@
 
 @interface RouteService : NSObject
 
--(NSArray*) getRouteCoordinates:(Bus *)bus;
--(NSArray*) getRouteCoordinatesByColorString:(NSString *)color;
+-(NSArray*) getRouteCoordinatesWithBus:(Bus *)bus;
+-(NSArray*) getRouteCoordinates:(NSString *)route;
 -(NSMutableArray*) getAllRoutes;
 @end

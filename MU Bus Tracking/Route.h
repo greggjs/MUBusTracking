@@ -10,8 +10,8 @@
 
 @interface Route : NSObject
 
-@property (strong, nonatomic)NSString *busID;
 @property (strong, nonatomic)NSString *name;
+@property (strong, nonatomic)NSString *longname;
 @property (strong, nonatomic)NSArray *stops;
 @property (strong, nonatomic)NSArray *buses;
 @property (strong, nonatomic)NSArray *shape;

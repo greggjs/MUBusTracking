@@ -169,7 +169,6 @@ static char *revealedStateKey;
     
     NSLog(@"%@", NSStringFromCGAffineTransform(self.view.transform));
 
-
     [UIView commitAnimations];
 }
 
@@ -203,7 +202,6 @@ static char *revealedStateKey;
     [UIView setAnimationDelegate:self];
 
     NSLog(@"%@", NSStringFromCGAffineTransform(self.view.transform));
-    
     [UIView commitAnimations];
 }
 
