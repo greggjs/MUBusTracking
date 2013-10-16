@@ -13,9 +13,9 @@
 
 @implementation BusService
 
--(NSArray*)getBusWithColor:(NSString*)color {
+-(NSArray*)getAllBuses {
     NSString *urlString = @"http://bus.csi.muohio.edu/mymetroadmin/api/vehiclesOnRoute/ALL";
-    urlString = [urlString stringByAppendingString:color];
+    //urlString = [urlString stringByAppendingString:color];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];
     
@@ -59,8 +59,8 @@
     NSMutableArray *buses = [[NSMutableArray alloc] init];
     int i = 0;
     while (i < 6) {
-        NSArray *curr = [self getBusWithColor:(NSString *)[BUS_COLORS objectAtIndex:i]];
-        [buses addObjectsFromArray:curr];
+        //NSArray *curr = [self getBusWithColor:(NSString *)[BUS_COLORS objectAtIndex:i]];
+        //[buses addObjectsFromArray:curr];
         i++;
     }
     return buses;

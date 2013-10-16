@@ -11,5 +11,5 @@
 @interface BusService : NSObject
 
 -(NSMutableArray*) getBuses;
--(NSArray*) getBusWithColor:(NSString*)color;
+-(NSArray*) getAllBuses;
 @end

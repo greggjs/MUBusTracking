@@ -53,17 +53,15 @@
                 NSString *hexColor = (NSString*)[items objectForKey:@"color"];
                 temp.color = [cs getColorFromHexString:hexColor];
                 
-                NSMutableArray *points = (NSMutableArray*)[items objectForKey:@"shape"];
-                NSString* alert = [NSString stringWithFormat:@"%@", points];
-                NSLog(@"Points array: %@", alert);
+                NSData *nested = [(NSString*)[items objectForKey:@"shape"] dataUsingEncoding:NSUTF8StringEncoding];
+                NSArray *points = [NSJSONSerialization JSONObjectWithData:nested options:kNilOptions error:&parseError];
+                NSMutableArray *retpoints = [[NSMutableArray alloc] init];
                 if (points) {
                     for(NSDictionary *pointDict in points){
-                    
                         CLLocationCoordinate2D currentPoint;
-                        currentPoint.latitude = [[pointDict objectForKey:@"lat\""] doubleValue];
-                        currentPoint.longitude = [[pointDict objectForKey:@"lng\""] doubleValue];
-                        NSLog(@"Lat: %f Lon: %f", currentPoint.latitude, currentPoint.longitude);
-                        [points addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
+                        currentPoint.latitude = [[pointDict objectForKey:@"lat"] doubleValue];
+                        currentPoint.longitude = [[pointDict objectForKey:@"lng"] doubleValue];
+                        [retpoints addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
                     }
                 }
                 temp.shape = [[NSArray alloc] initWithArray:points];

@@ -69,7 +69,8 @@
     RouteService *rs = [[RouteService alloc] init];
     NSMutableArray *buses = [bs getBuses];
     NSMutableArray *routes = [rs getAllRoutes];
-    
+    NSLog(@"Adding buses to map...");
+
     for(Bus *bus in buses){
         [self addBusToMapWithBus:bus];
     }
@@ -342,9 +343,9 @@
 
 -(void)showBus:(UIColor *)color:(NSString *)colorStr{
     BusService *bs = [[BusService alloc] init];
-    NSArray *curr = [bs getBusWithColor:colorStr];
+    NSArray *curr = [bs getBuses];
     if (curr) {
-        for (Bus *bus in curr) {
+                for (Bus *bus in curr) {
             [self addBusToMapWithBus:bus];
         }
     }
