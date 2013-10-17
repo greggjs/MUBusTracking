@@ -37,5 +37,5 @@
 @property (nonatomic, strong) NSMutableData *respData;
 @property (nonatomic, strong) NSString *currentRoute;
 @property (nonatomic, strong) NSArray *routes;
-@property (nonatomic, strong) NSMutableArray *buses;
+@property (nonatomic, strong) NSArray *buses;
 @end

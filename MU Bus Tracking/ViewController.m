@@ -85,6 +85,8 @@
         routeLine.geodesic = YES;
     }
 
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
+    
 }
 
 - (void)viewDidUnload
@@ -121,6 +123,16 @@
     GMSPolyline *route = [GMSPolyline polylineWithPath:path];
     
     return route;
+}
+
+-(void)checkBuses {
+    BusService *bs = [[BusService alloc]init];
+    _buses = [bs getAllBuses];
+    
+    for(Bus *bus in _buses){
+        [self addBusToMapWithBus:bus];
+    }
+    
 }
 
 -(void)plotStops:(NSArray*)stops:(NSString*)colorStr{
