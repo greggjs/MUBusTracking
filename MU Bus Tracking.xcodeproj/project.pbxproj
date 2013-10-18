@@ -88,10 +88,6 @@
 		9DCB4A6B17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4A6717E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m */; };
 		9DCB4A6C17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4A6917E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m */; };
 		9DCB4A6D17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4A6917E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m */; };
-		9DCB4A6F17E6BAE30096698D /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A6E17E6BAE30096698D /* GoogleMaps.framework */; };
-		9DCB4A7017E6BAE30096698D /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A6E17E6BAE30096698D /* GoogleMaps.framework */; };
-		9DCB4A7217E6BB3B0096698D /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A7117E6BB3B0096698D /* GoogleMaps.bundle */; };
-		9DCB4A7317E6BB3B0096698D /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A7117E6BB3B0096698D /* GoogleMaps.bundle */; };
 		9DCB4A8017E6BBB90096698D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7417E6BBB90096698D /* AVFoundation.framework */; };
 		9DCB4A8117E6BBB90096698D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7517E6BBB90096698D /* CoreData.framework */; };
 		9DCB4A8217E6BBB90096698D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7617E6BBB90096698D /* CoreLocation.framework */; };
@@ -106,6 +102,10 @@
 		9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */; };
 		9DCB4AD617E6BEA90096698D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD417E6BEA90096698D /* ViewController.m */; };
 		9DCB4AD717E6BEA90096698D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD417E6BEA90096698D /* ViewController.m */; };
+		9DFEA2231810BCDB0008CF39 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFEA2221810BCDB0008CF39 /* GoogleMaps.framework */; };
+		9DFEA2241810BCDB0008CF39 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFEA2221810BCDB0008CF39 /* GoogleMaps.framework */; };
+		9DFEA2261810BD0C0008CF39 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */; };
+		9DFEA2271810BD0C0008CF39 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,8 +187,6 @@
 		9DCB4A6717E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
 		9DCB4A6817E6B5C50096698D /* UIViewController+JTRevealSidebarV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JTRevealSidebarV2.h"; sourceTree = "<group>"; };
 		9DCB4A6917E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
-		9DCB4A6E17E6BAE30096698D /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		9DCB4A7117E6BB3B0096698D /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		9DCB4A7417E6BBB90096698D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9DCB4A7517E6BBB90096698D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9DCB4A7617E6BBB90096698D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -203,6 +201,8 @@
 		9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9DCB4AD317E6BEA90096698D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9DCB4AD417E6BEA90096698D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9DFEA2221810BCDB0008CF39 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,8 +224,8 @@
 				9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */,
 				9DCB4A2617E6B3020096698D /* UIKit.framework in Frameworks */,
 				9DCB4A2817E6B3020096698D /* Foundation.framework in Frameworks */,
+				9DFEA2231810BCDB0008CF39 /* GoogleMaps.framework in Frameworks */,
 				9DCB4A2A17E6B3020096698D /* CoreGraphics.framework in Frameworks */,
-				9DCB4A6F17E6BAE30096698D /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,8 +235,8 @@
 			files = (
 				9DCB4A4417E6B3030096698D /* SenTestingKit.framework in Frameworks */,
 				9DCB4A4517E6B3030096698D /* UIKit.framework in Frameworks */,
+				9DFEA2241810BCDB0008CF39 /* GoogleMaps.framework in Frameworks */,
 				9DCB4A4617E6B3030096698D /* Foundation.framework in Frameworks */,
-				9DCB4A7017E6BAE30096698D /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +296,8 @@
 		9DCB4A2417E6B3020096698D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */,
+				9DFEA2221810BCDB0008CF39 /* GoogleMaps.framework */,
 				9DCB4A7417E6BBB90096698D /* AVFoundation.framework */,
 				9DCB4A7517E6BBB90096698D /* CoreData.framework */,
 				9DCB4A7617E6BBB90096698D /* CoreLocation.framework */,
@@ -308,8 +310,6 @@
 				9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */,
 				9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */,
 				9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */,
-				9DCB4A7117E6BB3B0096698D /* GoogleMaps.bundle */,
-				9DCB4A6E17E6BAE30096698D /* GoogleMaps.framework */,
 				9DCB4A2517E6B3020096698D /* UIKit.framework */,
 				9DCB4A2717E6B3020096698D /* Foundation.framework */,
 				9DCB4A2917E6B3020096698D /* CoreGraphics.framework */,
@@ -480,13 +480,13 @@
 				9DCB4A3817E6B3020096698D /* Default.png in Resources */,
 				9DCB4A3A17E6B3020096698D /* Default@2x.png in Resources */,
 				9DCB4A3C17E6B3020096698D /* Default-568h@2x.png in Resources */,
-				9DCB4A7217E6BB3B0096698D /* GoogleMaps.bundle in Resources */,
 				9D31FA6B17E77A4E000D2F36 /* ButtonMenu.png in Resources */,
 				9D31FA6D17E77A4E000D2F36 /* ButtonMenu@2x.png in Resources */,
 				9D2CB54217F47B1B005B4063 /* appicon.png in Resources */,
 				9D2CB54417F47B1B005B4063 /* bus_blue.png in Resources */,
 				9D2CB54617F47B1B005B4063 /* bus_green.png in Resources */,
 				9D2CB54817F47B1B005B4063 /* bus_orange.png in Resources */,
+				9DFEA2261810BD0C0008CF39 /* GoogleMaps.bundle in Resources */,
 				9D2CB54A17F47B1B005B4063 /* bus_purple1.png in Resources */,
 				9D2CB54C17F47B1B005B4063 /* bus_purple2.png in Resources */,
 				9D2CB54E17F47B1B005B4063 /* bus_red.png in Resources */,
@@ -513,7 +513,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DCB4A4E17E6B3030096698D /* InfoPlist.strings in Resources */,
-				9DCB4A7317E6BB3B0096698D /* GoogleMaps.bundle in Resources */,
 				9D31FA6C17E77A4E000D2F36 /* ButtonMenu.png in Resources */,
 				9D31FA6E17E77A4E000D2F36 /* ButtonMenu@2x.png in Resources */,
 				9D2CB54317F47B1B005B4063 /* appicon.png in Resources */,
@@ -528,6 +527,7 @@
 				9D2CB55517F47B1B005B4063 /* busstop.png in Resources */,
 				9D2CB55717F47B1B005B4063 /* image-iphone.png in Resources */,
 				9D2CB55917F47B1B005B4063 /* miami-route-green-line.jpg in Resources */,
+				9DFEA2271810BD0C0008CF39 /* GoogleMaps.bundle in Resources */,
 				9D2CB55B17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */,
 				9D3A99F617F638BF006FA01E /* OpeH1.png in Resources */,
 				9D2CB55D17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */,
@@ -691,7 +691,9 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/smartkid1965/Downloads/GoogleMaps-iOS-1.5.0",
+					"/Users/smartkid1965/Documents/DOC/FALL\\ 2013/CAPSTONE/MUBusTracking",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
@@ -706,7 +708,9 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"/Users/smartkid1965/Downloads/GoogleMaps-iOS-1.5.0",
+					"/Users/smartkid1965/Documents/DOC/FALL\\ 2013/CAPSTONE/MUBusTracking",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
@@ -721,9 +725,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MU Bus Tracking.app/MU Bus Tracking";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(SRCROOT)",
+					"/Users/smartkid1965/Documents/DOC/FALL\\ 2013/CAPSTONE/MUBusTracking",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
@@ -739,9 +744,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MU Bus Tracking.app/MU Bus Tracking";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)\"",
+					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(SRCROOT)",
+					"/Users/smartkid1965/Documents/DOC/FALL\\ 2013/CAPSTONE/MUBusTracking",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";

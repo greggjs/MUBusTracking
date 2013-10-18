@@ -289,7 +289,7 @@
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-*/
+    */
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRoute:curr];
