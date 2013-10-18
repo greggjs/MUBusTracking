@@ -66,16 +66,16 @@
     }
     
     // Make the bus web service call to get the location of a bus
-    BusService *bs = [[BusService alloc] init];
+    //BusService *bs = [[BusService alloc] init];
     // Make the route web service call to get the route coordinates
     RouteService *rs = [[RouteService alloc] init];
-    _buses = [bs getAllBuses];
+    //_buses = [bs getAllBuses];
     _routes = [rs getAllRoutes];
-    
+    /*
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-    
+    */
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRoute:curr];
@@ -85,7 +85,7 @@
         routeLine.geodesic = YES;
     }
 
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
+    //[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
     
 }
 
@@ -266,7 +266,7 @@
     
     LeftViewController *controller = [[LeftViewController alloc] init];
     controller.routes = _routes;
-    controller.buses = _buses;
+    //controller.buses = _buses;
     controller.view.backgroundColor = [UIColor clearColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
@@ -285,11 +285,11 @@
 }
 
 -(void)showAllBuses {
-   
+   /*
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-
+*/
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRoute:curr];
@@ -302,14 +302,14 @@
 }
 
 -(void)showBus:(Route *)route{
-    BusService *bs = [[BusService alloc] init];
+    /*BusService *bs = [[BusService alloc] init];
     NSArray *curr = [bs getBusOnRoute:route.name];
     if (curr) {
         for (Bus *bus in curr) {
             [self addBusToMapWithBus:bus];
         }
     }
-    
+    */
     //StopService *ss = [[StopService alloc] init];
     //NSArray *stops = [ss getStopCooridinates:colorStr];
     //[self plotStops:stops:colorStr];

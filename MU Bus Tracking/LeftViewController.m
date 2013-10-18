@@ -53,11 +53,11 @@
     } else {
         self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:@"CC0C2F"];
     }
-    
+    /*
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-    
+    */
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRoute:curr];
@@ -67,7 +67,7 @@
         routeLine.geodesic = YES;
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
+    //[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
 
 }
 
@@ -173,7 +173,7 @@
     
     LeftViewController *controller = [[LeftViewController alloc] init];
     controller.routes = _routes;
-    controller.buses = _buses;
+    //controller.buses = _buses;
     controller.view.backgroundColor = [UIColor clearColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
@@ -192,11 +192,11 @@
 }
 
 -(void)showAllBuses {
-    
+    /*
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-    
+    */
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRoute:curr];
@@ -209,14 +209,14 @@
 }
 
 -(void)showBus:(Route *)route{
-    BusService *bs = [[BusService alloc] init];
+    /*BusService *bs = [[BusService alloc] init];
     NSArray *curr = [bs getBusOnRoute:route.name];
     if (curr) {
         for (Bus *bus in curr) {
             [self addBusToMapWithBus:bus];
         }
     }
-    
+    */
     //StopService *ss = [[StopService alloc] init];
     //NSArray *stops = [ss getStopCooridinates:colorStr];
     //[self plotStops:stops:colorStr];
