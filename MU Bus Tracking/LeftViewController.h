@@ -21,13 +21,16 @@
 #import "SidebarViewController.h"
 #import "LeftViewController.h"
 #import "ColorService.h"
-
+#define EXPERIMENTAL_ORIENTATION_SUPPORT 1
 @interface LeftViewController : UIViewController
-
+#if EXPERIEMENTAL_ORIENTATION_SUPPORT
+CGPoint _containerOrigin;
+#endif
 @property (nonatomic, strong) UILabel       *label;
 @property (nonatomic, strong) SidebarViewController   *leftSidebarViewController;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @property (nonatomic, strong) NSArray* routes;
 @property (nonatomic, strong) NSArray* buses;
+@property (nonatomic, strong) NSArray* stops;
 
 @end

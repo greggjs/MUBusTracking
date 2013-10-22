@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
-
+#if EXPERIEMENTAL_ORIENTATION_SUPPORT
+#import <QuartzCore/QuartzCore.h>
+#endif
 @interface ViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
 
@@ -97,6 +99,47 @@
     self.rightSidebarView = nil;
 }
 
+#if EXPERIEMENTAL_ORIENTATION_SUPPORT
+
+// Doesn't support rotating to other orientation at this moment
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    _containerOrigin = self.navigationController.view.frame.origin;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    self.navigationController.view.layer.bounds       = (CGRect){-_containerOrigin.x, _containerOrigin.y, self.navigationController.view.frame.size};
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    self.navigationController.view.layer.bounds       = (CGRect){CGPointZero, self.navigationController.view.frame.size};
+    self.navigationController.view.frame              = (CGRect){_containerOrigin, self.navigationController.view.frame.size};
+    
+    NSLog(@"%@", self);
+}
+
+- (NSString *)description {
+    NSString *logMessage = [NSString stringWithFormat:@"ViewController {"];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.view];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.view];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.leftSidebarViewController.view];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.rightSidebarView];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t%@", self.navigationController.navigationBar];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t <statusBarFrame> %@", NSStringFromCGRect([[UIApplication sharedApplication] statusBarFrame])];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t <applicationFrame> %@", NSStringFromCGRect([[UIScreen mainScreen] applicationFrame])];
+    logMessage = [logMessage stringByAppendingFormat:@"\n\t <preferredViewFrame> %@", NSStringFromCGRect(self.navigationController.applicationViewFrame)];
+    logMessage = [logMessage stringByAppendingFormat:@"\n}"];
+    return logMessage;
+}
+
+#endif
+
+
 #pragma mark - private methods
 
 -(void)addBusToMapWithBus:(Bus*)bus{
@@ -135,7 +178,7 @@
     
 }
 
--(void)plotStops:(NSArray*)stops:(NSString*)colorStr{
+-(void)plotStops:(NSArray*)stops:(NSString*)route{
     Stop *stop;
     for (int i=0; i< [stops count]; i++) {
         GMSMarker *marker = [[GMSMarker alloc]init];
@@ -290,6 +333,7 @@
         [self addBusToMapWithBus:bus];
     }
     */
+    
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRoute:curr];
@@ -310,11 +354,13 @@
         }
     }
     */
-    //StopService *ss = [[StopService alloc] init];
-    //NSArray *stops = [ss getStopCooridinates:colorStr];
-    //[self plotStops:stops:colorStr];
+    StopService *ss = [[StopService alloc] init];
+    NSArray *stops = [ss getStopCooridinates:route.name];
+    [self plotStops:stops:route.name];
     
     //RouteService *rs = [[RouteService alloc] init];
+    
+    
     NSArray *coords = route.shape;
     GMSPolyline *routeLine = [self createRoute:coords];
     routeLine.map = mapView_;

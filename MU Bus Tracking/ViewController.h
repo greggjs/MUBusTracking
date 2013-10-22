@@ -23,6 +23,7 @@
 #import "JTRevealSidebarV2Delegate.h"
 
 @class SidebarViewController;
+#define EXPERIMENTAL_ORIENTATION_SUPPORT 1
 
 @interface ViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate> {
 #if EXPERIMENTAL_ORIENTATION_SUPPORT
@@ -38,4 +39,5 @@
 @property (nonatomic, strong) NSString *currentRoute;
 @property (nonatomic, strong) NSArray *routes;
 @property (nonatomic, strong) NSArray *buses;
+@property (nonatomic, strong) NSArray *stops;
 @end

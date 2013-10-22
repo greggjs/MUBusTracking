@@ -452,6 +452,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Jake Gregg";
+				TargetAttributes = {
+					9DCB4A2117E6B3020096698D = {
+						DevelopmentTeam = LKH652Q487;
+					};
+				};
 			};
 			buildConfigurationList = 9DCB4A1D17E6B3020096698D /* Build configuration list for PBXProject "MU Bus Tracking" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -689,6 +694,8 @@
 		9DCB4A5517E6B3030096698D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -699,6 +706,7 @@
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
 				INFOPLIST_FILE = "MU Bus Tracking/MU Bus Tracking-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -706,6 +714,8 @@
 		9DCB4A5617E6B3030096698D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -716,6 +726,7 @@
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
 				INFOPLIST_FILE = "MU Bus Tracking/MU Bus Tracking-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
