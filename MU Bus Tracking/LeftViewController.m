@@ -62,7 +62,7 @@
     
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
-        GMSPolyline *routeLine = [self createRoute:curr];
+        GMSPolyline *routeLine = [self createRouteWithPoints:curr];
         routeLine.map = mapView_;
         routeLine.strokeColor = r.color;
         routeLine.strokeWidth = 10.f;
@@ -134,7 +134,7 @@
     marker.map = mapView_;
 }
 
--(GMSPolyline*)createRoute:(NSArray*) points{
+-(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
     GMSMutablePath *path = [GMSMutablePath path];
     CLLocationCoordinate2D coordinate;
     
@@ -148,7 +148,7 @@
     return route;
 }
 
--(void)plotStops:(NSArray*)stops:(NSString*)route{
+-(void)plotStopsWithStops:(NSArray*)stops withRoute:(NSString*)route{
     Stop *stop;
     for (int i=0; i< [stops count]; i++) {
         GMSMarker *marker = [[GMSMarker alloc]init];
@@ -162,7 +162,7 @@
 
 -(void)checkBuses {
     BusService *bs = [[BusService alloc]init];
-    _buses = [bs getBusOnRoute:_routeName];
+    _buses = [bs getBusWithRoute:_routeName];
     
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
@@ -227,7 +227,7 @@
     LeftViewController *controller = [[LeftViewController alloc] init];
     controller.routes = _routes;
     controller.buses = _buses;
-    controller.routeName = ((Route*)(_routes[indexPath.row-1])).name;
+    controller.routeName = (indexPath.row == 0 ? @"ALL" :((Route*)(_routes[indexPath.row-1])).name);
     [_busRefresh invalidate];
     _busRefresh = nil;
     
@@ -245,7 +245,7 @@
     if (indexPath.row==0)
         [self showAllBuses];
     else
-        [self showBus:_routes[indexPath.row-1]];
+        [self showBusWithRoute:_routes[indexPath.row-1]];
 }
 
 -(void)showAllBuses {
@@ -256,7 +256,7 @@
     
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
-        GMSPolyline *routeLine = [self createRoute:curr];
+        GMSPolyline *routeLine = [self createRouteWithPoints:curr];
         routeLine.map = mapView_;
         routeLine.strokeColor = r.color;
         routeLine.strokeWidth = 10.f;
@@ -265,9 +265,9 @@
     
 }
 
--(void)showBus:(Route *)route{
+-(void)showBusWithRoute:(Route *)route{
     BusService *bs = [[BusService alloc] init];
-    NSArray *curr = [bs getBusOnRoute:route.name];
+    NSArray *curr = [bs getBusWithRoute:route.name];
     if (curr) {
         for (Bus *bus in curr) {
             [self addBusToMapWithBus:bus];
@@ -275,12 +275,12 @@
     }
     
     StopService *ss = [[StopService alloc] init];
-    NSArray *stops = [ss getStopCooridinates:route.name];
-    [self plotStops:stops:route.name];
+    NSArray *stops = [ss getStopsWithRoute:route.name];
+    [self plotStopsWithStops:stops withRoute:route.name];
     
     //RouteService *rs = [[RouteService alloc] init];
     NSArray *coords = route.shape;
-    GMSPolyline *routeLine = [self createRoute:coords];
+    GMSPolyline *routeLine = [self createRouteWithPoints:coords];
     routeLine.map = mapView_;
     routeLine.strokeColor = route.color;
     routeLine.strokeWidth = 10.f;

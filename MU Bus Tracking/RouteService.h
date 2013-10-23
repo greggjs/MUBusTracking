@@ -13,7 +13,5 @@
 
 @interface RouteService : NSObject
 
--(NSArray*) getRouteCoordinatesWithBus:(Bus *)bus;
--(NSArray*) getRouteCoordinates:(NSString *)route;
--(NSMutableArray*) getAllRoutes;
+-(NSArray*) getRouteWithName:(NSString*)route;
 @end

@@ -12,6 +12,6 @@
 
 @interface StopService : NSObject
 
--(NSArray*) getStopCooridinates:(NSString*)route;
+-(NSArray*) getStopsWithRoute:(NSString*)route;
 
 @end
