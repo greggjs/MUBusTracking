@@ -29,7 +29,7 @@
 
 - (void)loadView
 {
-
+    
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.741032 zoom:13];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
@@ -311,6 +311,8 @@
     controller.routes = _routes;
     controller.buses = _buses;
     controller.routeName = (indexPath.row == 0 ? @"ALL" :((Route*)(_routes[indexPath.row-1])).name);
+    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(39.508034, -84.741032):((Route*)_routes[indexPath.row-1]).center);
+    controller.zoom = (indexPath.row == 0 ? 13 :((Route*)_routes[indexPath.row-1]).zoom);
     [_busRefresh invalidate];
     _busRefresh = nil;
     
@@ -318,7 +320,7 @@
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
     controller.leftSelectedIndexPath      = indexPath;
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.741032 zoom:13];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:controller.center.latitude longitude:controller.center.longitude zoom:controller.zoom];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     controller.view = mapView_;

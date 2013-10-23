@@ -34,5 +34,6 @@ CGPoint _containerOrigin;
 @property (nonatomic, strong) NSArray* stops;
 @property (nonatomic, strong) NSString* routeName;
 @property (nonatomic, strong) NSTimer* busRefresh;
-
+@property (nonatomic) CLLocationCoordinate2D center;
+@property (nonatomic) float zoom;
 @end

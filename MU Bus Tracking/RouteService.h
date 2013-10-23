@@ -10,8 +10,10 @@
 #import "Bus.h"
 #import "Route.h"
 #import "ColorService.h"
+#import "math.h"
 
 @interface RouteService : NSObject
 
 -(NSArray*) getRouteWithName:(NSString*)route;
+-(CLLocationCoordinate2D) determineWindowSizeWithRoute:(Route*)route withCooridnates:(NSArray*)retpoints;
 @end
