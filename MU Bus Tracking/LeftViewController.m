@@ -58,13 +58,18 @@
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-    
+    float stroke_width = 10.f;
+    float alpha = 1.f;
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRouteWithPoints:curr];
         routeLine.map = mapView_;
-        routeLine.strokeColor = r.color;
-        routeLine.strokeWidth = 10.f;
+        const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
+        UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
+        alpha-= .10f;
+        routeLine.strokeColor = c;
+        routeLine.strokeWidth = stroke_width;
+        stroke_width-=0.75f;
         routeLine.geodesic = YES;
     }
     
@@ -215,12 +220,15 @@
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
-    
+    float alpha = 1.f;
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRouteWithPoints:curr];
         routeLine.map = mapView_;
-        routeLine.strokeColor = r.color;
+        const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
+        UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
+        alpha-= .10f;
+        routeLine.strokeColor = c;
         routeLine.strokeWidth = 10.f;
         routeLine.geodesic = YES;
     }
