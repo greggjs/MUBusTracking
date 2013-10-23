@@ -23,12 +23,9 @@
 #import "JTRevealSidebarV2Delegate.h"
 
 @class SidebarViewController;
-#define EXPERIMENTAL_ORIENTATION_SUPPORT 1
+
 
 @interface ViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate> {
-#if EXPERIMENTAL_ORIENTATION_SUPPORT
-    CGPoint _containerOrigin;
-#endif
 }
 
 @property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
