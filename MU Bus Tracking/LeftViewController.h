@@ -32,5 +32,7 @@ CGPoint _containerOrigin;
 @property (nonatomic, strong) NSArray* routes;
 @property (nonatomic, strong) NSArray* buses;
 @property (nonatomic, strong) NSArray* stops;
+@property (nonatomic, strong) NSString* routeName;
+@property (nonatomic, strong) NSTimer* busRefresh;
 
 @end

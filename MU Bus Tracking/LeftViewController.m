@@ -69,7 +69,7 @@
         routeLine.geodesic = YES;
     }
     
-    //[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
+    _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
 
 }
 
@@ -162,7 +162,7 @@
 
 -(void)checkBuses {
     BusService *bs = [[BusService alloc]init];
-    _buses = [bs getAllBuses];
+    _buses = [bs getBusOnRoute:_routeName];
     
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
@@ -227,6 +227,10 @@
     LeftViewController *controller = [[LeftViewController alloc] init];
     controller.routes = _routes;
     controller.buses = _buses;
+    controller.routeName = ((Route*)(_routes[indexPath.row-1])).name;
+    [_busRefresh invalidate];
+    _busRefresh = nil;
+    
     controller.view.backgroundColor = [UIColor clearColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
