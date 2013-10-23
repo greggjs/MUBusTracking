@@ -13,8 +13,7 @@
 
 
 -(NSArray*)getRouteWithName:(NSString *)route {
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mymetroadmin/api/route/";
-    urlString = [urlString stringByAppendingString:route];
+    NSString *urlString = [ROUTE_API_LINK stringByAppendingString:route];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];
     

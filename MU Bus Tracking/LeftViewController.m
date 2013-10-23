@@ -7,9 +7,7 @@
 //
 
 #import "LeftViewController.h"
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-#import <QuartzCore/QuartzCore.h>
-#endif
+
 @interface LeftViewController () <JTRevealSidebarV2Delegate, UITableViewDataSource, UITableViewDelegate>
 @end
 
@@ -49,10 +47,10 @@
         
         self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = [cs getColorFromHexString:@"CC0C2F"];
+        self.navigationController.navigationBar.barTintColor = [cs getColorFromHexString:APP_COLOR];
         
     } else {
-        self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:@"CC0C2F"];
+        self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
     }
     
     for(Bus *bus in _buses){
@@ -98,6 +96,13 @@
     marker.map = mapView_;
 }
 
+-(void)removeBus:(Bus*)bus {
+    CGFloat lat = (CGFloat)[bus.latitude floatValue];
+    CGFloat lng = (CGFloat)[bus.longitude floatValue];
+    GMSMarker *marker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(lat, lng)];
+    marker.map = nil;
+}
+
 -(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
     GMSMutablePath *path = [GMSMutablePath path];
     CLLocationCoordinate2D coordinate;
@@ -125,6 +130,10 @@
 }
 
 -(void)checkBuses {
+    for (Bus *bus in _buses) {
+        [self removeBus:bus];
+    }
+    
     BusService *bs = [[BusService alloc]init];
     _buses = [bs getBusWithRoute:_routeName];
     

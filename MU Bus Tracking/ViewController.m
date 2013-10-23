@@ -7,9 +7,7 @@
 //
 
 #import "ViewController.h"
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-#import <QuartzCore/QuartzCore.h>
-#endif
+
 @interface ViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
 @end
 
@@ -55,16 +53,17 @@
     // for when Mikey can use Xcode 5... iOS 7 bar
     // Color for Miami Red (in HEX: #CC0C2F
     ColorService *cs = [[ColorService alloc] init];
+
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         
         self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = [cs getColorFromHexString:@"CC0C2F"];
+        self.navigationController.navigationBar.barTintColor = [cs getColorFromHexString:APP_COLOR];
         self.navigationController.navigationBar.translucent = NO;
          
     } else {
-        self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:@"CC0C2F"];
+        self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
     }
     
     // Make the bus web service call to get the location of a bus
@@ -117,6 +116,13 @@
     marker.map = mapView_;
 }
 
+-(void)removeBus:(Bus*)bus {
+    CGFloat lat = (CGFloat)[bus.latitude floatValue];
+    CGFloat lng = (CGFloat)[bus.longitude floatValue];
+    GMSMarker *marker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(lat, lng)];
+    marker.map = nil;
+}
+
 -(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
     GMSMutablePath *path = [GMSMutablePath path];
     CLLocationCoordinate2D coordinate;
@@ -132,6 +138,9 @@
 }
 
 -(void)checkBuses {
+    for (Bus *bus in _buses) {
+        [self removeBus:bus];
+    }
     BusService *bs = [[BusService alloc]init];
     _buses = [bs getBusWithRoute:@"ALL"];
     
@@ -329,9 +338,6 @@
     StopService *ss = [[StopService alloc] init];
     NSArray *stops = [ss getStopsWithRoute:route.name];
     [self plotStopsWithStops:stops withRoute:route.name];
-    
-    //RouteService *rs = [[RouteService alloc] init];
-    
     
     NSArray *coords = route.shape;
     GMSPolyline *routeLine = [self createRouteWithPoints:coords];
