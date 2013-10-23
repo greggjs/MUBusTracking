@@ -26,8 +26,8 @@
     [[NSScanner scannerWithString:red] scanHexInt:&r];
     [[NSScanner scannerWithString:green] scanHexInt:&g];
     [[NSScanner scannerWithString:blue] scanHexInt:&b];
-    
-    return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+    UIColor *ret = [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+    return ret;
 }
 
 @end

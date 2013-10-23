@@ -14,8 +14,7 @@
 @implementation BusService
 
 -(NSArray*)getBusWithRoute:(NSString*)route {
-    NSString *urlString = @"http://bus.csi.muohio.edu/mymetroadmin/api/vehiclesOnRoute/";
-    urlString = [urlString stringByAppendingString:route];
+    NSString *urlString = [BUS_API_LINK stringByAppendingString:route];
     NSLog(@"%@", urlString);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];

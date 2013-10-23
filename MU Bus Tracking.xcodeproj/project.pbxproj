@@ -102,6 +102,8 @@
 		9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */; };
 		9DCB4AD617E6BEA90096698D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD417E6BEA90096698D /* ViewController.m */; };
 		9DCB4AD717E6BEA90096698D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4AD417E6BEA90096698D /* ViewController.m */; };
+		9DF8D3841818820A0041A9B6 /* Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8D3831818820A0041A9B6 /* Params.m */; };
+		9DF8D3851818820A0041A9B6 /* Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8D3831818820A0041A9B6 /* Params.m */; };
 		9DFEA2231810BCDB0008CF39 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFEA2221810BCDB0008CF39 /* GoogleMaps.framework */; };
 		9DFEA2241810BCDB0008CF39 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFEA2221810BCDB0008CF39 /* GoogleMaps.framework */; };
 		9DFEA2261810BD0C0008CF39 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */; };
@@ -146,10 +148,10 @@
 		9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-turquoise-line.jpg"; sourceTree = "<group>"; };
 		9D2CB54017F47B1B005B4063 /* Default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~iphone.png"; sourceTree = "<group>"; };
 		9D2CB54117F47B1B005B4063 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
-		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
-		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
-		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
-		9D31FA6617E76722000D2F36 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidebarViewController.h; path = "MU Bus Tracking/SidebarViewController.h"; sourceTree = "<group>"; };
+		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidebarViewController.m; path = "MU Bus Tracking/SidebarViewController.m"; sourceTree = "<group>"; };
+		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewViewController.h; path = "MU Bus Tracking/NewViewController.h"; sourceTree = "<group>"; };
+		9D31FA6617E76722000D2F36 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewViewController.m; path = "MU Bus Tracking/NewViewController.m"; sourceTree = "<group>"; };
 		9D31FA6917E77A4E000D2F36 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenu.png; sourceTree = "<group>"; };
 		9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
 		9D3A99E817F4DAED006FA01E /* StopService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopService.h; sourceTree = "<group>"; };
@@ -157,8 +159,8 @@
 		9D3A99F017F53F5C006FA01E /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		9D3A99F117F53F5C006FA01E /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		9D3A99F417F638BF006FA01E /* OpeH1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpeH1.png; sourceTree = "<group>"; };
-		9D3A99F717F63F5F006FA01E /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
-		9D3A99F817F63F5F006FA01E /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		9D3A99F717F63F5F006FA01E /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftViewController.h; path = "MU Bus Tracking/LeftViewController.h"; sourceTree = "<group>"; };
+		9D3A99F817F63F5F006FA01E /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftViewController.m; path = "MU Bus Tracking/LeftViewController.m"; sourceTree = "<group>"; };
 		9D8917451807125800C3817E /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		9D8917461807125800C3817E /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		9DA50F4F180C513400CD0336 /* ColorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorService.h; sourceTree = "<group>"; };
@@ -171,8 +173,8 @@
 		9DCB4A2F17E6B3020096698D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9DCB4A3117E6B3020096698D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9DCB4A3317E6B3020096698D /* MU Bus Tracking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MU Bus Tracking-Prefix.pch"; sourceTree = "<group>"; };
-		9DCB4A3417E6B3020096698D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9DCB4A3517E6B3020096698D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9DCB4A3417E6B3020096698D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "MU Bus Tracking/AppDelegate.h"; sourceTree = "<group>"; };
+		9DCB4A3517E6B3020096698D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "MU Bus Tracking/AppDelegate.m"; sourceTree = "<group>"; };
 		9DCB4A3717E6B3020096698D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9DCB4A3917E6B3020096698D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9DCB4A3B17E6B3020096698D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -199,8 +201,10 @@
 		9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9DCB4AD317E6BEA90096698D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9DCB4AD417E6BEA90096698D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9DCB4AD317E6BEA90096698D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = "MU Bus Tracking/ViewController.h"; sourceTree = "<group>"; };
+		9DCB4AD417E6BEA90096698D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = "MU Bus Tracking/ViewController.m"; sourceTree = "<group>"; };
+		9DF8D3821818820A0041A9B6 /* Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.h; sourceTree = "<group>"; };
+		9DF8D3831818820A0041A9B6 /* Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Params.m; sourceTree = "<group>"; };
 		9DFEA2221810BCDB0008CF39 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -323,16 +327,7 @@
 			children = (
 				158661B117F4D2930083BB68 /* Service */,
 				158661AD17F4D2570083BB68 /* Model */,
-				9DCB4A3417E6B3020096698D /* AppDelegate.h */,
-				9DCB4A3517E6B3020096698D /* AppDelegate.m */,
-				9DCB4AD317E6BEA90096698D /* ViewController.h */,
-				9DCB4AD417E6BEA90096698D /* ViewController.m */,
-				9D31FA6117E76702000D2F36 /* SidebarViewController.h */,
-				9D31FA6217E76702000D2F36 /* SidebarViewController.m */,
-				9D31FA6517E76722000D2F36 /* NewViewController.h */,
-				9D31FA6617E76722000D2F36 /* NewViewController.m */,
-				9D3A99F717F63F5F006FA01E /* LeftViewController.h */,
-				9D3A99F817F63F5F006FA01E /* LeftViewController.m */,
+				9DF8D379181874640041A9B6 /* Interface */,
 				9DCB4A2C17E6B3020096698D /* Supporting Files */,
 			);
 			path = "MU Bus Tracking";
@@ -341,28 +336,7 @@
 		9DCB4A2C17E6B3020096698D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9D3A99F417F638BF006FA01E /* OpeH1.png */,
-				9D2CB52F17F47B1B005B4063 /* appicon.png */,
-				9D2CB53017F47B1B005B4063 /* bus_blue.png */,
-				9D2CB53117F47B1B005B4063 /* bus_green.png */,
-				9D2CB53217F47B1B005B4063 /* bus_orange.png */,
-				9D2CB53317F47B1B005B4063 /* bus_purple1.png */,
-				9D2CB53417F47B1B005B4063 /* bus_purple2.png */,
-				9D2CB53517F47B1B005B4063 /* bus_red.png */,
-				9D2CB53617F47B1B005B4063 /* bus_yellow.png */,
-				9D2CB53717F47B1B005B4063 /* bus.png */,
-				9D2CB53817F47B1B005B4063 /* busstop.png */,
-				9D2CB53917F47B1B005B4063 /* image-iphone.png */,
-				9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */,
-				9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */,
-				9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */,
-				9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */,
-				9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */,
-				9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */,
-				9D2CB54017F47B1B005B4063 /* Default@2x~iphone.png */,
-				9D2CB54117F47B1B005B4063 /* Default~iphone.png */,
-				9D31FA6917E77A4E000D2F36 /* ButtonMenu.png */,
-				9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */,
+				9DF8D37A181874910041A9B6 /* Pictures */,
 				9DCB4A2D17E6B3020096698D /* MU Bus Tracking-Info.plist */,
 				9DCB4A2E17E6B3020096698D /* InfoPlist.strings */,
 				9DCB4A3117E6B3020096698D /* main.m */,
@@ -403,6 +377,55 @@
 				9DCB4A6917E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m */,
 			);
 			path = JTRevealSidebarV2;
+			sourceTree = "<group>";
+		};
+		9DF8D379181874640041A9B6 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				9DCB4A3417E6B3020096698D /* AppDelegate.h */,
+				9DCB4A3517E6B3020096698D /* AppDelegate.m */,
+				9DCB4AD317E6BEA90096698D /* ViewController.h */,
+				9DCB4AD417E6BEA90096698D /* ViewController.m */,
+				9D31FA6117E76702000D2F36 /* SidebarViewController.h */,
+				9D31FA6217E76702000D2F36 /* SidebarViewController.m */,
+				9D31FA6517E76722000D2F36 /* NewViewController.h */,
+				9D31FA6617E76722000D2F36 /* NewViewController.m */,
+				9D3A99F717F63F5F006FA01E /* LeftViewController.h */,
+				9D3A99F817F63F5F006FA01E /* LeftViewController.m */,
+				9DF8D3821818820A0041A9B6 /* Params.h */,
+				9DF8D3831818820A0041A9B6 /* Params.m */,
+			);
+			name = Interface;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		9DF8D37A181874910041A9B6 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				9D3A99F417F638BF006FA01E /* OpeH1.png */,
+				9D2CB52F17F47B1B005B4063 /* appicon.png */,
+				9D2CB53017F47B1B005B4063 /* bus_blue.png */,
+				9D2CB53117F47B1B005B4063 /* bus_green.png */,
+				9D2CB53217F47B1B005B4063 /* bus_orange.png */,
+				9D2CB53317F47B1B005B4063 /* bus_purple1.png */,
+				9D2CB53417F47B1B005B4063 /* bus_purple2.png */,
+				9D2CB53517F47B1B005B4063 /* bus_red.png */,
+				9D2CB53617F47B1B005B4063 /* bus_yellow.png */,
+				9D2CB53717F47B1B005B4063 /* bus.png */,
+				9D2CB53817F47B1B005B4063 /* busstop.png */,
+				9D2CB53917F47B1B005B4063 /* image-iphone.png */,
+				9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */,
+				9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */,
+				9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */,
+				9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */,
+				9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */,
+				9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */,
+				9D2CB54017F47B1B005B4063 /* Default@2x~iphone.png */,
+				9D2CB54117F47B1B005B4063 /* Default~iphone.png */,
+				9D31FA6917E77A4E000D2F36 /* ButtonMenu.png */,
+				9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */,
+			);
+			name = Pictures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,6 +597,7 @@
 				9DCB4A6C17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
 				9DCB4AD617E6BEA90096698D /* ViewController.m in Sources */,
 				9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */,
+				9DF8D3841818820A0041A9B6 /* Params.m in Sources */,
 				9D31FA6717E76722000D2F36 /* NewViewController.m in Sources */,
 				158661B017F4D2750083BB68 /* Bus.m in Sources */,
 				9DA50F51180C513400CD0336 /* ColorService.m in Sources */,
@@ -600,6 +624,7 @@
 				9D3A99EB17F4DAED006FA01E /* StopService.m in Sources */,
 				9DA50F52180C513400CD0336 /* ColorService.m in Sources */,
 				9D3A99F317F53F5C006FA01E /* Stop.m in Sources */,
+				9DF8D3851818820A0041A9B6 /* Params.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
