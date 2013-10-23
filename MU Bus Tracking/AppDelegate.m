@@ -23,17 +23,9 @@
     controller.title = @"myMetro";
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
 
-#if EXPERIEMENTAL_ORIENTATION_SUPPORT
-    UINavigationController *container = [[UINavigationController alloc] init];
-    [container setNavigationBarHidden:YES animated:NO];
-    [container setViewControllers:[NSArray arrayWithObject:navController] animated:NO];
-    self.window.rootViewController = container;
-#else
     self.window.rootViewController = navController;
-#endif
-    
+
     [self.window makeKeyAndVisible];
     return YES;
 

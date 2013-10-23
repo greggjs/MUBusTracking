@@ -11,10 +11,10 @@
 
 @implementation StopService
 
--(NSArray*)getStopCooridinates:(NSString *)color {
+-(NSArray*)getStopsWithRoute:(NSString *)route {
     //Create the request
-    NSString *urlString = @"http://bus.csi.miamioh.edu/mobile/jsonHandler.php?func=getStops&route=";
-    urlString = [urlString stringByAppendingString:color];
+    NSString *urlString = @"http://bus.csi.miamioh.edu/mymetroadmin/api/stopsOnRoute/";
+    urlString = [urlString stringByAppendingString:route];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: urlString]];
     [request setHTTPMethod:@"GET"];
@@ -36,12 +36,12 @@
             for(NSDictionary *pointDict in resultsArray){
                 
                 CLLocationCoordinate2D currentPoint;
-                currentPoint.latitude = [[pointDict objectForKey:@"stop_lat"] doubleValue];
-                currentPoint.longitude = [[pointDict objectForKey:@"stop_lon"] doubleValue];
+                currentPoint.latitude = [[pointDict objectForKey:@"latitude"] doubleValue];
+                currentPoint.longitude = [[pointDict objectForKey:@"longitude"] doubleValue];
                 Stop *stop = [[Stop alloc] init];
                 [stop setRoute:[pointDict objectForKey:@"route"]];
                 [stop setLocation:currentPoint];
-                [stop setName:[pointDict objectForKey:@"stop_name"]];
+                [stop setName:[pointDict objectForKey:@"name"]];
                 
                 [points addObject:stop];
                 

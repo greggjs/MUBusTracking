@@ -24,10 +24,8 @@
 
 @class SidebarViewController;
 
+
 @interface ViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate> {
-#if EXPERIMENTAL_ORIENTATION_SUPPORT
-    CGPoint _containerOrigin;
-#endif
 }
 
 @property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
@@ -38,4 +36,6 @@
 @property (nonatomic, strong) NSString *currentRoute;
 @property (nonatomic, strong) NSArray *routes;
 @property (nonatomic, strong) NSArray *buses;
+@property (nonatomic, strong) NSArray *stops;
+@property (nonatomic, strong) NSTimer *busRefresh;
 @end

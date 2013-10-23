@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Route : NSObject
 
@@ -16,7 +17,7 @@
 @property (strong, nonatomic)NSArray *buses;
 @property (strong, nonatomic)NSArray *shape;
 @property (strong, nonatomic)UIColor *color;
-
-
+@property (nonatomic)CLLocationCoordinate2D center;
+@property (nonatomic)float zoom;
 
 @end
