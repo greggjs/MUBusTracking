@@ -29,7 +29,7 @@
 {
     
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.508034 longitude:-84.741032 zoom:13];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
     self.view = mapView_;
@@ -288,8 +288,8 @@
     controller.routes = _routes;
     controller.buses = _buses;
     controller.routeName = (indexPath.row == 0 ? @"ALL" :((Route*)(_routes[indexPath.row-1])).name);
-    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(39.508034, -84.741032):((Route*)_routes[indexPath.row-1]).center);
-    controller.zoom = (indexPath.row == 0 ? 13 :((Route*)_routes[indexPath.row-1]).zoom);
+    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):((Route*)_routes[indexPath.row-1]).center);
+    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :((Route*)_routes[indexPath.row-1]).zoom);
     [_busRefresh invalidate];
     _busRefresh = nil;
     
