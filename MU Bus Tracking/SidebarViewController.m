@@ -50,7 +50,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    int count = [_routes count];
+    NSLog(@"%i", count);
+    return [_routes count] + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,9 +73,11 @@
     
     
     if (indexPath.row == 0)
+        cell.textLabel.text = @"Favorites";
+    else if (indexPath.row == 1)
         cell.textLabel.text = @"All Routes";
     else {
-        Route *route = (Route*)_routes[indexPath.row-1];
+        Route *route = (Route*)_routes[indexPath.row-2];
         
         //Create Header Font & String
         NSString *headerString = [NSString stringWithFormat: @"%@\n", route.name];
@@ -96,36 +100,6 @@
         UIImage *image = [self imageWithColor:route.color andSize:cellSize];
         cell.imageView.image = image;
     }
-    /*
-    UIImage *image;
-    
-    switch (indexPath.row) {
-        case 0:
-            break;
-        case 1:
-            image = [UIImage imageNamed:@"bus_orange.png"];
-            break;
-        case 2:
-            image = [UIImage imageNamed:@"bus_red.png"];
-            break;
-        case 3:
-            image = [UIImage imageNamed:@"bus_purple1.png"];
-            break;
-        case 4:
-            image = [UIImage imageNamed:@"bus_green.png"];
-            break;
-        case 5:
-            image = [UIImage imageNamed:@"bus_yellow.png"];
-            break;
-        case 6:
-            image = [UIImage imageNamed:@"bus_blue.png"];
-            break;
-        default:
-            image = [UIImage imageNamed:@"bus_red.png"];
-            break;
-    }
-    */
-    
     return cell;
 }
 /*
@@ -171,9 +145,11 @@
     if (self.sidebarDelegate) {
         NSString *title = [[NSString alloc]init];
         if (indexPath.row == 0)
-            title= @"myMetro";
+            title= @"Favorites";
+        else if (indexPath.row == 1)
+            title=@"All Routes";
         else
-            title=((Route*)_routes[indexPath.row-1]).longname;
+            title=((Route*)_routes[indexPath.row-2]).longname;
 
         NSObject *object = [NSString stringWithFormat:title, indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];

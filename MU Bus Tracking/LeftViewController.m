@@ -200,9 +200,9 @@
     LeftViewController *controller = [[LeftViewController alloc] init];
     controller.routes = _routes;
     controller.buses = _buses;
-    controller.routeName = (indexPath.row == 0 ? @"ALL" :((Route*)(_routes[indexPath.row-1])).name);
-    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):((Route*)_routes[indexPath.row-1]).center);
-    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :((Route*)_routes[indexPath.row-1]).zoom);
+    controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row==1 ? @"ALL" : ((Route*)(_routes[indexPath.row-2])).name));
+    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row==1 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON) :((Route*)_routes[indexPath.row-2]).center));
+    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row==1 ? MAIN_ZOOM:((Route*)_routes[indexPath.row-2]).zoom));
     
     [_busRefresh invalidate];
     _busRefresh = nil;
@@ -219,16 +219,19 @@
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     if (indexPath.row==0)
+        [self showAllBuses]; // [self showFavorites];
+    else if (indexPath.row==1)
         [self showAllBuses];
     else
-        [self showBusWithRoute:_routes[indexPath.row-1]];
+        [self showBusWithRoute:_routes[indexPath.row-2]];
 }
 
 -(void)showAllBuses {
-    
+    /*
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
+    */
     float alpha = 1.f;
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
