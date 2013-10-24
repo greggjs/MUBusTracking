@@ -10,6 +10,7 @@
 
 @implementation Params
 
+NSString *const MEGA_API_LINK = @"http://bus.csi.miamioh.edu/mymetroadmin/api/";
 NSString *const BUS_API_LINK = @"http://bus.csi.miamioh.edu/mymetroadmin/api/vehiclesOnRoute/";
 NSString *const ROUTE_API_LINK = @"http://bus.csi.miamioh.edu/mymetroadmin/api/route/";
 NSString *const STOP_API_LINK = @"http://bus.csi.miamioh.edu/mymetroadmin/api/stopsOnRoute/";
