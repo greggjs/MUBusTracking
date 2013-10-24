@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
+    [self setNeedsStatusBarAppearanceUpdate];
     self.view.backgroundColor = [UIColor clearColor];
     
     // Add left sidebar
@@ -65,7 +65,7 @@
     } else {
         self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
     }
-    
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     // Make the bus web service call to get the location of a bus
     BusService *bs = [[BusService alloc] init];
     // Make the route web service call to get the route coordinates
@@ -93,6 +93,11 @@
 
     _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
     
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    NSLog(@"Changing view controller style...");
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidUnload

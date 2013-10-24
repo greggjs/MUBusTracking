@@ -16,17 +16,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [GMSServices provideAPIKey:@"AIzaSyDNufTl_3_h50bJ3fbbiGWxLaff_TSy3aU"];
     // Override point for customization after application launch.
     ViewController *controller = [[ViewController alloc] init];
     controller.title = @"myMetro";
-    
+
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-
+    
     self.window.rootViewController = navController;
-
+    
     [self.window makeKeyAndVisible];
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 
 }

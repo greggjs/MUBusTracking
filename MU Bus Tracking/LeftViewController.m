@@ -52,7 +52,7 @@
     } else {
         self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
     }
-    
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     for(Bus *bus in _buses){
         [self addBusToMapWithBus:bus];
     }
