@@ -50,9 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = [_routes count];
-    NSLog(@"%i", count);
-    return [_routes count] + 2;
+    return [_routes count] + 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,7 +74,7 @@
         cell.textLabel.text = @"Favorites";
     else if (indexPath.row == 1)
         cell.textLabel.text = @"All Routes";
-    else {
+    else if (indexPath.row > 1 && indexPath.row < [_routes count]+2){
         Route *route = (Route*)_routes[indexPath.row-2];
         
         //Create Header Font & String
@@ -99,6 +97,8 @@
 
         UIImage *image = [self imageWithColor:route.color andSize:cellSize];
         cell.imageView.image = image;
+    } else {
+        cell.textLabel.text = @"Settings";
     }
     return cell;
 }
@@ -148,8 +148,10 @@
             title= @"Favorites";
         else if (indexPath.row == 1)
             title=@"All Routes";
-        else
+        else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
             title=((Route*)_routes[indexPath.row-2]).longname;
+        else
+            title=@"Settings";
 
         NSObject *object = [NSString stringWithFormat:title, indexPath.row];
         [self.sidebarDelegate sidebarViewController:self didSelectObject:object atIndexPath:indexPath];

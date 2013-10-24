@@ -200,10 +200,9 @@
     LeftViewController *controller = [[LeftViewController alloc] init];
     controller.routes = _routes;
     controller.buses = _buses;
-    controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row==1 ? @"ALL" : ((Route*)(_routes[indexPath.row-2])).name));
-    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row==1 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON) :((Route*)_routes[indexPath.row-2]).center));
-    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row==1 ? MAIN_ZOOM:((Route*)_routes[indexPath.row-2]).zoom));
-    
+    controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row==1 ? @"ALL" : (indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)(_routes[indexPath.row-2])).name : @"Settings")));
+    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row==1 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON) :(indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)_routes[indexPath.row-2]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON))));
+    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row==1 ? MAIN_ZOOM:(indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)_routes[indexPath.row-2]).zoom:MAIN_ZOOM)));
     [_busRefresh invalidate];
     _busRefresh = nil;
     
@@ -222,8 +221,10 @@
         [self showAllBuses]; // [self showFavorites];
     else if (indexPath.row==1)
         [self showAllBuses];
-    else
+    else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
         [self showBusWithRoute:_routes[indexPath.row-2]];
+    else
+        [self showAllBuses]; // [self displaySettings]; Probably up higher... make a different type of view...;
 }
 
 -(void)showAllBuses {
