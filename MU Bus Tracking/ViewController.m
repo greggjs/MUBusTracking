@@ -114,14 +114,8 @@
     marker.position = CLLocationCoordinate2DMake(lat, lng);
     marker.title = bus.busID;
     marker.icon = [UIImage imageNamed:@"bus.png"];
+    bus.marker = marker;
     marker.map = mapView_;
-}
-
--(void)removeBus:(Bus*)bus {
-    CGFloat lat = (CGFloat)[bus.latitude floatValue];
-    CGFloat lng = (CGFloat)[bus.longitude floatValue];
-    GMSMarker *marker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(lat, lng)];
-    marker.map = nil;
 }
 
 -(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
@@ -140,7 +134,7 @@
 
 -(void)checkBuses {
     for (Bus *bus in _buses) {
-        [self removeBus:bus];
+        bus.marker.map = nil;
     }
     BusService *bs = [[BusService alloc]init];
     _buses = [bs getBusWithRoute:@"ALL"];
