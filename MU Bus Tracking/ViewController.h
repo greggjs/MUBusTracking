@@ -25,7 +25,7 @@
 @class SidebarViewController;
 
 
-@interface ViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate> {
+@interface ViewController : UIViewController <JTRevealSidebarV2Delegate, UITableViewDelegate, GMSMapViewDelegate> {
 }
 
 @property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
