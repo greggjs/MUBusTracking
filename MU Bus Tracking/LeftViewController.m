@@ -8,12 +8,14 @@
 
 #import "LeftViewController.h"
 
-@interface LeftViewController () <JTRevealSidebarV2Delegate, UITableViewDataSource, UITableViewDelegate>
+@interface LeftViewController () <JTRevealSidebarV2Delegate, UITableViewDataSource, UITableViewDelegate, GMSMapViewDelegate>
 @end
 
 @implementation LeftViewController {
     GMSMapView *mapView_;
 }
+
+@synthesize mapDelegate;
 
 - (void)loadView
 {
@@ -21,6 +23,8 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
+    mapView_.settings.rotateGestures = NO;
+    mapView_.delegate = mapDelegate;
     self.view = mapView_;
     
 }
@@ -213,26 +217,22 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:controller.center.latitude longitude:controller.center.longitude zoom:controller.zoom];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
+    mapView_.delegate = self;
     controller.view = mapView_;
     
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     if (indexPath.row==0)
-        [self showAllBuses]; // [self showFavorites];
+        [self showAllRoutes]; // [self showFavorites];
     else if (indexPath.row==1)
-        [self showAllBuses];
+        [self showAllRoutes];
     else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
         [self showBusWithRoute:_routes[indexPath.row-2]];
     else
-        [self showAllBuses]; // [self displaySettings]; Probably up higher... make a different type of view...;
+        [self showAllRoutes]; // [self displaySettings]; Probably up higher... make a different type of view...;
 }
 
--(void)showAllBuses {
-    /*
-    for(Bus *bus in _buses){
-        [self addBusToMapWithBus:bus];
-    }
-    */
+-(void)showAllRoutes {
     float alpha = 1.f;
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
@@ -272,6 +272,27 @@
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
     return self.leftSelectedIndexPath;
+}
+
+# pragma mark GMSMapViewDelegate
+
+-(void)mapView:(GMSMapView*)mapView didBeginDraggingMarker:(GMSMarker *)marker {
+    NSLog(@"didBeginDraggingMarker");
+}
+
+-(void)mapView:(GMSMapView*)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
+    float dLat= 0.025f, dLon = 0.025f;
+    if (position.zoom < 12.9 || position.target.latitude > MAIN_LAT + dLat
+        || position.target.latitude < MAIN_LAT - dLat || position.target.longitude < MAIN_LON - dLon ||
+        position.target.longitude > MAIN_LON + dLon) {
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
+        [mapView_ animateToCameraPosition:camera];
+    }
+    
+}
+-(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
+    [mapView_ animateToCameraPosition:camera];
 }
 
 @end

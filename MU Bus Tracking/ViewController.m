@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
+@interface ViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate, GMSMapViewDelegate>
 @end
 
 @implementation ViewController {
@@ -32,6 +32,8 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
+    mapView_.delegate = self;
+    mapView_.settings.rotateGestures = NO;
     self.view = mapView_;
      
 }
@@ -42,11 +44,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self setNeedsStatusBarAppearanceUpdate];
     self.view.backgroundColor = [UIColor clearColor];
-    // Make the bus web service call to get the location of a bus
-    //BusService *bs = [[BusService alloc] init];
+
     // Make the route web service call to get the route coordinates
     RouteService *rs = [[RouteService alloc] init];
-    //_buses = [bs getBusWithRoute:@"ALL"];
     _routes = [rs getRouteWithName:@"ALL"];
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
@@ -71,11 +71,7 @@
         self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
     }
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    /*
-    for(Bus *bus in _buses){
-        [self addBusToMapWithBus:bus];
-    }
-    */
+    
     float stroke_width = 10.f;
     float alpha = 1.f;
     for (Route *r in _routes) {
@@ -297,29 +293,29 @@
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
     controller.leftSelectedIndexPath      = indexPath;
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:controller.center.latitude longitude:controller.center.longitude zoom:controller.zoom];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.myLocationEnabled = YES;
+    mapView_.settings.rotateGestures = NO;
+    mapView_.delegate = controller;
+    
     controller.view = mapView_;
     
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     if (indexPath.row==0)
-        [self showAllBuses]; // [self showFavorites];
+        [self showAllRoutes]; // [self showFavorites];
     else if (indexPath.row==1)
-        [self showAllBuses];
+        [self showAllRoutes];
     else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
         [self showBusWithRoute:_routes[indexPath.row-2]];
     else
-        [self showAllBuses]; // [self displaySettings]; Probably up higher... make a different type of view...;
+        [self showAllRoutes]; // [self displaySettings]; Probably up higher... make a different type of view...;
 }
 
--(void)showAllBuses {
-    /*
-    for(Bus *bus in _buses){
-        [self addBusToMapWithBus:bus];
-    }
-     */
+-(void)showAllRoutes {
+
     float alpha = 1.0f;
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
@@ -358,6 +354,27 @@
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
     return self.leftSelectedIndexPath;
+}
+
+# pragma mark GMSMapViewDelegate
+
+-(void)mapView:(GMSMapView*)mapView didBeginDraggingMarker:(GMSMarker *)marker {
+    NSLog(@"didBeginDraggingMarker");
+}
+
+-(void)mapView:(GMSMapView*)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
+    float dLat= 0.025f, dLon = 0.025f;
+    if (position.zoom < 12.9 || position.target.latitude > MAIN_LAT + dLat
+            || position.target.latitude < MAIN_LAT - dLat || position.target.longitude < MAIN_LON - dLon ||
+                position.target.longitude > MAIN_LON + dLon) {
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
+        [mapView_ animateToCameraPosition:camera];
+    }
+    
+}
+-(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
+    [mapView_ animateToCameraPosition:camera];
 }
 
 @end

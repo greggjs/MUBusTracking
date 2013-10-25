@@ -23,10 +23,12 @@
 #import "ColorService.h"
 
 
-@interface LeftViewController : UIViewController
+@interface LeftViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate, GMSMapViewDelegate>{
+}
 
 @property (nonatomic, strong) UILabel       *label;
 @property (nonatomic, strong) SidebarViewController   *leftSidebarViewController;
+@property (nonatomic, assign) id<GMSMapViewDelegate> mapDelegate;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @property (nonatomic, strong) NSArray* routes;
 @property (nonatomic, strong) NSArray* buses;
