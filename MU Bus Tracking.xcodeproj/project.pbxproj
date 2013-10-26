@@ -67,7 +67,6 @@
 		9D3A99F617F638BF006FA01E /* OpeH1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A99F417F638BF006FA01E /* OpeH1.png */; };
 		9D3A99F917F63F5F006FA01E /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F817F63F5F006FA01E /* LeftViewController.m */; };
 		9D3A99FA17F63F5F006FA01E /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F817F63F5F006FA01E /* LeftViewController.m */; };
-		9D80BBC5181965F900D872E6 /* MU Bus Tracking-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A2D17E6B3020096698D /* MU Bus Tracking-Info.plist */; };
 		9D8917471807125800C3817E /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8917461807125800C3817E /* Route.m */; };
 		9D8917481807125800C3817E /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8917461807125800C3817E /* Route.m */; };
 		9DA50F51180C513400CD0336 /* ColorService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50F50180C513400CD0336 /* ColorService.m */; };
@@ -472,7 +471,7 @@
 		9DCB4A1A17E6B3020096698D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jake Gregg";
 				TargetAttributes = {
 					9DCB4A2117E6B3020096698D = {
@@ -503,7 +502,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D80BBC5181965F900D872E6 /* MU Bus Tracking-Info.plist in Resources */,
 				9DCB4A3017E6B3020096698D /* InfoPlist.strings in Resources */,
 				9DCB4A3817E6B3020096698D /* Default.png in Resources */,
 				9DCB4A3A17E6B3020096698D /* Default@2x.png in Resources */,

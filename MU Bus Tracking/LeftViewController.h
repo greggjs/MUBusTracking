@@ -37,4 +37,6 @@
 @property (nonatomic, strong) NSTimer* busRefresh;
 @property (nonatomic) CLLocationCoordinate2D center;
 @property (nonatomic) float zoom;
+@property (nonatomic, strong) GMSMapView *mapView_;
+
 @end
