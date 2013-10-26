@@ -1,53 +1,49 @@
 //
-//  ViewController.m
-//  MU Bus
+//  MapViewController.m
+//  MU Bus Tracking
 //
-//  Created by Jake Gregg on 9/16/13.
+//  Created by Jake Gregg on 9/27/13.
 //  Copyright (c) 2013 Jake Gregg. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MapViewController.h"
 
-@interface ViewController (Private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate, GMSMapViewDelegate>
+@interface MapViewController (private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate, GMSMapViewDelegate>
 @end
 
-@implementation ViewController {
-    GMSMapView *mapView_;
-}
-
-@synthesize leftSidebarViewController;
-@synthesize rightSidebarView;
-@synthesize leftSelectedIndexPath;
-@synthesize label;
-
+@implementation MapViewController
+    
 - (id)init {
     self = [super init];
     return self;
 }
 
+- (id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom {
+    self = [super init];
+    _routes = route;
+    _center = center;
+    _zoom = zoom;
+    return self;
+}
+
 - (void)loadView
 {
-    
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    mapView_.delegate = self;
-    mapView_.settings.rotateGestures = NO;
-    self.view = mapView_;
-     
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
+    _mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    _mapView_.myLocationEnabled = YES;
+    _mapView_.settings.rotateGestures = NO;
+    _mapView_.delegate = self;
+    self.view = _mapView_;
+    NSLog(@"Load View Called");
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self setNeedsStatusBarAppearanceUpdate];
+    
     self.view.backgroundColor = [UIColor clearColor];
-
-    // Make the route web service call to get the route coordinates
-    RouteService *rs = [[RouteService alloc] init];
-    _routes = [rs getRouteWithName:@"ALL"];
+    
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
     // Add right sidebar
@@ -57,43 +53,10 @@
     
     // for when Mikey can use Xcode 5... iOS 7 bar
     // Color for Miami Red (in HEX: #CC0C2F
-    ColorService *cs = [[ColorService alloc] init];
 
-    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-    if ([[ver objectAtIndex:0] intValue] >= 7) {
-        
-        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = [cs getColorFromHexString:APP_COLOR];
-        self.navigationController.navigationBar.translucent = NO;
-         
-    } else {
-        self.navigationController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
-    }
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    
-    float stroke_width = 10.f;
-    float alpha = 1.f;
-    for (Route *r in _routes) {
-        NSArray *curr = r.shape;
-        GMSPolyline *routeLine = [self createRouteWithPoints:curr];
-        routeLine.map = mapView_;
-        const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
-        UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
-        alpha-= .10f;
-        routeLine.strokeColor = c;
-        routeLine.strokeWidth = stroke_width;
-        //-=0.85f;
-        routeLine.geodesic = YES;
-    }
-
+    NSLog(@"Made leftViewController woot");
     _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
-    
-}
 
--(UIStatusBarStyle)preferredStatusBarStyle{
-    NSLog(@"Changing view controller style...");
-    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewDidUnload
@@ -101,7 +64,6 @@
     [super viewDidUnload];
     
     self.label = nil;
-    self.rightSidebarView = nil;
 }
 
 #pragma mark - private methods
@@ -110,6 +72,7 @@
     // Add the Marker to the map
     CGFloat lat = (CGFloat)[bus.latitude floatValue];
     CGFloat lng = (CGFloat)[bus.longitude floatValue];
+    
     GMSMarker *marker = [[GMSMarker alloc]init];
     marker.position = CLLocationCoordinate2DMake(lat, lng);
     marker.title = bus.busID;
@@ -132,19 +95,6 @@
     return route;
 }
 
--(void)checkBuses {
-    for (Bus *bus in _buses) {
-        bus.marker.map = nil;
-    }
-    BusService *bs = [[BusService alloc]init];
-    _buses = [bs getBusWithRoute:@"ALL"];
-    
-    for(Bus *bus in _buses){
-        [self addBusToMapWithBus:bus onMap:mapView_];
-    }
-    
-}
-
 -(void)plotStopsWithStops:(NSArray*)stops withRoute:(NSString*)route onMap:(GMSMapView*)map{
     Stop *stop;
     for (int i=0; i< [stops count]; i++) {
@@ -157,6 +107,22 @@
     }
 }
 
+-(void)checkBuses {
+    if (![_buses isKindOfClass:[NSNull class] ]) {
+        for (Bus *bus in _buses) {
+            bus.marker.map = nil;
+        }
+    
+        BusService *bs = [[BusService alloc]init];
+        _buses = [bs getBusWithRoute:_routeName];
+    
+        for(Bus *bus in _buses){
+            [self addBusToMapWithBus:bus onMap:_mapView_];
+        }
+    }
+    
+}
+
 #pragma mark Action
 
 - (void)revealLeftSidebar:(id)sender {
@@ -165,14 +131,6 @@
 
 - (void)revealRightSidebar:(id)sender {
     [self.navigationController toggleRevealState:JTRevealedStateRight];
-}
-
-- (void)pushNewViewController:(id)sender {
-    NewViewController *controller = [[NewViewController alloc] init];
-    controller.view.backgroundColor = [UIColor whiteColor];
-    controller.title = @"NewViewController";
-    controller.label.text = @"Pushed NewViewController";
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark JTRevealSidebarDelegate
@@ -198,23 +156,6 @@
     return controller.view;
 }
 
-// This is an examle to configure your sidebar view without a UIViewController
-- (UIView *)viewForRightSidebar {
-    // Use applicationViewFrame to get the correctly calculated view's frame
-    // for use as a reference to our sidebar's view
-    CGRect viewFrame = self.navigationController.applicationViewFrame;
-    UITableView *view = self.rightSidebarView;
-    if ( ! view) {
-        view = self.rightSidebarView = [[UITableView alloc] initWithFrame:CGRectZero];
-        view.dataSource = self;
-        view.delegate   = self;
-    }
-    
-    view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
-    view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
-    return view;
-}
-
 // Optional delegate methods for additional configuration after reveal state changed
 - (void)didChangeRevealedStateForViewController:(UIViewController *)viewController {
     // Example to disable userInteraction on content view while sidebar is revealing
@@ -228,45 +169,7 @@
 @end
 
 
-@implementation ViewController (Private)
-
-#pragma mark UITableViewDatasource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_routes count] + 2;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if ( ! cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor clearColor];
-    return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (tableView == self.rightSidebarView) {
-        return @"Options";
-    }
-    return nil;
-}
-
-#pragma mark UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.navigationController setRevealedState:JTRevealedStateNo];
-    if (tableView == self.rightSidebarView) {
-        self.label.text = [NSString stringWithFormat:@"Selected %d at RightSidebarView", indexPath.row];
-    }
-}
+@implementation MapViewController (Private)
 
 #pragma mark SidebarViewControllerDelegate
 
@@ -274,7 +177,7 @@
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
     
-    LeftViewController *controller = [[LeftViewController alloc] init];
+    MapViewController *controller = [[MapViewController alloc] init];
     controller.routes = _routes;
     controller.buses = _buses;
     controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row==1 ? @"ALL" : (indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)(_routes[indexPath.row-2])).name : @"Settings")));
@@ -282,15 +185,14 @@
     controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row==1 ? MAIN_ZOOM:(indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)_routes[indexPath.row-2]).zoom:MAIN_ZOOM)));
     [_busRefresh invalidate];
     _busRefresh = nil;
+    
     controller.view.backgroundColor = [UIColor clearColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
     controller.leftSelectedIndexPath      = indexPath;
-    NSLog(@"Loaded new controller params");
 
     sidebarViewController.sidebarDelegate = controller;
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-
     if (indexPath.row==0)
         [self showAllRoutesOnMap:controller.mapView_]; // [self showFavorites];
     else if (indexPath.row==1)
@@ -298,13 +200,11 @@
     else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
         [self showBusWithRoute:_routes[indexPath.row-2] onMap:controller.mapView_];
     else
-        [self showAllRoutesOnMap:controller.mapView_];
-     // [self displaySettings]; Probably up higher... make a different type of view...;
+        [self showAllRoutesOnMap:controller.mapView_]; // [self displaySettings]; Probably up higher... make a different type of view...;
 }
 
 -(void)showAllRoutesOnMap:(GMSMapView*)map {
-
-    float alpha = 1.0f;
+    float alpha = 1.f;
     for (Route *r in _routes) {
         NSArray *curr = r.shape;
         GMSPolyline *routeLine = [self createRouteWithPoints:curr];
@@ -332,6 +232,7 @@
     NSArray *stops = [ss getStopsWithRoute:route.name];
     [self plotStopsWithStops:stops withRoute:route.name onMap:map];
     
+    //RouteService *rs = [[RouteService alloc] init];
     NSArray *coords = route.shape;
     GMSPolyline *routeLine = [self createRouteWithPoints:coords];
     routeLine.map = map;
@@ -352,17 +253,19 @@
 
 -(void)mapView:(GMSMapView*)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     float dLat= 0.025f, dLon = 0.025f;
+    NSLog(@"HIT didChangeCamera");
     if (position.zoom < 12.9 || position.target.latitude > MAIN_LAT + dLat
-            || position.target.latitude < MAIN_LAT - dLat || position.target.longitude < MAIN_LON - dLon ||
-                position.target.longitude > MAIN_LON + dLon) {
-        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
-        [mapView_ animateToCameraPosition:camera];
+        || position.target.latitude < MAIN_LAT - dLat || position.target.longitude < MAIN_LON - dLon ||
+        position.target.longitude > MAIN_LON + dLon) {
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
+        [_mapView_ animateToCameraPosition:camera];
     }
     
 }
 -(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:MAIN_LAT longitude:MAIN_LON zoom:MAIN_ZOOM];
-    [mapView_ animateToCameraPosition:camera];
+    NSLog(@"HIT didLongPress");
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
+    [_mapView_ animateToCameraPosition:camera];
 }
 
 @end
