@@ -101,6 +101,8 @@
 		9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */; };
 		9DF89256181C54CA002B7018 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF89255181C54CA002B7018 /* MapViewController.m */; };
 		9DF89257181C54CA002B7018 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF89255181C54CA002B7018 /* MapViewController.m */; };
+		9DF8925A181C650E002B7018 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF89259181C650E002B7018 /* SettingsViewController.m */; };
+		9DF8925B181C650E002B7018 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF89259181C650E002B7018 /* SettingsViewController.m */; };
 		9DF8D3841818820A0041A9B6 /* Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8D3831818820A0041A9B6 /* Params.m */; };
 		9DF8D3851818820A0041A9B6 /* Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF8D3831818820A0041A9B6 /* Params.m */; };
 		9DFEA2261810BD0C0008CF39 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */; };
@@ -199,6 +201,8 @@
 		9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9DF89254181C54CA002B7018 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "MU Bus Tracking/MapViewController.h"; sourceTree = "<group>"; };
 		9DF89255181C54CA002B7018 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "MU Bus Tracking/MapViewController.m"; sourceTree = "<group>"; };
+		9DF89258181C650E002B7018 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = "MU Bus Tracking/SettingsViewController.h"; sourceTree = "<group>"; };
+		9DF89259181C650E002B7018 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = "MU Bus Tracking/SettingsViewController.m"; sourceTree = "<group>"; };
 		9DF8D3821818820A0041A9B6 /* Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.h; sourceTree = "<group>"; };
 		9DF8D3831818820A0041A9B6 /* Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Params.m; sourceTree = "<group>"; };
 		9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
@@ -376,16 +380,18 @@
 		9DF8D379181874640041A9B6 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				9DF89254181C54CA002B7018 /* MapViewController.h */,
-				9DF89255181C54CA002B7018 /* MapViewController.m */,
 				9DCB4A3417E6B3020096698D /* AppDelegate.h */,
 				9DCB4A3517E6B3020096698D /* AppDelegate.m */,
+				9DF89254181C54CA002B7018 /* MapViewController.h */,
+				9DF89255181C54CA002B7018 /* MapViewController.m */,
 				9D31FA6117E76702000D2F36 /* SidebarViewController.h */,
 				9D31FA6217E76702000D2F36 /* SidebarViewController.m */,
-				9D31FA6517E76722000D2F36 /* NewViewController.h */,
-				9D31FA6617E76722000D2F36 /* NewViewController.m */,
+				9DF89258181C650E002B7018 /* SettingsViewController.h */,
+				9DF89259181C650E002B7018 /* SettingsViewController.m */,
 				9DF8D3821818820A0041A9B6 /* Params.h */,
 				9DF8D3831818820A0041A9B6 /* Params.m */,
+				9D31FA6517E76722000D2F36 /* NewViewController.h */,
+				9D31FA6617E76722000D2F36 /* NewViewController.m */,
 			);
 			name = Interface;
 			path = ..;
@@ -585,6 +591,7 @@
 				9DCB4A3217E6B3020096698D /* main.m in Sources */,
 				9D3A99EA17F4DAED006FA01E /* StopService.m in Sources */,
 				9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */,
+				9DF8925A181C650E002B7018 /* SettingsViewController.m in Sources */,
 				9DCB4A6A17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6C17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
 				9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */,
@@ -607,6 +614,7 @@
 				9DCB4A5117E6B3030096698D /* MU_Bus_TrackingTests.m in Sources */,
 				9DCB4A6B17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6D17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
+				9DF8925B181C650E002B7018 /* SettingsViewController.m in Sources */,
 				9D8917481807125800C3817E /* Route.m in Sources */,
 				9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */,
 				9DF89257181C54CA002B7018 /* MapViewController.m in Sources */,

@@ -1,31 +1,21 @@
 //
-//  MapViewController.h
+//  SettingsViewController.h
 //  MU Bus Tracking
 //
-//  Created by Jake Gregg on 9/27/13.
+//  Created by Jake Gregg on 10/26/13.
 //  Copyright (c) 2013 Jake Gregg. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import <CoreLocation/CoreLocation.h>
 #import "UINavigationItem+JTRevealSidebarV2.h"
 #import "UIViewController+JTRevealSidebarV2.h"
 #import "JTRevealSidebarV2Delegate.h"
-#import "BusService.h"
-#import "RouteService.h"
-#import "Bus.h"
-#import "Stop.h"
-#import "StopService.h"
 #import "SidebarViewController.h"
-#import "ColorService.h"
-#import "SettingsViewController.h"
+#import "MapViewController.h"
 
-@interface MapViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate, GMSMapViewDelegate>{
-}
+@interface SettingsViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate>
 
-@property (nonatomic, strong) UILabel       *label;
 @property (nonatomic, strong) SidebarViewController   *leftSidebarViewController;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @property (nonatomic, strong) NSArray* routes;
@@ -37,6 +27,5 @@
 @property (nonatomic) float zoom;
 @property (nonatomic, strong) GMSMapView *mapView_;
 
--(id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom;
--(GMSPolyline*)createRouteWithPoints:(NSArray*) points;
+-(id)initWithRoutes:(NSArray*)routes;
 @end

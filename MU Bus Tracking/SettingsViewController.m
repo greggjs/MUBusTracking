@@ -1,119 +1,96 @@
 //
-//  MapViewController.m
+//  SettingsViewController.m
 //  MU Bus Tracking
 //
-//  Created by Jake Gregg on 9/27/13.
+//  Created by Jake Gregg on 10/26/13.
 //  Copyright (c) 2013 Jake Gregg. All rights reserved.
 //
 
-#import "MapViewController.h"
+#import "SettingsViewController.h"
 
-@interface MapViewController (private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate, GMSMapViewDelegate>
+@interface SettingsViewController () <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate>
+
+
 @end
 
-@implementation MapViewController
-    
-- (id)init {
-    self = [super init];
-    return self;
-}
+@implementation SettingsViewController
 
-- (id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom {
+-(id)initWithRoutes:(NSArray*)routes{
     self = [super init];
-    _routes = route;
-    _center = center;
-    _zoom = zoom;
+    _routes = routes;
     return self;
-}
-
-- (void)loadView
-{
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
-    _mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    _mapView_.myLocationEnabled = YES;
-    _mapView_.settings.rotateGestures = NO;
-    _mapView_.delegate = self;
-    self.view = _mapView_;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+	// Do any additional setup after loading the view.
+    
     self.view.backgroundColor = [UIColor clearColor];
     
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
     self.navigationItem.revealSidebarDelegate = self;
-
-    if (![_routeName isEqualToString:@"ALL"]) {
-        _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
-    }
-    NSLog(@"Size of routes: %i", [_routes count]);
+    
+    // Location Services Switch
+    UIView *locationServices = [[UIView alloc]initWithFrame:CGRectMake(20, 20, 280, 40)];
+    locationServices.backgroundColor = [UIColor whiteColor];
+    locationServices.layer.cornerRadius = 5.f;
+    locationServices.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    locationServices.layer.borderWidth = 0.5f;
+    [self.view addSubview:locationServices];
+    UISwitch *test = [[UISwitch alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
+    label.text = @"Location Services";
+    label.textColor = [UIColor darkTextColor];
+    [locationServices addSubview:label];
+    [locationServices addSubview:test];
+    
+    UIView *favLabelView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 40)];
+    favLabelView.backgroundColor = [UIColor whiteColor];
+    favLabelView.layer.cornerRadius = 5.f;
+    favLabelView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    favLabelView.layer.borderWidth = 0.5f;
+    [self.view addSubview:favLabelView];
+    UILabel *favLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
+    favLabel.text = @"Favorites";
+    favLabel.textColor = [UIColor darkTextColor];
+    CGFloat size = 20.f;
+    [favLabel setFont:[UIFont boldSystemFontOfSize:size]];
+    [favLabelView addSubview:favLabel];
+    
+    UIView *favorites = [[UIView alloc]initWithFrame:CGRectMake(20, 140, 280, 40*[_routes count])];
+    favorites.backgroundColor = [UIColor whiteColor];
+    favorites.layer.cornerRadius = 5.f;
+    [self.view addSubview:favorites];
+    [self generateLabelsOnView:favorites];
 }
 
-- (void)viewDidUnload
+- (void)didReceiveMemoryWarning
 {
-    [super viewDidUnload];
-    
-    self.label = nil;
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - private methods
-
--(void)addBusToMapWithBus:(Bus*)bus onMap:(GMSMapView*)map{
-    // Add the Marker to the map
-    CGFloat lat = (CGFloat)[bus.latitude floatValue];
-    CGFloat lng = (CGFloat)[bus.longitude floatValue];
-    
-    GMSMarker *marker = [[GMSMarker alloc]init];
-    marker.position = CLLocationCoordinate2DMake(lat, lng);
-    marker.title = bus.busID;
-    marker.icon = [UIImage imageNamed:@"bus.png"];
-    bus.marker = marker;
-    marker.map = map;
-}
-
--(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
-    GMSMutablePath *path = [GMSMutablePath path];
-    CLLocationCoordinate2D coordinate;
-    
-    for(int i =0; i < [points count]; i++){
-        [[points objectAtIndex:i] getValue:&coordinate];
-        [path addCoordinate:coordinate];
+-(void)generateLabelsOnView:(UIView*)view {
+    int i = 0;
+    NSLog(@"Size of _routes: %i", [_routes count]);
+    for (Route* route in _routes) {
+        UIView *subView = [[UIView alloc]initWithFrame:CGRectMake(0, i*40, 280, 40)];
+        //subView.layer.cornerRadius = 5.f;
+        subView.backgroundColor = [UIColor whiteColor];
+        subView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        subView.layer.borderWidth = 0.5f;
+        UILabel *favLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
+        favLabel.text = route.name;
+        favLabel.textColor = [UIColor darkTextColor];
+        UISwitch *favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(220, 5, 40, 40)];
+        [subView addSubview:favLabel];
+        [subView addSubview:favSwitch];
+        [view addSubview:subView];
+        i++;
+        NSLog(@"Made entry for %@", route.name);
     }
-    
-    GMSPolyline *route = [GMSPolyline polylineWithPath:path];
-    
-    return route;
-}
-
--(void)plotStopsWithStops:(NSArray*)stops withRoute:(NSString*)route onMap:(GMSMapView*)map{
-    Stop *stop;
-    for (int i=0; i< [stops count]; i++) {
-        GMSMarker *marker = [[GMSMarker alloc]init];
-        stop = [stops objectAtIndex:i];
-        marker.position = stop.location;
-        marker.title = stop.name;
-        marker.icon = [UIImage imageNamed:@"busstop.png"];
-        marker.map = map;
-    }
-}
-
--(void)checkBuses {
-    if (![_buses isKindOfClass:[NSNull class] ]) {
-        for (Bus *bus in _buses) {
-            bus.marker.map = nil;
-        }
-    
-        BusService *bs = [[BusService alloc]init];
-        _buses = [bs getBusWithRoute:_routeName];
-    
-        for(Bus *bus in _buses){
-            [self addBusToMapWithBus:bus onMap:_mapView_];
-        }
-    }
-    
 }
 
 #pragma mark Action
@@ -161,10 +138,6 @@
     }
 }
 
-@end
-
-
-@implementation MapViewController (Private)
 
 #pragma mark SidebarViewControllerDelegate
 
@@ -185,7 +158,7 @@
         controller.title = (NSString *)object;
         controller.leftSidebarViewController  = sidebarViewController;
         controller.leftSelectedIndexPath      = indexPath;
-
+        
         sidebarViewController.sidebarDelegate = controller;
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
@@ -197,7 +170,7 @@
     }
     else
         [self displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
-        //[self showAllRoutesOnMap:controller.mapView_];
+    //[self showAllRoutesOnMap:controller.mapView_];
 }
 
 -(void)showAllRoutesOnMap:(GMSMapView*)map {
@@ -238,8 +211,8 @@
     routeLine.geodesic = YES;
 }
 
--(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject *)object withIndexPath:(NSIndexPath*)indexPath {
-    SettingsViewController *controller = [[SettingsViewController alloc]initWithRoutes:_routes];
+-(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject*)object withIndexPath:(NSIndexPath*)indexPath {
+    SettingsViewController *controller = [[SettingsViewController alloc]init];
     controller.view.backgroundColor = [UIColor whiteColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;
@@ -252,33 +225,53 @@
     [_busRefresh invalidate];
     _busRefresh = nil;
     sidebarViewController.sidebarDelegate = controller;
-
+    
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 }
+
+-(void)addBusToMapWithBus:(Bus*)bus onMap:(GMSMapView*)map{
+    // Add the Marker to the map
+    CGFloat lat = (CGFloat)[bus.latitude floatValue];
+    CGFloat lng = (CGFloat)[bus.longitude floatValue];
+    
+    GMSMarker *marker = [[GMSMarker alloc]init];
+    marker.position = CLLocationCoordinate2DMake(lat, lng);
+    marker.title = bus.busID;
+    marker.icon = [UIImage imageNamed:@"bus.png"];
+    bus.marker = marker;
+    marker.map = map;
+}
+
+-(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
+    GMSMutablePath *path = [GMSMutablePath path];
+    CLLocationCoordinate2D coordinate;
+    
+    for(int i =0; i < [points count]; i++){
+        [[points objectAtIndex:i] getValue:&coordinate];
+        [path addCoordinate:coordinate];
+    }
+    
+    GMSPolyline *route = [GMSPolyline polylineWithPath:path];
+    
+    return route;
+}
+
+-(void)plotStopsWithStops:(NSArray*)stops withRoute:(NSString*)route onMap:(GMSMapView*)map{
+    Stop *stop;
+    for (int i=0; i< [stops count]; i++) {
+        GMSMarker *marker = [[GMSMarker alloc]init];
+        stop = [stops objectAtIndex:i];
+        marker.position = stop.location;
+        marker.title = stop.name;
+        marker.icon = [UIImage imageNamed:@"busstop.png"];
+        marker.map = map;
+    }
+}
+
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
     return self.leftSelectedIndexPath;
 }
 
-# pragma mark GMSMapViewDelegate
-
--(void)mapView:(GMSMapView*)mapView didBeginDraggingMarker:(GMSMarker *)marker {
-    NSLog(@"didBeginDraggingMarker");
-}
-
--(void)mapView:(GMSMapView*)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
-    float dLat= 0.025f, dLon = 0.025f;
-    if (position.zoom < 12.9 || position.target.latitude > MAIN_LAT + dLat
-        || position.target.latitude < MAIN_LAT - dLat || position.target.longitude < MAIN_LON - dLon ||
-        position.target.longitude > MAIN_LON + dLon) {
-        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
-        [_mapView_ animateToCameraPosition:camera];
-    }
-    
-}
--(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
-    [_mapView_ animateToCameraPosition:camera];
-}
 
 @end
