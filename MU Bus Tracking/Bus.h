@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface Bus : NSObject
 
@@ -15,5 +16,6 @@
 @property (nonatomic, strong) NSString *longitude;
 @property (nonatomic, strong) NSString *route;
 @property (nonatomic, strong) NSArray *stops;
+@property (nonatomic, strong) GMSMarker *marker;
 
 @end

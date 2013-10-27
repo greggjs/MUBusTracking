@@ -1,5 +1,5 @@
 //
-//  LeftViewController.h
+//  MapViewController.h
 //  MU Bus Tracking
 //
 //  Created by Jake Gregg on 9/27/13.
@@ -19,16 +19,14 @@
 #import "Stop.h"
 #import "StopService.h"
 #import "SidebarViewController.h"
-#import "LeftViewController.h"
 #import "ColorService.h"
+#import "SettingsViewController.h"
 
-
-@interface LeftViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate, GMSMapViewDelegate>{
+@interface MapViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate, GMSMapViewDelegate>{
 }
 
 @property (nonatomic, strong) UILabel       *label;
 @property (nonatomic, strong) SidebarViewController   *leftSidebarViewController;
-@property (nonatomic, assign) id<GMSMapViewDelegate> mapDelegate;
 @property (nonatomic, strong) NSIndexPath *leftSelectedIndexPath;
 @property (nonatomic, strong) NSArray* routes;
 @property (nonatomic, strong) NSArray* buses;
@@ -37,4 +35,8 @@
 @property (nonatomic, strong) NSTimer* busRefresh;
 @property (nonatomic) CLLocationCoordinate2D center;
 @property (nonatomic) float zoom;
+@property (nonatomic, strong) GMSMapView *mapView_;
+
+-(id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom;
+-(GMSPolyline*)createRouteWithPoints:(NSArray*) points;
 @end

@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
-#import "ViewController.h"
+#import "MapViewController.h"
 
 @implementation AppDelegate
 
@@ -19,16 +18,46 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [GMSServices provideAPIKey:@"AIzaSyDNufTl_3_h50bJ3fbbiGWxLaff_TSy3aU"];
+    
     // Override point for customization after application launch.
-    ViewController *controller = [[ViewController alloc] init];
-    controller.title = @"myMetro";
-
+    RouteService *rs = [[RouteService alloc] init];
+    NSArray *routes = [rs getRouteWithName:@"ALL"];
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON);
+    MapViewController *controller = [[MapViewController alloc]initWithRoutes:routes withCenter:center withZoom:MAIN_ZOOM];
+    controller.routeName = @"ALL";
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
+    ColorService *cs = [[ColorService alloc] init];
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] >= 7) {
+        navController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
+        navController.navigationBar.tintColor = [UIColor whiteColor];
+        navController.navigationBar.barTintColor = [cs getColorFromHexString:APP_COLOR];
+        navController.navigationBar.translucent = NO;
+
+    } else {
+        navController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
+    }
+    navController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.window.rootViewController = navController;
-    
     [self.window makeKeyAndVisible];
-    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    // Make the route web service call to get the route coordinates
+    
+    controller.title = @"myMetro";
+    float stroke_width = 10.f;
+    float alpha = 1.f;
+    for (Route *r in controller.routes) {
+        NSArray *curr = r.shape;
+        GMSPolyline *routeLine = [controller createRouteWithPoints:curr];
+        routeLine.map = controller.mapView_;
+        const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
+        UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
+        alpha-= .10f;
+        routeLine.strokeColor = c;
+        routeLine.strokeWidth = stroke_width;
+        routeLine.geodesic = YES;
+    }
+    NSLog(@"AppDelegate finished params");
+   
     return YES;
 
 }

@@ -60,14 +60,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        //cell.textLabel.font          = [UIFont fontWithName:@"Helvetica-Bold" size:18.0];
-        //cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.textLabel.numberOfLines = 0;
-       // [cell.textLabel setMinimumFontSize:13.0];
-       // [cell.textLabel setAdjustsFontSizeToFitWidth:NO];
     }
     cell.textLabel.textColor = [UIColor darkTextColor];
-    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor whiteColor];
     
     
     if (indexPath.row == 0)
