@@ -19,6 +19,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [GMSServices provideAPIKey:@"AIzaSyDNufTl_3_h50bJ3fbbiGWxLaff_TSy3aU"];
     
+    NSUserDefaults *favorites = [NSUserDefaults standardUserDefaults];
+    
     // Override point for customization after application launch.
     RouteService *rs = [[RouteService alloc] init];
     NSArray *routes = [rs getRouteWithName:@"ALL"];
@@ -42,19 +44,21 @@
     [self.window makeKeyAndVisible];
     // Make the route web service call to get the route coordinates
     
-    controller.title = @"myMetro";
+    controller.title = @"Favorites";
     float stroke_width = 10.f;
     float alpha = 1.f;
     for (Route *r in controller.routes) {
-        NSArray *curr = r.shape;
-        GMSPolyline *routeLine = [controller createRouteWithPoints:curr];
-        routeLine.map = controller.mapView_;
-        const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
-        UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
-        alpha-= .10f;
-        routeLine.strokeColor = c;
-        routeLine.strokeWidth = stroke_width;
-        routeLine.geodesic = YES;
+        if ([[favorites stringForKey:r.name] isEqualToString:r.name]) {
+            NSArray *curr = r.shape;
+            GMSPolyline *routeLine = [controller createRouteWithPoints:curr];
+            routeLine.map = controller.mapView_;
+            const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
+            UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
+            alpha-= .10f;
+            routeLine.strokeColor = c;
+            routeLine.strokeWidth = stroke_width;
+            routeLine.geodesic = YES;
+        }
     }
     NSLog(@"AppDelegate finished params");
    
