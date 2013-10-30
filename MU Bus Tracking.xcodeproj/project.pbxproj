@@ -12,6 +12,8 @@
 		158661B017F4D2750083BB68 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 158661AF17F4D2750083BB68 /* Bus.m */; };
 		158661B417F4D2A90083BB68 /* BusService.m in Sources */ = {isa = PBXBuildFile; fileRef = 158661B317F4D2A90083BB68 /* BusService.m */; };
 		158661B717F4D2DC0083BB68 /* RouteService.m in Sources */ = {isa = PBXBuildFile; fileRef = 158661B617F4D2DC0083BB68 /* RouteService.m */; };
+		15B523D61821A0CA005CCB61 /* FavSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B523D51821A0CA005CCB61 /* FavSwitch.m */; };
+		15B523D71821A0CA005CCB61 /* FavSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B523D51821A0CA005CCB61 /* FavSwitch.m */; };
 		15E0D94C1818871A00BD8F4C /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E0D94B1818871A00BD8F4C /* GoogleMaps.framework */; };
 		9D2CB54217F47B1B005B4063 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB52F17F47B1B005B4063 /* appicon.png */; };
 		9D2CB54317F47B1B005B4063 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB52F17F47B1B005B4063 /* appicon.png */; };
@@ -129,6 +131,8 @@
 		158661B317F4D2A90083BB68 /* BusService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusService.m; sourceTree = "<group>"; };
 		158661B517F4D2DC0083BB68 /* RouteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteService.h; sourceTree = "<group>"; };
 		158661B617F4D2DC0083BB68 /* RouteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteService.m; sourceTree = "<group>"; };
+		15B523D41821A0CA005CCB61 /* FavSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavSwitch.h; sourceTree = "<group>"; };
+		15B523D51821A0CA005CCB61 /* FavSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavSwitch.m; sourceTree = "<group>"; };
 		15E0D94B1818871A00BD8F4C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../Downloads/GoogleMaps-iOS-1.5.0/GoogleMaps.framework"; sourceTree = "<group>"; };
 		9D2CB52F17F47B1B005B4063 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		9D2CB53017F47B1B005B4063 /* bus_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_blue.png; sourceTree = "<group>"; };
@@ -395,6 +399,8 @@
 				9DF8D3831818820A0041A9B6 /* Params.m */,
 				9D31FA6517E76722000D2F36 /* NewViewController.h */,
 				9D31FA6617E76722000D2F36 /* NewViewController.m */,
+				15B523D41821A0CA005CCB61 /* FavSwitch.h */,
+				15B523D51821A0CA005CCB61 /* FavSwitch.m */,
 			);
 			name = Interface;
 			path = ..;
@@ -596,6 +602,7 @@
 				9D3A99EA17F4DAED006FA01E /* StopService.m in Sources */,
 				9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */,
 				9DF8925A181C650E002B7018 /* SettingsViewController.m in Sources */,
+				15B523D61821A0CA005CCB61 /* FavSwitch.m in Sources */,
 				9DCB4A6A17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6C17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
 				9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */,
@@ -622,6 +629,7 @@
 				9D8917481807125800C3817E /* Route.m in Sources */,
 				9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */,
 				9DF89257181C54CA002B7018 /* MapViewController.m in Sources */,
+				15B523D71821A0CA005CCB61 /* FavSwitch.m in Sources */,
 				9D31FA6817E76722000D2F36 /* NewViewController.m in Sources */,
 				9D3A99EB17F4DAED006FA01E /* StopService.m in Sources */,
 				9DA50F52180C513400CD0336 /* ColorService.m in Sources */,

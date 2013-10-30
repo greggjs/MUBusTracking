@@ -38,7 +38,7 @@
     locationServices.layer.cornerRadius = 5.f;
     locationServices.layer.borderColor = [UIColor lightGrayColor].CGColor;
     locationServices.layer.borderWidth = 0.5f;
-    [self.view addSubview:locationServices];
+    
     UISwitch *test = [[UISwitch alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
     label.text = @"Location Services";
@@ -51,7 +51,7 @@
     favLabelView.layer.cornerRadius = 5.f;
     favLabelView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     favLabelView.layer.borderWidth = 0.5f;
-    [self.view addSubview:favLabelView];
+    
     UILabel *favLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
     favLabel.text = @"Favorites";
     favLabel.textColor = [UIColor darkTextColor];
@@ -62,7 +62,12 @@
     UIView *favorites = [[UIView alloc]initWithFrame:CGRectMake(20, 140, 280, 40*[_routes count])];
     favorites.backgroundColor = [UIColor whiteColor];
     favorites.layer.cornerRadius = 5.f;
-    [self.view addSubview:favorites];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:scrollView];
+    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height*3)];
+    [scrollView addSubview:locationServices];
+    [scrollView addSubview:favLabelView];
+    [scrollView addSubview:favorites];
     [self generateLabelsOnView:favorites];
 }
 
@@ -84,13 +89,45 @@
         UILabel *favLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
         favLabel.text = route.name;
         favLabel.textColor = [UIColor darkTextColor];
-        UISwitch *favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(220, 5, 40, 40)];
+        FavSwitch *favSwitch = [[FavSwitch alloc] initWithFrame:CGRectMake(220, 5, 40, 40) withRoute:route.name];
+        //On first pass initialize all routes to favorites
+        if([[NSUserDefaults standardUserDefaults] objectForKey:route.name] == nil){
+            [favSwitch setOn:YES];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:route.name];
+        } else { //user default has bee assigned
+            BOOL state = [[NSUserDefaults standardUserDefaults] boolForKey:route.name];
+            [favSwitch setOn:state];
+        }
+        [favSwitch addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
+        UIImage *image = [self imageWithColor:route.color andWidth:5 andHeight:30];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 5, 30)];
+        imageView.image = image;
+        [subView addSubview:imageView];
         [subView addSubview:favLabel];
         [subView addSubview:favSwitch];
         [view addSubview:subView];
         i++;
         NSLog(@"Made entry for %@", route.name);
     }
+}
+#pragma mark - private methods
+- (UIImage *)imageWithColor:(UIColor *)color andWidth:(float)width andHeight:(float)height {
+    CGRect rect = CGRectMake(0.0f, 0.0f, width, height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+-(void) setState:(FavSwitch*)sender{
+    BOOL state = [sender isOn] ? YES : NO;
+    [[NSUserDefaults standardUserDefaults] setBool:state forKey:sender.route];
 }
 
 #pragma mark Action
@@ -162,7 +199,7 @@
         sidebarViewController.sidebarDelegate = controller;
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
-            [self showAllRoutesOnMap:controller.mapView_]; // [self showFavorites];
+            [self showFavorites:controller.mapView_]; // [self showFavorites];
         else if (indexPath.row==1)
             [self showAllRoutesOnMap:controller.mapView_];
         else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
@@ -172,6 +209,25 @@
         [self displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
     //[self showAllRoutesOnMap:controller.mapView_];
 }
+
+-(void)showFavorites:(GMSMapView*)map {
+    float alpha = 1.f;
+    for (Route *r in _routes) {
+        BOOL isFav = [[NSUserDefaults standardUserDefaults] boolForKey:r.name];
+        if(isFav){
+            NSArray *curr = r.shape;
+            GMSPolyline *routeLine = [self createRouteWithPoints:curr];
+            routeLine.map = map;
+            const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
+            UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
+            alpha-= .10f;
+            routeLine.strokeColor = c;
+            routeLine.strokeWidth = 10.f;
+            routeLine.geodesic = YES;
+        }
+    }
+}
+
 
 -(void)showAllRoutesOnMap:(GMSMapView*)map {
     float alpha = 1.f;
@@ -212,7 +268,7 @@
 }
 
 -(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject*)object withIndexPath:(NSIndexPath*)indexPath {
-    SettingsViewController *controller = [[SettingsViewController alloc]init];
+    SettingsViewController *controller = [[SettingsViewController alloc]initWithRoutes:_routes];
     controller.view.backgroundColor = [UIColor whiteColor];
     controller.title = (NSString *)object;
     controller.leftSidebarViewController  = sidebarViewController;

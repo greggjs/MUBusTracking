@@ -19,8 +19,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [GMSServices provideAPIKey:@"AIzaSyDNufTl_3_h50bJ3fbbiGWxLaff_TSy3aU"];
     
-    NSUserDefaults *favorites = [NSUserDefaults standardUserDefaults];
-    
     // Override point for customization after application launch.
     RouteService *rs = [[RouteService alloc] init];
     NSArray *routes = [rs getRouteWithName:@"ALL"];
@@ -48,7 +46,10 @@
     float stroke_width = 10.f;
     float alpha = 1.f;
     for (Route *r in controller.routes) {
-        if ([[favorites stringForKey:r.name] isEqualToString:r.name]) {
+        if([[NSUserDefaults standardUserDefaults] objectForKey:r.name] == nil){
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:r.name];
+        }
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:r.name]) {
             NSArray *curr = r.shape;
             GMSPolyline *routeLine = [controller createRouteWithPoints:curr];
             routeLine.map = controller.mapView_;

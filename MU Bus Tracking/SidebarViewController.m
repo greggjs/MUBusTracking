@@ -89,7 +89,7 @@
         //GetSize for image creation
         CGSize headerSize = [self getCellSizesWithText:headerString andFont:Header];
         CGSize subHeadingSize = [self getCellSizesWithText:route.longname andFont:subHeading];
-        CGSize cellSize = CGSizeMake(headerSize.height + subHeadingSize.height, 5);
+        CGSize cellSize = CGSizeMake(5, headerSize.height + subHeadingSize.height);
 
         UIImage *image = [self imageWithColor:route.color andSize:cellSize];
         cell.imageView.image = image;
@@ -122,7 +122,7 @@
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size {
-    CGRect rect = CGRectMake(0.0f, 0.0f, size.height, size.width);
+    CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     

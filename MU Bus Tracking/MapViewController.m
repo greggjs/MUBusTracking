@@ -189,7 +189,7 @@
         sidebarViewController.sidebarDelegate = controller;
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
-            [self showAllRoutesOnMap:controller.mapView_]; // [self showFavorites];
+            [self showFavorites:controller.mapView_];
         else if (indexPath.row==1)
             [self showAllRoutesOnMap:controller.mapView_];
         else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
@@ -198,6 +198,24 @@
     else
         [self displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
         //[self showAllRoutesOnMap:controller.mapView_];
+}
+
+-(void)showFavorites:(GMSMapView*)map {
+    float alpha = 1.f;
+    for (Route *r in _routes) {
+        BOOL isFav = [[NSUserDefaults standardUserDefaults] boolForKey:r.name];
+        if(isFav){
+            NSArray *curr = r.shape;
+            GMSPolyline *routeLine = [self createRouteWithPoints:curr];
+            routeLine.map = map;
+            const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
+            UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
+            alpha-= .10f;
+            routeLine.strokeColor = c;
+            routeLine.strokeWidth = 10.f;
+            routeLine.geodesic = YES;
+        }
+    }
 }
 
 -(void)showAllRoutesOnMap:(GMSMapView*)map {
