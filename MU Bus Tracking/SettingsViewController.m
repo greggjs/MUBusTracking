@@ -40,11 +40,20 @@
     locationServices.layer.borderWidth = 0.5f;
     UISwitch *locationSwitch;
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         locationSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
     }else {
         locationSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(190, 7, 40, 40)];
     }
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"location"]) {
+        [locationSwitch setOn:YES];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"location"];
+    } else { //user default has bee assigned
+        BOOL state = [[NSUserDefaults standardUserDefaults] boolForKey:@"location"];
+        [locationSwitch setOn:state];
+    }
+    [locationSwitch addTarget:self action:@selector(changeLocationSettings:) forControlEvents:UIControlEventValueChanged];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
     label.text = @"Location Services";
     label.textColor = [UIColor darkTextColor];
@@ -139,6 +148,11 @@
 -(void) setState:(FavSwitch*)sender{
     BOOL state = [sender isOn] ? YES : NO;
     [[NSUserDefaults standardUserDefaults] setBool:state forKey:sender.route];
+}
+
+-(void) changeLocationSettings:(UISwitch*)sender {
+    BOOL state = [sender isOn] ? YES : NO;
+    [[NSUserDefaults standardUserDefaults] setBool:state forKey:@"location"];
 }
 
 #pragma mark Action

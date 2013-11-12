@@ -30,7 +30,11 @@
 {
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
     _mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    _mapView_.myLocationEnabled = YES;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"location"]) {
+        _mapView_.myLocationEnabled = YES;
+    } else {
+        _mapView_.myLocationEnabled = NO;
+    }
     _mapView_.settings.rotateGestures = NO;
     _mapView_.delegate = self;
     _mapView_.accessibilityElementsHidden = NO;
