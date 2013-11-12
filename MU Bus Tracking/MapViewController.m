@@ -33,6 +33,7 @@
     _mapView_.myLocationEnabled = YES;
     _mapView_.settings.rotateGestures = NO;
     _mapView_.delegate = self;
+    _mapView_.accessibilityElementsHidden = NO;
     self.view = _mapView_;
 }
 
