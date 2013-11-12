@@ -38,13 +38,18 @@
     locationServices.layer.cornerRadius = 5.f;
     locationServices.layer.borderColor = [UIColor lightGrayColor].CGColor;
     locationServices.layer.borderWidth = 0.5f;
-    
-    UISwitch *test = [[UISwitch alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
+    UISwitch *locationSwitch;
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] >= 7) {
+        locationSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
+    }else {
+        locationSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(190, 7, 40, 40)];
+    }
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
     label.text = @"Location Services";
     label.textColor = [UIColor darkTextColor];
     [locationServices addSubview:label];
-    [locationServices addSubview:test];
+    [locationServices addSubview:locationSwitch];
     
     UIView *favLabelView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 40)];
     favLabelView.backgroundColor = [UIColor whiteColor];
@@ -89,7 +94,13 @@
         UILabel *favLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
         favLabel.text = route.name;
         favLabel.textColor = [UIColor darkTextColor];
-        FavSwitch *favSwitch = [[FavSwitch alloc] initWithFrame:CGRectMake(220, 5, 40, 40) withRoute:route.name];
+        FavSwitch *favSwitch;
+        NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+        if ([[ver objectAtIndex:0] intValue] >= 7) {
+            favSwitch= [[FavSwitch alloc] initWithFrame:CGRectMake(220, 5, 40, 40) withRoute:route.name];
+        } else {
+            favSwitch= [[FavSwitch alloc] initWithFrame:CGRectMake(190, 7, 40, 40) withRoute:route.name];
+        }
         //On first pass initialize all routes to favorites
         if([[NSUserDefaults standardUserDefaults] objectForKey:route.name] == nil){
             [favSwitch setOn:YES];
