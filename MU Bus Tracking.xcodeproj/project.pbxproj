@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152F9143183AFCE00014055F /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152F9142183AFCE00014055F /* GoogleMaps.framework */; };
+		152F9145183B0F880014055F /* busStripped.png in Resources */ = {isa = PBXBuildFile; fileRef = 152F9144183B0F870014055F /* busStripped.png */; };
 		1578DC5B17FDE79F006BE126 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1578DC5A17FDE79F006BE126 /* Icon.png */; };
 		1578DC5D17FDE7E0006BE126 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1578DC5C17FDE7E0006BE126 /* Icon@2x.png */; };
 		158661B017F4D2750083BB68 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 158661AF17F4D2750083BB68 /* Bus.m */; };
@@ -14,7 +16,6 @@
 		158661B717F4D2DC0083BB68 /* RouteService.m in Sources */ = {isa = PBXBuildFile; fileRef = 158661B617F4D2DC0083BB68 /* RouteService.m */; };
 		15B523D61821A0CA005CCB61 /* FavSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B523D51821A0CA005CCB61 /* FavSwitch.m */; };
 		15B523D71821A0CA005CCB61 /* FavSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B523D51821A0CA005CCB61 /* FavSwitch.m */; };
-		15E0D94C1818871A00BD8F4C /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E0D94B1818871A00BD8F4C /* GoogleMaps.framework */; };
 		9D2CB54217F47B1B005B4063 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB52F17F47B1B005B4063 /* appicon.png */; };
 		9D2CB54317F47B1B005B4063 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB52F17F47B1B005B4063 /* appicon.png */; };
 		9D2CB54417F47B1B005B4063 /* bus_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53017F47B1B005B4063 /* bus_blue.png */; };
@@ -123,6 +124,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		152F9142183AFCE00014055F /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		152F9144183B0F870014055F /* busStripped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = busStripped.png; sourceTree = "<group>"; };
 		1578DC5A17FDE79F006BE126 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1578DC5C17FDE7E0006BE126 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		158661AE17F4D2750083BB68 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
@@ -133,7 +136,6 @@
 		158661B617F4D2DC0083BB68 /* RouteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteService.m; sourceTree = "<group>"; };
 		15B523D41821A0CA005CCB61 /* FavSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavSwitch.h; sourceTree = "<group>"; };
 		15B523D51821A0CA005CCB61 /* FavSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavSwitch.m; sourceTree = "<group>"; };
-		15E0D94B1818871A00BD8F4C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../Downloads/GoogleMaps-iOS-1.5.0/GoogleMaps.framework"; sourceTree = "<group>"; };
 		9D2CB52F17F47B1B005B4063 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		9D2CB53017F47B1B005B4063 /* bus_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_blue.png; sourceTree = "<group>"; };
 		9D2CB53117F47B1B005B4063 /* bus_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bus_green.png; sourceTree = "<group>"; };
@@ -233,7 +235,7 @@
 				9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */,
 				9DCB4A2617E6B3020096698D /* UIKit.framework in Frameworks */,
 				9DCB4A2817E6B3020096698D /* Foundation.framework in Frameworks */,
-				15E0D94C1818871A00BD8F4C /* GoogleMaps.framework in Frameworks */,
+				152F9143183AFCE00014055F /* GoogleMaps.framework in Frameworks */,
 				9DCB4A2A17E6B3020096698D /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,7 +306,7 @@
 		9DCB4A2417E6B3020096698D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				15E0D94B1818871A00BD8F4C /* GoogleMaps.framework */,
+				152F9142183AFCE00014055F /* GoogleMaps.framework */,
 				9DFEA2251810BD0C0008CF39 /* GoogleMaps.bundle */,
 				9DCB4A7417E6BBB90096698D /* AVFoundation.framework */,
 				9DCB4A7517E6BBB90096698D /* CoreData.framework */,
@@ -409,6 +411,7 @@
 		9DF8D37A181874910041A9B6 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				152F9144183B0F870014055F /* busStripped.png */,
 				9D3A99F417F638BF006FA01E /* OpeH1.png */,
 				9D2CB52F17F47B1B005B4063 /* appicon.png */,
 				9D2CB53017F47B1B005B4063 /* bus_blue.png */,
@@ -526,6 +529,7 @@
 				9D2CB54C17F47B1B005B4063 /* bus_purple2.png in Resources */,
 				9D2CB54E17F47B1B005B4063 /* bus_red.png in Resources */,
 				9D2CB55017F47B1B005B4063 /* bus_yellow.png in Resources */,
+				152F9145183B0F880014055F /* busStripped.png in Resources */,
 				9D2CB55217F47B1B005B4063 /* bus.png in Resources */,
 				9D2CB55417F47B1B005B4063 /* busstop.png in Resources */,
 				9D2CB55617F47B1B005B4063 /* image-iphone.png in Resources */,
@@ -737,6 +741,7 @@
 					"/Users/smartkid1965/Downloads/GoogleMaps-iOS-1.5.0",
 					"/Users/smartkid1965/Documents/DOC/FALL\\ 2013/CAPSTONE/MUBusTracking",
 					"/Users/petemk/Downloads/GoogleMaps-iOS-1.5.0",
+					/Users/petemk/MUBusTracking,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
@@ -758,6 +763,7 @@
 					"/Users/smartkid1965/Downloads/GoogleMaps-iOS-1.5.0",
 					"/Users/smartkid1965/Documents/DOC/FALL\\ 2013/CAPSTONE/MUBusTracking",
 					"/Users/petemk/Downloads/GoogleMaps-iOS-1.5.0",
+					/Users/petemk/MUBusTracking,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MU Bus Tracking/MU Bus Tracking-Prefix.pch";
