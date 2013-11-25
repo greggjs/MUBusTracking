@@ -5,7 +5,6 @@
 //  Created by Jake Gregg on 9/27/13.
 //  Copyright (c) 2013 Jake Gregg. All rights reserved.
 //
-#define ROUND_UP(N, S) ((((N) + (S) - 1) / (S)) * (S))
 #import "MapViewController.h"
 
 @interface MapViewController (private) <UITableViewDataSource, UITableViewDelegate, SidebarViewControllerDelegate, GMSMapViewDelegate>
@@ -66,160 +65,37 @@
 
 #pragma mark - private methods
 
-- (UIImage *)overlayImage:(NSString *)name withColor:(UIColor *)color
+- (UIImage *)createColoredCircle:(UIColor *)routeColor withSize:(double) size
 {
-    UIImage *image = [UIImage imageNamed: name];
-    //  Create rect to fit the PNG image
-    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-    
-    //  Start drawing
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    
-    //  Fill the rect by the final color
-    [color setFill];
-    CGContextFillRect(context, rect);
-    
-    //  Make the final shape by masking the drawn color with the images alpha values
-    CGContextSetBlendMode(context, kCGBlendModeDestinationIn);
-    [image drawInRect: rect blendMode:kCGBlendModeDestinationIn alpha:1];
-    
-    //  Create new image from the context
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    
-    //  Release context
-    UIGraphicsEndImageContext();
-    
-    return img;
-}
-
-- (UIImage *)tintedImageWithColor:(NSString *) name :(UIColor *)tintColor
-{
-    UIImage *originalImage = [UIImage imageNamed: name];
-    UIImage *imageForRendering = [originalImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:imageForRendering];
-    // It's important to pass in 0.0f to this function to draw the image to the scale of the screen
-    UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, NO, 0.0f);
-    [tintColor setFill];
-    CGRect bounds = CGRectMake(0, 0, imageView.bounds.size.width, imageView.bounds.size.height);
-    UIRectFill(bounds);
-    [imageView.image drawInRect:bounds blendMode:kCGBlendModeDestinationIn alpha:1.0];
-    
-    UIImage *tintedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return tintedImage;
-}
-
--(UIImage *) createColoredImage:(NSString *) name {
-    UIImage *originalImage = [UIImage imageNamed: name];
-    UIImage *imageForRendering = [originalImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:imageForRendering];
-    //imageView.image = imageForRendering;
-    imageView.tintColor = [UIColor redColor];
-    UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, NO, 0.0);
-    [imageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *coloredImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return coloredImage;
-}
-
--(UIImage*) createColoredBusImage{
-    
-    CGImageRef originalImage = [[UIImage imageNamed:@"busStripped.png"] CGImage];
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef bitmapContext = CGBitmapContextCreate(NULL,
-                                                       CGImageGetWidth(originalImage),
-                                                       CGImageGetHeight(originalImage),
-                                                       8,
-                                                       CGImageGetWidth(originalImage)*4,
-                                                       colorSpace,
-                                                       kCGImageAlphaPremultipliedLast);
-    
-    CGContextDrawImage(bitmapContext, CGRectMake(0, 0, CGBitmapContextGetWidth(bitmapContext), CGBitmapContextGetHeight(bitmapContext)), originalImage);
-    CGImageRef mask = [self createMaskWithImageAlpha:bitmapContext];
-    
-    UIImage *image = [UIImage imageNamed:@"busStripped.png"];
-    //CGImageRef mask = [self createBusImageMask:image];
-    CGRect imageFrame = CGRectMake(0,0,image.size.width,image.size.height);
-    
-    //CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextClipToMask(bitmapContext, imageFrame, mask);
-    
-    // draw the image
-    CGContextDrawImage(bitmapContext, imageFrame, mask);
-    
-    // set the blend mode and draw rectangle on top of image
-    CGContextSetBlendMode(bitmapContext, kCGBlendModeColor);
-    CGContextClipToMask(bitmapContext, imageFrame, mask); // respect alpha mask
-    CGContextSetRGBFillColor(bitmapContext, 0.0, 0.0, 0.0, 1.0);
-    CGContextFillRect(bitmapContext, imageFrame);
-    
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    //CGContextRelease(context);
-    CGContextRelease(bitmapContext);
-    CGImageRelease(mask);
-    
-    return image;
-    
-}
-
-- (UIImage*) maskImage:(UIImage *)image withMask:(UIImage *)maskImage {
-    
-    CGImageRef maskRef = maskImage.CGImage;
-    
-    CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
-                                        CGImageGetHeight(maskRef),
-                                        CGImageGetBitsPerComponent(maskRef),
-                                        CGImageGetBitsPerPixel(maskRef),
-                                        CGImageGetBytesPerRow(maskRef),
-                                        CGImageGetDataProvider(maskRef), NULL, false);
-    
-    CGImageRef masked = CGImageCreateWithMask([image CGImage], mask);
-    return [UIImage imageWithCGImage:masked];
-    
-}
-
-- (UIImage *)combineImage:(NSString *)name withBackgroundColor:(UIColor *)bgColor
-{
-    //UIImage *image = [UIImage imageNamed: name];
-    //  Create rect to fit the PNG image
-    CGRect rect = CGRectMake(0, 0, 20, 20);
+    //  Create rect to fit the image
+    CGRect rect = CGRectMake(0, 0, size, size);
+    //  Make the Borders from the rectangle
     CGRect borderRectBlackOut = CGRectInset(rect, 1, 1);
     CGRect borderRectWhite = CGRectInset(rect, 3, 3);
-    CGRect borderRectBlack = CGRectInset(borderRectWhite, 2, 2);
+    CGRect borderRectBlackInner = CGRectInset(borderRectWhite, 2, 2);
     
     //  Create bitmap contect
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
-    // Draw background first
-    
-    //  Set background color (will be under the PNG)
-    //[bgColor setFill];
-    
-    //CGRect bufferedRect = CGRectMake(2, 2, 25, 30);
-    //  Fill all context with background image
-    //CGContextFillRect(context, rect);
-    
-    //  Draw the PNG over the background
-    //[image drawInRect:rect];
+    //  Fill all context with route color
     CGContextSetLineWidth(context, 2.0);
-    CGContextSetFillColorWithColor(context, bgColor.CGColor);
-    CGRect circlePoint = (CGRectMake(0, 0, 20.0, 20.0));
-    
+    CGContextSetFillColorWithColor(context, routeColor.CGColor);
+    CGRect circlePoint = (CGRectMake(0, 0, size, size));
     CGContextFillEllipseInRect(context, circlePoint);
     
+    //  Stroke white line
     CGContextSetLineWidth(context, 2.0);
     CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
     CGContextStrokeEllipseInRect(context, borderRectWhite);
     
+    //  Stroke inner black line
     CGContextSetLineWidth(context, 1.0);
     CGContextSetStrokeColorWithColor(context, [[UIColor blackColor] CGColor]);
-    CGContextStrokeEllipseInRect(context, borderRectBlack);
+    CGContextStrokeEllipseInRect(context, borderRectBlackInner);
     
+    //  Stroke outer black line
     CGContextSetLineWidth(context, 1.0);
     CGContextSetStrokeColorWithColor(context, [[UIColor blackColor] CGColor]);
     CGContextStrokeEllipseInRect(context, borderRectBlackOut);
@@ -230,114 +106,7 @@
     //  Release context
     UIGraphicsEndImageContext();
     
-    UIImageView *view = [[UIImageView alloc] initWithFrame:rect];
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = view.bounds;
-    //gradient.colors = [NSArray arrayWithObjects:(id)bgColor.CGColor, (id)[[UIColor grayColor] CGColor] ,(id)[[UIColor whiteColor] CGColor], nil];
-    //gradient.locations = [NSArray arrayWithObjects:[[NSNumber alloc] initWithDouble: 0.60], [[NSNumber alloc] initWithDouble: 0.20], [[NSNumber alloc] initWithDouble: .20], nil];
-    [view.layer insertSublayer:gradient atIndex:0];
-    
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0.0);
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *retImg = UIGraphicsGetImageFromCurrentImageContext();
-    
-    
-    UIGraphicsEndImageContext();
-    
-    return [self maskImage:img withMask:retImg];
-}
-
-- (CGImageRef) createMaskWithImageAlpha: (CGContextRef) originalImageContext {
-    
-    UInt8 *data = (UInt8 *)CGBitmapContextGetData(originalImageContext);
-    
-    float width = CGBitmapContextGetBytesPerRow(originalImageContext) / 4;
-    float height = CGBitmapContextGetHeight(originalImageContext);
-    
-    // Make a bitmap context that's only 1 alpha channel
-    // WARNING: the bytes per row probably needs to be a multiple of 4
-    int strideLength = ROUND_UP(width * 1, 4);
-    unsigned char * alphaData = (unsigned char * )calloc(strideLength * height, 1);
-    CGContextRef alphaOnlyContext = CGBitmapContextCreate(alphaData,
-                                                          width,
-                                                          height,
-                                                          8,
-                                                          strideLength,
-                                                          NULL,
-                                                          kCGImageAlphaOnly);
-    
-    // Draw the RGBA image into the alpha-only context.
-    //CGContextDrawImage(alphaOnlyContext, CGRectMake(0, 0, width, height), originalMaskImage);
-    
-    // Walk the pixels and invert the alpha value. This lets you colorize the opaque shapes in the original image.
-    // If you want to do a traditional mask (where the opaque values block) just get rid of these loops.
-    
-    
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            //unsigned char val = alphaData[y*strideLength + x];
-            unsigned char val = data[y*(int)width*4 + x*4 + 3];
-            val = 255 - val;
-            alphaData[y*strideLength + x] = val;
-        }
-    }
-    
-    
-    CGImageRef alphaMaskImage = CGBitmapContextCreateImage(alphaOnlyContext);
-    CGContextRelease(alphaOnlyContext);
-    free(alphaData);
-    
-    // Make a mask
-    CGImageRef finalMaskImage = CGImageMaskCreate(CGImageGetWidth(alphaMaskImage),
-                                                  CGImageGetHeight(alphaMaskImage),
-                                                  CGImageGetBitsPerComponent(alphaMaskImage),
-                                                  CGImageGetBitsPerPixel(alphaMaskImage),
-                                                  CGImageGetBytesPerRow(alphaMaskImage),
-                                                  CGImageGetDataProvider(alphaMaskImage),     NULL, false);
-    CGImageRelease(alphaMaskImage);
-    
-    return finalMaskImage;
-}
-
--(CGImageRef) createBusImageMask:(UIImage*) image {
-    
-    CGImageRef originalMaskImage = [image CGImage];
-    float width = CGImageGetWidth(originalMaskImage);
-    float height = CGImageGetHeight(originalMaskImage);
-    
-    int strideLength = ROUND_UP(width * 1, 4);
-    unsigned char * alphaData = calloc(strideLength * height, sizeof(unsigned char));
-    CGContextRef alphaOnlyContext = CGBitmapContextCreate(alphaData,
-                                                          width,
-                                                          height,
-                                                          8,
-                                                          strideLength,
-                                                          NULL,
-                                                          kCGImageAlphaOnly);
-    
-   
-    CGContextDrawImage(alphaOnlyContext, CGRectMake(0, 0, width, height), originalMaskImage);
-    
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            unsigned char val = alphaData[y*strideLength + x];
-            val = 255 - val;
-            alphaData[y*strideLength + x] = val;
-        }
-    }
-    
-    CGImageRef alphaMaskImage = CGBitmapContextCreateImage(alphaOnlyContext);
-    CGContextRelease(alphaOnlyContext);
-    free(alphaData);
-
-    
-    CGImageRef finalMaskImage = CGImageMaskCreate(CGImageGetWidth(alphaMaskImage),
-                                                  CGImageGetHeight(alphaMaskImage),
-                                                  CGImageGetBitsPerComponent(alphaMaskImage),
-                                                  CGImageGetBitsPerPixel(alphaMaskImage),
-                                                  CGImageGetBytesPerRow(alphaMaskImage),
-                                                  CGImageGetDataProvider(alphaMaskImage), NULL, false);
-    return finalMaskImage;
+    return img;
 }
 
 -(void)addBusToMapWithBus:(Bus*)bus onMap:(GMSMapView*)map{
@@ -349,8 +118,6 @@
     marker.position = CLLocationCoordinate2DMake(lat, lng);
     marker.title = bus.busID;
     marker.icon = [UIImage imageNamed:@"bus.png"];
-    //marker.icon = [self createColoredBusImage];
-    bus.marker = [self createColoredImage:@"busStripped.png"];
     marker.map = map;
 }
 
@@ -375,11 +142,7 @@
         stop = [stops objectAtIndex:i];
         marker.position = stop.location;
         marker.title = stop.name;
-        //marker.icon = [UIImage imageNamed:@"busstop.png"];
-        //marker.icon = [UIImage imageNamed:@"busStripped.png"];
-        //marker.icon = [self createColoredImage:@"busStripped.png"];
-        ColorService *cs = [[ColorService alloc]init];
-        marker.icon = [self combineImage:@"busStripped.png" withBackgroundColor:route.color];
+        marker.icon = [self createColoredCircle: route.color withSize:22.0];
         marker.map = map;
     }
 }
