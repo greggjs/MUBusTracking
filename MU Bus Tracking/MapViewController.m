@@ -11,7 +11,7 @@
 @end
 
 @implementation MapViewController
-    
+
 - (id)init {
     self = [super init];
     return self;
@@ -172,6 +172,61 @@
     
 }
 
+-(void)showFavorites:(GMSMapView*)map {
+    float alpha = 1.f;
+    StopService *ss = [[StopService alloc] init];
+    for (Route *r in _routes) {
+        BOOL isFav = [[NSUserDefaults standardUserDefaults] boolForKey:r.name];
+        if(isFav){
+            NSArray *curr = r.shape;
+            GMSPolyline *routeLine = [self createRouteWithPoints:curr];
+            routeLine.map = map;
+            const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
+            UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
+            alpha-= .10f;
+            routeLine.strokeColor = c;
+            routeLine.strokeWidth = 10.f;
+            routeLine.geodesic = YES;
+            
+            NSArray *stops = [ss getStopsWithRoute:r.name];
+            [self plotStopsWithStops:stops withRoute:r onMap:map];
+        }
+    }
+}
+
+-(void)showBusWithRoute:(Route *)route onMap:(GMSMapView*)map{
+    
+    StopService *ss = [[StopService alloc] init];
+    NSArray *stops = [ss getStopsWithRoute:route.name];
+    [self plotStopsWithStops:stops withRoute:route onMap:map];
+    
+    //RouteService *rs = [[RouteService alloc] init];
+    NSArray *coords = route.shape;
+    GMSPolyline *routeLine = [self createRouteWithPoints:coords];
+    routeLine.map = map;
+    routeLine.strokeColor = route.color;
+    routeLine.strokeWidth = 10.f;
+    routeLine.geodesic = YES;
+}
+
+-(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject *)object withIndexPath:(NSIndexPath*)indexPath {
+    SettingsViewController *controller = [[SettingsViewController alloc]initWithRoutes:_routes];
+    controller.view.backgroundColor = [UIColor whiteColor];
+    controller.title = (NSString *)object;
+    controller.leftSidebarViewController  = sidebarViewController;
+    controller.leftSelectedIndexPath      = indexPath;
+    controller.routes = _routes;
+    controller.buses = _buses;
+    controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
+    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
+    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
+    [_busRefresh invalidate];
+    _busRefresh = nil;
+    sidebarViewController.sidebarDelegate = controller;
+    
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+}
+
 #pragma mark Action
 
 - (void)revealLeftSidebar:(id)sender {
@@ -254,60 +309,7 @@
         [self displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
 }
 
--(void)showFavorites:(GMSMapView*)map {
-    float alpha = 1.f;
-    StopService *ss = [[StopService alloc] init];
-    for (Route *r in _routes) {
-        BOOL isFav = [[NSUserDefaults standardUserDefaults] boolForKey:r.name];
-        if(isFav){
-            NSArray *curr = r.shape;
-            GMSPolyline *routeLine = [self createRouteWithPoints:curr];
-            routeLine.map = map;
-            const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
-            UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
-            alpha-= .10f;
-            routeLine.strokeColor = c;
-            routeLine.strokeWidth = 10.f;
-            routeLine.geodesic = YES;
-            
-            NSArray *stops = [ss getStopsWithRoute:r.name];
-            [self plotStopsWithStops:stops withRoute:r onMap:map];
-        }
-    }
-}
 
--(void)showBusWithRoute:(Route *)route onMap:(GMSMapView*)map{
-    
-    StopService *ss = [[StopService alloc] init];
-    NSArray *stops = [ss getStopsWithRoute:route.name];
-    [self plotStopsWithStops:stops withRoute:route onMap:map];
-    
-    //RouteService *rs = [[RouteService alloc] init];
-    NSArray *coords = route.shape;
-    GMSPolyline *routeLine = [self createRouteWithPoints:coords];
-    routeLine.map = map;
-    routeLine.strokeColor = route.color;
-    routeLine.strokeWidth = 10.f;
-    routeLine.geodesic = YES;
-}
-
--(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject *)object withIndexPath:(NSIndexPath*)indexPath {
-    SettingsViewController *controller = [[SettingsViewController alloc]initWithRoutes:_routes];
-    controller.view.backgroundColor = [UIColor whiteColor];
-    controller.title = (NSString *)object;
-    controller.leftSidebarViewController  = sidebarViewController;
-    controller.leftSelectedIndexPath      = indexPath;
-    controller.routes = _routes;
-    controller.buses = _buses;
-    controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
-    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
-    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
-    [_busRefresh invalidate];
-    _busRefresh = nil;
-    sidebarViewController.sidebarDelegate = controller;
-
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-}
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
     return self.leftSelectedIndexPath;
@@ -332,6 +334,7 @@
 -(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
     [_mapView_ animateToCameraPosition:camera];
+    NSLog(@"Zoomed to %f lat %f lon %f zoom", _center.latitude, _center.longitude, _zoom);
 }
 
 @end
