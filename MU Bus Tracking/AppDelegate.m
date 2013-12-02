@@ -41,10 +41,12 @@
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     // Make the route web service call to get the route coordinates
-    
+    controller.favorites = TRUE;
     controller.title = @"Favorites";
     float stroke_width = 10.f;
     float alpha = 1.f;
+    StopService *ss = [[StopService alloc] init];
+
     for (Route *r in controller.routes) {
         if([[NSUserDefaults standardUserDefaults] objectForKey:r.name] == nil){
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:r.name];
@@ -59,6 +61,9 @@
             routeLine.strokeColor = c;
             routeLine.strokeWidth = stroke_width;
             routeLine.geodesic = YES;
+            
+            NSArray *stops = [ss getStopsWithRoute:r.name];
+            [controller plotStopsWithStops:stops withRoute:r onMap:controller.mapView_];
         }
     }
     NSLog(@"AppDelegate finished params");

@@ -50,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_routes count] + 3;
+    return [_routes count] + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,10 +68,8 @@
     
     if (indexPath.row == 0)
         cell.textLabel.text = @"Favorites";
-    else if (indexPath.row == 1)
-        cell.textLabel.text = @"All Routes";
-    else if (indexPath.row > 1 && indexPath.row < [_routes count]+2){
-        Route *route = (Route*)_routes[indexPath.row-2];
+    else if (indexPath.row > 0 && indexPath.row < [_routes count]+1){
+        Route *route = (Route*)_routes[indexPath.row-1];
         
         //Create Header Font & String
         NSString *headerString = [NSString stringWithFormat: @"%@\n", route.name];
@@ -142,10 +140,8 @@
         NSString *title = [[NSString alloc]init];
         if (indexPath.row == 0)
             title= @"Favorites";
-        else if (indexPath.row == 1)
-            title=@"All Routes";
-        else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
-            title=((Route*)_routes[indexPath.row-2]).longname;
+        else if (indexPath.row > 0 && indexPath.row < [_routes count]+1)
+            title=((Route*)_routes[indexPath.row-1]).longname;
         else
             title=@"Settings";
 

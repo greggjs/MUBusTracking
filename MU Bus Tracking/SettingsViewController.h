@@ -28,4 +28,5 @@
 @property (nonatomic, strong) GMSMapView *mapView_;
 
 -(id)initWithRoutes:(NSArray*)routes;
+-(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject*)object withIndexPath:(NSIndexPath*)indexPath;
 @end

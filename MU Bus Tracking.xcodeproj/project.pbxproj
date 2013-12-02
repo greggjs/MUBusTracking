@@ -50,10 +50,6 @@
 		9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */; };
 		9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
 		9D2CB56317F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
-		9D2CB56417F47B1B005B4063 /* Default~iphone-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* Default~iphone-568h@2x.png */; };
-		9D2CB56517F47B1B005B4063 /* Default~iphone-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54017F47B1B005B4063 /* Default~iphone-568h@2x.png */; };
-		9D2CB56617F47B1B005B4063 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* Default~iphone.png */; };
-		9D2CB56717F47B1B005B4063 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB54117F47B1B005B4063 /* Default~iphone.png */; };
 		9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6717E76722000D2F36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6617E76722000D2F36 /* NewViewController.m */; };
@@ -68,7 +64,6 @@
 		9D3A99F317F53F5C006FA01E /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F117F53F5C006FA01E /* Stop.m */; };
 		9D3A99F517F638BF006FA01E /* OpeH1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A99F417F638BF006FA01E /* OpeH1.png */; };
 		9D3A99F617F638BF006FA01E /* OpeH1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A99F417F638BF006FA01E /* OpeH1.png */; };
-		9D64FF2B181ED5EC0039CB72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D64FF2A181ED5EC0039CB72 /* Images.xcassets */; };
 		9D8917471807125800C3817E /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8917461807125800C3817E /* Route.m */; };
 		9D8917481807125800C3817E /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8917461807125800C3817E /* Route.m */; };
 		9DA50F51180C513400CD0336 /* ColorService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50F50180C513400CD0336 /* ColorService.m */; };
@@ -81,7 +76,6 @@
 		9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3517E6B3020096698D /* AppDelegate.m */; };
 		9DCB4A3817E6B3020096698D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3717E6B3020096698D /* Default.png */; };
 		9DCB4A3A17E6B3020096698D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3917E6B3020096698D /* Default@2x.png */; };
-		9DCB4A3C17E6B3020096698D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB4A3B17E6B3020096698D /* Default-568h@2x.png */; };
 		9DCB4A4417E6B3030096698D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A4317E6B3030096698D /* SenTestingKit.framework */; };
 		9DCB4A4517E6B3030096698D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2517E6B3020096698D /* UIKit.framework */; };
 		9DCB4A4617E6B3030096698D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A2717E6B3020096698D /* Foundation.framework */; };
@@ -103,6 +97,8 @@
 		9DCB4A8917E6BBB90096698D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */; };
 		9DCB4A8A17E6BBB90096698D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */; };
 		9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */; };
+		9DE46CCE184D394E00144525 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE46CCD184D394E00144525 /* Default-568h@2x.png */; };
+		9DE46CCF184D394E00144525 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE46CCD184D394E00144525 /* Default-568h@2x.png */; };
 		9DF89256181C54CA002B7018 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF89255181C54CA002B7018 /* MapViewController.m */; };
 		9DF89257181C54CA002B7018 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF89255181C54CA002B7018 /* MapViewController.m */; };
 		9DF8925A181C650E002B7018 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF89259181C650E002B7018 /* SettingsViewController.m */; };
@@ -153,8 +149,6 @@
 		9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-red-line.jpg"; sourceTree = "<group>"; };
 		9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-tan-line.jpg"; sourceTree = "<group>"; };
 		9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "miami-route-turquoise-line.jpg"; sourceTree = "<group>"; };
-		9D2CB54017F47B1B005B4063 /* Default~iphone-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone-568h@2x.png"; sourceTree = "<group>"; };
-		9D2CB54117F47B1B005B4063 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
 		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidebarViewController.h; path = "MU Bus Tracking/SidebarViewController.h"; sourceTree = "<group>"; };
 		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidebarViewController.m; path = "MU Bus Tracking/SidebarViewController.m"; sourceTree = "<group>"; };
 		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewViewController.h; path = "MU Bus Tracking/NewViewController.h"; sourceTree = "<group>"; };
@@ -166,7 +160,6 @@
 		9D3A99F017F53F5C006FA01E /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		9D3A99F117F53F5C006FA01E /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		9D3A99F417F638BF006FA01E /* OpeH1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpeH1.png; sourceTree = "<group>"; };
-		9D64FF2A181ED5EC0039CB72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D8917451807125800C3817E /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		9D8917461807125800C3817E /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		9DA50F4F180C513400CD0336 /* ColorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorService.h; sourceTree = "<group>"; };
@@ -183,7 +176,6 @@
 		9DCB4A3517E6B3020096698D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "MU Bus Tracking/AppDelegate.m"; sourceTree = "<group>"; };
 		9DCB4A3717E6B3020096698D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9DCB4A3917E6B3020096698D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		9DCB4A3B17E6B3020096698D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9DCB4A4217E6B3030096698D /* MU Bus TrackingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MU Bus TrackingTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB4A4317E6B3030096698D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		9DCB4A4B17E6B3030096698D /* MU Bus TrackingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MU Bus TrackingTests-Info.plist"; sourceTree = "<group>"; };
@@ -207,6 +199,7 @@
 		9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9DE46CCD184D394E00144525 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9DF89254181C54CA002B7018 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "MU Bus Tracking/MapViewController.h"; sourceTree = "<group>"; };
 		9DF89255181C54CA002B7018 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "MU Bus Tracking/MapViewController.m"; sourceTree = "<group>"; };
 		9DF89258181C650E002B7018 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = "MU Bus Tracking/SettingsViewController.h"; sourceTree = "<group>"; };
@@ -334,7 +327,6 @@
 				158661B117F4D2930083BB68 /* Service */,
 				158661AD17F4D2570083BB68 /* Model */,
 				9DF8D379181874640041A9B6 /* Interface */,
-				9D64FF2A181ED5EC0039CB72 /* Images.xcassets */,
 				9DCB4A2C17E6B3020096698D /* Supporting Files */,
 			);
 			path = "MU Bus Tracking";
@@ -350,7 +342,7 @@
 				9DCB4A3317E6B3020096698D /* MU Bus Tracking-Prefix.pch */,
 				9DCB4A3717E6B3020096698D /* Default.png */,
 				9DCB4A3917E6B3020096698D /* Default@2x.png */,
-				9DCB4A3B17E6B3020096698D /* Default-568h@2x.png */,
+				9DE46CCD184D394E00144525 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -430,8 +422,6 @@
 				9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */,
 				9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */,
 				9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */,
-				9D2CB54017F47B1B005B4063 /* Default~iphone-568h@2x.png */,
-				9D2CB54117F47B1B005B4063 /* Default~iphone.png */,
 				9D31FA6917E77A4E000D2F36 /* ButtonMenu.png */,
 				9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */,
 			);
@@ -517,10 +507,10 @@
 				9DCB4A3017E6B3020096698D /* InfoPlist.strings in Resources */,
 				9DCB4A3817E6B3020096698D /* Default.png in Resources */,
 				9DCB4A3A17E6B3020096698D /* Default@2x.png in Resources */,
-				9DCB4A3C17E6B3020096698D /* Default-568h@2x.png in Resources */,
 				9D31FA6B17E77A4E000D2F36 /* ButtonMenu.png in Resources */,
 				9D31FA6D17E77A4E000D2F36 /* ButtonMenu@2x.png in Resources */,
 				9D2CB54217F47B1B005B4063 /* appicon.png in Resources */,
+				9DE46CCE184D394E00144525 /* Default-568h@2x.png in Resources */,
 				9D2CB54417F47B1B005B4063 /* bus_blue.png in Resources */,
 				9D2CB54617F47B1B005B4063 /* bus_green.png in Resources */,
 				9D2CB54817F47B1B005B4063 /* bus_orange.png in Resources */,
@@ -536,13 +526,10 @@
 				9D2CB55817F47B1B005B4063 /* miami-route-green-line.jpg in Resources */,
 				9D2CB55A17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */,
 				9D2CB55C17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */,
-				9D64FF2B181ED5EC0039CB72 /* Images.xcassets in Resources */,
 				9D2CB55E17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
 				9D2CB56017F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
 				9D3A99F517F638BF006FA01E /* OpeH1.png in Resources */,
 				9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */,
-				9D2CB56417F47B1B005B4063 /* Default~iphone-568h@2x.png in Resources */,
-				9D2CB56617F47B1B005B4063 /* Default~iphone.png in Resources */,
 				1578DC5B17FDE79F006BE126 /* Icon.png in Resources */,
 				1578DC5D17FDE7E0006BE126 /* Icon@2x.png in Resources */,
 			);
@@ -569,13 +556,12 @@
 				9D2CB55917F47B1B005B4063 /* miami-route-green-line.jpg in Resources */,
 				9DFEA2271810BD0C0008CF39 /* GoogleMaps.bundle in Resources */,
 				9D2CB55B17F47B1B005B4063 /* miami-route-orange-line.jpg in Resources */,
+				9DE46CCF184D394E00144525 /* Default-568h@2x.png in Resources */,
 				9D3A99F617F638BF006FA01E /* OpeH1.png in Resources */,
 				9D2CB55D17F47B1B005B4063 /* miami-route-purple-line.jpg in Resources */,
 				9D2CB55F17F47B1B005B4063 /* miami-route-red-line.jpg in Resources */,
 				9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */,
 				9D2CB56317F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */,
-				9D2CB56517F47B1B005B4063 /* Default~iphone-568h@2x.png in Resources */,
-				9D2CB56717F47B1B005B4063 /* Default~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

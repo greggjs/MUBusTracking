@@ -94,6 +94,10 @@
     CGFloat scale = [[UIScreen mainScreen] scale];
     CGSize size = CGSizeMake(screen.size.width * scale, screen.size.height * scale);
     route.zoom = log(size.width*360/angle/256)/0.693-1.2;
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] < 7) {
+        route.zoom = route.zoom + 1.0f;
+    }
     //NSLog(@"%f, %f, %f", center.latitude, center.longitude, route.zoom);
     return center;
 }
