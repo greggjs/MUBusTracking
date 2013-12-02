@@ -8,3 +8,6 @@ This app is meant to help out the students of Miami University with tracking the
 
 VERSION 1.0 (10/18/2013):
 Allows users to view the BCRTA bus system routes at Miami University. It gives them a rich native iOS interface to view all the routes at once or each route individually using a sidebar slider. The routes are received directly from BCRTA directly, so they are always current upon app launch.
+
+VERSION 2.0 (12/02/2013):
+Allows users to save favorite routes, so on launch they are able to see where the buses are on their favorites. Also, users can allow and disallow their current location. The all routes view is no longer apart of this application, which is replaced be the favorites view. Route stops are colored according to their route, so users can easily distinguish between route stops. Buses can be live tracked on the system, which is refreshed every 5 seconds. 
