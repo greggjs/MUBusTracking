@@ -206,13 +206,14 @@
 - (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(NSObject *)object atIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
-    if (indexPath.row < [_routes count] +2) {
-        MapViewController *controller = [[MapViewController alloc] init];
+    MapViewController *controller = [[MapViewController alloc] init];
+    if (indexPath.row < [_routes count] +1) {
         controller.routes = _routes;
         controller.buses = _buses;
-        controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row==1 ? @"ALL" : (indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)(_routes[indexPath.row-2])).name : @"Settings")));
-        controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row==1 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON) :(indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)_routes[indexPath.row-2]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON))));
-        controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row==1 ? MAIN_ZOOM:(indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)_routes[indexPath.row-2]).zoom:MAIN_ZOOM)));
+        controller.favorites = (indexPath.row == 0? TRUE: FALSE);
+        controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
+        controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
+        controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
         [_busRefresh invalidate];
         _busRefresh = nil;
         
@@ -224,131 +225,13 @@
         sidebarViewController.sidebarDelegate = controller;
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
-            [self showFavorites:controller.mapView_]; // [self showFavorites];
-        else if (indexPath.row==1)
-            [self showAllRoutesOnMap:controller.mapView_];
-        else if (indexPath.row > 1 && indexPath.row < [_routes count]+2)
-            [self showBusWithRoute:_routes[indexPath.row-2] onMap:controller.mapView_];
+            [controller showFavorites:controller.mapView_]; // [self showFavorites];
+        else if (indexPath.row > 1 && indexPath.row < [_routes count]+1)
+            [controller showBusWithRoute:_routes[indexPath.row-1] onMap:controller.mapView_];
     }
     else
-        [self displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
-    //[self showAllRoutesOnMap:controller.mapView_];
+        [controller displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
 }
-
--(void)showFavorites:(GMSMapView*)map {
-    float alpha = 1.f;
-    for (Route *r in _routes) {
-        BOOL isFav = [[NSUserDefaults standardUserDefaults] boolForKey:r.name];
-        if(isFav){
-            NSArray *curr = r.shape;
-            GMSPolyline *routeLine = [self createRouteWithPoints:curr];
-            routeLine.map = map;
-            const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
-            UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
-            alpha-= .10f;
-            routeLine.strokeColor = c;
-            routeLine.strokeWidth = 10.f;
-            routeLine.geodesic = YES;
-        }
-    }
-}
-
-
--(void)showAllRoutesOnMap:(GMSMapView*)map {
-    float alpha = 1.f;
-    for (Route *r in _routes) {
-        NSArray *curr = r.shape;
-        GMSPolyline *routeLine = [self createRouteWithPoints:curr];
-        routeLine.map = map;
-        const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
-        UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
-        alpha-= .10f;
-        routeLine.strokeColor = c;
-        routeLine.strokeWidth = 10.f;
-        routeLine.geodesic = YES;
-    }
-    
-}
-
--(void)showBusWithRoute:(Route *)route onMap:(GMSMapView*)map{
-    BusService *bs = [[BusService alloc] init];
-    NSArray *curr = [bs getBusWithRoute:route.name];
-    if (curr) {
-        for (Bus *bus in curr) {
-            [self addBusToMapWithBus:bus onMap:map];
-        }
-    }
-    
-    StopService *ss = [[StopService alloc] init];
-    NSArray *stops = [ss getStopsWithRoute:route.name];
-    [self plotStopsWithStops:stops withRoute:route.name onMap:map];
-    
-    //RouteService *rs = [[RouteService alloc] init];
-    NSArray *coords = route.shape;
-    GMSPolyline *routeLine = [self createRouteWithPoints:coords];
-    routeLine.map = map;
-    routeLine.strokeColor = route.color;
-    routeLine.strokeWidth = 10.f;
-    routeLine.geodesic = YES;
-}
-
--(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject*)object withIndexPath:(NSIndexPath*)indexPath {
-    SettingsViewController *controller = [[SettingsViewController alloc]initWithRoutes:_routes];
-    controller.view.backgroundColor = [UIColor whiteColor];
-    controller.title = (NSString *)object;
-    controller.leftSidebarViewController  = sidebarViewController;
-    controller.leftSelectedIndexPath      = indexPath;
-    controller.routes = _routes;
-    controller.buses = _buses;
-    controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row==1 ? @"ALL" : (indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)(_routes[indexPath.row-2])).name : @"Settings")));
-    controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row==1 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON) :(indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)_routes[indexPath.row-2]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON))));
-    controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row==1 ? MAIN_ZOOM:(indexPath.row > 1 && indexPath.row < [_routes count]+2 ? ((Route*)_routes[indexPath.row-2]).zoom:MAIN_ZOOM)));
-    [_busRefresh invalidate];
-    _busRefresh = nil;
-    sidebarViewController.sidebarDelegate = controller;
-    
-    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-}
-
--(void)addBusToMapWithBus:(Bus*)bus onMap:(GMSMapView*)map{
-    // Add the Marker to the map
-    CGFloat lat = (CGFloat)[bus.latitude floatValue];
-    CGFloat lng = (CGFloat)[bus.longitude floatValue];
-    
-    GMSMarker *marker = [[GMSMarker alloc]init];
-    marker.position = CLLocationCoordinate2DMake(lat, lng);
-    marker.title = bus.busID;
-    marker.icon = [UIImage imageNamed:@"bus.png"];
-    bus.marker = marker;
-    marker.map = map;
-}
-
--(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
-    GMSMutablePath *path = [GMSMutablePath path];
-    CLLocationCoordinate2D coordinate;
-    
-    for(int i =0; i < [points count]; i++){
-        [[points objectAtIndex:i] getValue:&coordinate];
-        [path addCoordinate:coordinate];
-    }
-    
-    GMSPolyline *route = [GMSPolyline polylineWithPath:path];
-    
-    return route;
-}
-
--(void)plotStopsWithStops:(NSArray*)stops withRoute:(NSString*)route onMap:(GMSMapView*)map{
-    Stop *stop;
-    for (int i=0; i< [stops count]; i++) {
-        GMSMarker *marker = [[GMSMarker alloc]init];
-        stop = [stops objectAtIndex:i];
-        marker.position = stop.location;
-        marker.title = stop.name;
-        marker.icon = [UIImage imageNamed:@"busstop.png"];
-        marker.map = map;
-    }
-}
-
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
     return self.leftSelectedIndexPath;

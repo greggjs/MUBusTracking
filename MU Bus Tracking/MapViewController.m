@@ -50,9 +50,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
     self.navigationItem.revealSidebarDelegate = self;
 
-    if (![_routeName isEqualToString:@"ALL"]) {
-        _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
-    }
+    _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
+    
     NSLog(@"Size of routes: %i", [_routes count]);
 }
 
@@ -152,13 +151,23 @@
         for (Bus *bus in _buses) {
             bus.marker.map = nil;
         }
-    
-        BusService *bs = [[BusService alloc]init];
-        _buses = [bs getBusWithRoute:_routeName];
-    
-        for(Bus *bus in _buses){
-            [self addBusToMapWithBus:bus onMap:_mapView_];
+    }
+    BusService *bs = [[BusService alloc]init];
+    if (_favorites) {
+        NSMutableArray *favBuses = [[NSMutableArray alloc]init];
+        for (Route *r in _routes) {
+            BOOL isFav = [[NSUserDefaults standardUserDefaults] boolForKey:r.name];
+            if (isFav) {
+                NSArray *currBuses = [bs getBusWithRoute:r.name];
+                [favBuses addObjectsFromArray:currBuses];
+            }
         }
+        _buses = [[NSArray alloc] initWithArray:favBuses];
+    } else {
+        _buses = [bs getBusWithRoute:_routeName];
+    }
+    for(Bus *bus in _buses){
+        [self addBusToMapWithBus:bus onMap:_mapView_];
     }
     
 }
@@ -222,6 +231,7 @@
         MapViewController *controller = [[MapViewController alloc] init];
         controller.routes = _routes;
         controller.buses = _buses;
+        controller.favorites = (indexPath.row == 0 ? TRUE : FALSE);
         controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
         controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
         controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
@@ -246,6 +256,7 @@
 
 -(void)showFavorites:(GMSMapView*)map {
     float alpha = 1.f;
+    StopService *ss = [[StopService alloc] init];
     for (Route *r in _routes) {
         BOOL isFav = [[NSUserDefaults standardUserDefaults] boolForKey:r.name];
         if(isFav){
@@ -258,34 +269,14 @@
             routeLine.strokeColor = c;
             routeLine.strokeWidth = 10.f;
             routeLine.geodesic = YES;
+            
+            NSArray *stops = [ss getStopsWithRoute:r.name];
+            [self plotStopsWithStops:stops withRoute:r onMap:map];
         }
     }
-}
-
--(void)showAllRoutesOnMap:(GMSMapView*)map {
-    float alpha = 1.f;
-    for (Route *r in _routes) {
-        NSArray *curr = r.shape;
-        GMSPolyline *routeLine = [self createRouteWithPoints:curr];
-        routeLine.map = map;
-        const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
-        UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
-        alpha-= .10f;
-        routeLine.strokeColor = c;
-        routeLine.strokeWidth = 10.f;
-        routeLine.geodesic = YES;
-    }
-    
 }
 
 -(void)showBusWithRoute:(Route *)route onMap:(GMSMapView*)map{
-    BusService *bs = [[BusService alloc] init];
-    NSArray *curr = [bs getBusWithRoute:route.name];
-    if (curr) {
-        for (Bus *bus in curr) {
-            [self addBusToMapWithBus:bus onMap:map];
-        }
-    }
     
     StopService *ss = [[StopService alloc] init];
     NSArray *stops = [ss getStopsWithRoute:route.name];

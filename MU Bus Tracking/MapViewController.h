@@ -36,7 +36,13 @@
 @property (nonatomic) CLLocationCoordinate2D center;
 @property (nonatomic) float zoom;
 @property (nonatomic, strong) GMSMapView *mapView_;
+@property (nonatomic) BOOL favorites;
 
 -(id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom;
 -(GMSPolyline*)createRouteWithPoints:(NSArray*) points;
+-(void)plotStopsWithStops:(NSArray*)stops withRoute:(Route*)route onMap:(GMSMapView*)map;
+-(void)showBusWithRoute:(Route *)route onMap:(GMSMapView*)map;
+-(void)showFavorites:(GMSMapView*)map;
+-(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject *)object withIndexPath:(NSIndexPath*)indexPath;
+
 @end
