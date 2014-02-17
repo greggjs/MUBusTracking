@@ -27,6 +27,7 @@
     controller.routeName = @"ALL";
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     ColorService *cs = [[ColorService alloc] init];
+    // Create nav bar based on iPhone version.
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         navController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];

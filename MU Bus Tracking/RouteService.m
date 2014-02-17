@@ -42,6 +42,7 @@
                 NSArray *points = [NSJSONSerialization JSONObjectWithData:nested options:kNilOptions error:&parseError];
                 NSMutableArray *retpoints = [[NSMutableArray alloc] init];
                 if (points) {
+                    
                     for(NSDictionary *pointDict in points){
                         CLLocationCoordinate2D currentPoint;
                         currentPoint.latitude = [[pointDict objectForKey:@"lat"] doubleValue];
@@ -94,8 +95,9 @@
     CGFloat scale = [[UIScreen mainScreen] scale];
     CGSize size = CGSizeMake(screen.size.width * scale, screen.size.height * scale);
     route.zoom = log(size.width*360/angle/256)/0.693-1.2;
-    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-    if ([[ver objectAtIndex:0] intValue] < 7) {
+    //NSArray *ver = [[UIDevice currentDevice].model componentsSeparatedByString:@"."];
+    
+    if ([UIScreen mainScreen].scale != 2.0) {
         route.zoom = route.zoom + 1.0f;
     }
     //NSLog(@"%f, %f, %f", center.latitude, center.longitude, route.zoom);
