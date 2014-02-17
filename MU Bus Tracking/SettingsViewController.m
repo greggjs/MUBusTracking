@@ -226,7 +226,7 @@
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
             [controller showFavorites:controller.mapView_]; // [self showFavorites];
-        else if (indexPath.row > 1 && indexPath.row < [_routes count]+1)
+        else if (indexPath.row > 0 && indexPath.row < [_routes count]+1)
             [controller showBusWithRoute:_routes[indexPath.row-1] onMap:controller.mapView_];
     }
     else
