@@ -12,6 +12,11 @@
 
 @implementation MapViewController
 
+@synthesize view;
+@synthesize title;
+@synthesize leftSidebarViewController;
+@synthesize leftSelectedIndexPath;
+
 - (id)init {
     self = [super init];
     return self;
@@ -32,6 +37,13 @@
     _zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
     _routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
     _favorites = (indexPath.row == 0 ? TRUE : FALSE);
+    
+    view.backgroundColor = [UIColor clearColor];
+    title = (NSString *)object;
+    leftSidebarViewController  = sidebarViewController;
+    leftSelectedIndexPath      = indexPath;
+
+    
     return self;
 }
 
@@ -224,12 +236,6 @@
     [_busRefresh invalidate];
     _busRefresh = nil;
     
-    // These have to be initialized here due to encapsulation of UIViewController.
-    controller.view.backgroundColor = [UIColor whiteColor];
-    controller.title = (NSString *)object;
-    controller.leftSidebarViewController  = sidebarViewController;
-    controller.leftSelectedIndexPath      = indexPath;
-    
     sidebarViewController.sidebarDelegate = controller;
     
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
@@ -295,13 +301,8 @@
         [_busRefresh invalidate];
         _busRefresh = nil;
         
-        // These have to be initialize here due to encapsulation of UIViewController.
-        controller.view.backgroundColor = [UIColor clearColor];
-        controller.title = (NSString *)object;
-        controller.leftSidebarViewController  = sidebarViewController;
-        controller.leftSelectedIndexPath      = indexPath;
-        
         sidebarViewController.sidebarDelegate = controller;
+        
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
             [self showFavorites:controller.mapView_];

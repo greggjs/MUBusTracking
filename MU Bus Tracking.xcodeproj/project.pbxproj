@@ -122,8 +122,8 @@
 /* Begin PBXFileReference section */
 		152F9142183AFCE00014055F /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		152F9144183B0F870014055F /* busStripped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = busStripped.png; path = Resources/busStripped.png; sourceTree = "<group>"; };
-		1578DC5A17FDE79F006BE126 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		1578DC5C17FDE7E0006BE126 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		1578DC5A17FDE79F006BE126 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		1578DC5C17FDE7E0006BE126 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		158661AE17F4D2750083BB68 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bus.h; path = Model/Bus/Bus.h; sourceTree = "<group>"; };
 		158661AF17F4D2750083BB68 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bus.m; path = Model/Bus/Bus.m; sourceTree = "<group>"; };
 		158661B217F4D2A90083BB68 /* BusService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusService.h; path = Service/Bus/BusService.h; sourceTree = "<group>"; };
@@ -368,11 +368,41 @@
 			name = OtherViews;
 			sourceTree = "<group>";
 		};
+		9D888C5818BBB2C30059706E /* App Design */ = {
+			isa = PBXGroup;
+			children = (
+				9DCB4A3717E6B3020096698D /* Default.png */,
+				9DCB4A3917E6B3020096698D /* Default@2x.png */,
+				9DE46CCD184D394E00144525 /* Default-568h@2x.png */,
+				1578DC5C17FDE7E0006BE126 /* Icon@2x.png */,
+				1578DC5A17FDE79F006BE126 /* Icon.png */,
+			);
+			name = "App Design";
+			sourceTree = "<group>";
+		};
+		9D888C5918BBB3C00059706E /* Old Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D2CB53017F47B1B005B4063 /* bus_blue.png */,
+				9D2CB53117F47B1B005B4063 /* bus_green.png */,
+				9D2CB53217F47B1B005B4063 /* bus_orange.png */,
+				9D2CB53317F47B1B005B4063 /* bus_purple1.png */,
+				9D2CB53417F47B1B005B4063 /* bus_purple2.png */,
+				9D2CB53517F47B1B005B4063 /* bus_red.png */,
+				9D2CB53617F47B1B005B4063 /* bus_yellow.png */,
+				9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */,
+				9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */,
+				9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */,
+				9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */,
+				9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */,
+				9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */,
+			);
+			name = "Old Files";
+			sourceTree = "<group>";
+		};
 		9DCB4A1917E6B3020096698D = {
 			isa = PBXGroup;
 			children = (
-				1578DC5C17FDE7E0006BE126 /* Icon@2x.png */,
-				1578DC5A17FDE79F006BE126 /* Icon.png */,
 				9DCB4A6417E6B5A40096698D /* JTRevealSidebarV2 */,
 				9DCB4A2B17E6B3020096698D /* MU Bus Tracking */,
 				9DCB4A4917E6B3030096698D /* MU Bus TrackingTests */,
@@ -434,9 +464,7 @@
 				9DCB4A2E17E6B3020096698D /* InfoPlist.strings */,
 				9DCB4A3117E6B3020096698D /* main.m */,
 				9DCB4A3317E6B3020096698D /* MU Bus Tracking-Prefix.pch */,
-				9DCB4A3717E6B3020096698D /* Default.png */,
-				9DCB4A3917E6B3020096698D /* Default@2x.png */,
-				9DE46CCD184D394E00144525 /* Default-568h@2x.png */,
+				9D888C5818BBB2C30059706E /* App Design */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -494,22 +522,10 @@
 				152F9144183B0F870014055F /* busStripped.png */,
 				9D3A99F417F638BF006FA01E /* OpeH1.png */,
 				9D2CB52F17F47B1B005B4063 /* appicon.png */,
-				9D2CB53017F47B1B005B4063 /* bus_blue.png */,
-				9D2CB53117F47B1B005B4063 /* bus_green.png */,
-				9D2CB53217F47B1B005B4063 /* bus_orange.png */,
-				9D2CB53317F47B1B005B4063 /* bus_purple1.png */,
-				9D2CB53417F47B1B005B4063 /* bus_purple2.png */,
-				9D2CB53517F47B1B005B4063 /* bus_red.png */,
-				9D2CB53617F47B1B005B4063 /* bus_yellow.png */,
+				9D888C5918BBB3C00059706E /* Old Files */,
 				9D2CB53717F47B1B005B4063 /* bus.png */,
 				9D2CB53817F47B1B005B4063 /* busstop.png */,
 				9D2CB53917F47B1B005B4063 /* image-iphone.png */,
-				9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */,
-				9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */,
-				9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */,
-				9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */,
-				9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */,
-				9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */,
 				9D31FA6917E77A4E000D2F36 /* ButtonMenu.png */,
 				9D31FA6A17E77A4E000D2F36 /* ButtonMenu@2x.png */,
 			);
