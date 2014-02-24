@@ -64,6 +64,7 @@
 		9D3A99F317F53F5C006FA01E /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3A99F117F53F5C006FA01E /* Stop.m */; };
 		9D3A99F517F638BF006FA01E /* OpeH1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A99F417F638BF006FA01E /* OpeH1.png */; };
 		9D3A99F617F638BF006FA01E /* OpeH1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3A99F417F638BF006FA01E /* OpeH1.png */; };
+		9D888C5C18BBF7A10059706E /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D888C5B18BBF7A10059706E /* SettingsView.m */; };
 		9D8917471807125800C3817E /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8917461807125800C3817E /* Route.m */; };
 		9D8917481807125800C3817E /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8917461807125800C3817E /* Route.m */; };
 		9DA50F51180C513400CD0336 /* ColorService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA50F50180C513400CD0336 /* ColorService.m */; };
@@ -133,22 +134,22 @@
 		15B523D41821A0CA005CCB61 /* FavSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavSwitch.h; path = "MU Bus Tracking/Interface/SettingsView/FavSwitch.h"; sourceTree = "<group>"; };
 		15B523D51821A0CA005CCB61 /* FavSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavSwitch.m; path = "MU Bus Tracking/Interface/SettingsView/FavSwitch.m"; sourceTree = "<group>"; };
 		9D2CB52F17F47B1B005B4063 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appicon.png; path = Resources/appicon.png; sourceTree = "<group>"; };
-		9D2CB53017F47B1B005B4063 /* bus_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_blue.png; path = Resources/bus_blue.png; sourceTree = "<group>"; };
-		9D2CB53117F47B1B005B4063 /* bus_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_green.png; path = Resources/bus_green.png; sourceTree = "<group>"; };
-		9D2CB53217F47B1B005B4063 /* bus_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_orange.png; path = Resources/bus_orange.png; sourceTree = "<group>"; };
-		9D2CB53317F47B1B005B4063 /* bus_purple1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_purple1.png; path = Resources/bus_purple1.png; sourceTree = "<group>"; };
-		9D2CB53417F47B1B005B4063 /* bus_purple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_purple2.png; path = Resources/bus_purple2.png; sourceTree = "<group>"; };
-		9D2CB53517F47B1B005B4063 /* bus_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_red.png; path = Resources/bus_red.png; sourceTree = "<group>"; };
-		9D2CB53617F47B1B005B4063 /* bus_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_yellow.png; path = Resources/bus_yellow.png; sourceTree = "<group>"; };
+		9D2CB53017F47B1B005B4063 /* bus_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_blue.png; path = "Resources/Old Files/bus_blue.png"; sourceTree = "<group>"; };
+		9D2CB53117F47B1B005B4063 /* bus_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_green.png; path = "Resources/Old Files/bus_green.png"; sourceTree = "<group>"; };
+		9D2CB53217F47B1B005B4063 /* bus_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_orange.png; path = "Resources/Old Files/bus_orange.png"; sourceTree = "<group>"; };
+		9D2CB53317F47B1B005B4063 /* bus_purple1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_purple1.png; path = "Resources/Old Files/bus_purple1.png"; sourceTree = "<group>"; };
+		9D2CB53417F47B1B005B4063 /* bus_purple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_purple2.png; path = "Resources/Old Files/bus_purple2.png"; sourceTree = "<group>"; };
+		9D2CB53517F47B1B005B4063 /* bus_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_red.png; path = "Resources/Old Files/bus_red.png"; sourceTree = "<group>"; };
+		9D2CB53617F47B1B005B4063 /* bus_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus_yellow.png; path = "Resources/Old Files/bus_yellow.png"; sourceTree = "<group>"; };
 		9D2CB53717F47B1B005B4063 /* bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bus.png; path = Resources/bus.png; sourceTree = "<group>"; };
 		9D2CB53817F47B1B005B4063 /* busstop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = busstop.png; path = Resources/busstop.png; sourceTree = "<group>"; };
 		9D2CB53917F47B1B005B4063 /* image-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-iphone.png"; sourceTree = "<group>"; };
-		9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-green-line.jpg"; path = "Resources/miami-route-green-line.jpg"; sourceTree = "<group>"; };
-		9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-orange-line.jpg"; path = "Resources/miami-route-orange-line.jpg"; sourceTree = "<group>"; };
-		9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-purple-line.jpg"; path = "Resources/miami-route-purple-line.jpg"; sourceTree = "<group>"; };
-		9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-red-line.jpg"; path = "Resources/miami-route-red-line.jpg"; sourceTree = "<group>"; };
-		9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-tan-line.jpg"; path = "Resources/miami-route-tan-line.jpg"; sourceTree = "<group>"; };
-		9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-turquoise-line.jpg"; path = "Resources/miami-route-turquoise-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53A17F47B1B005B4063 /* miami-route-green-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-green-line.jpg"; path = "Resources/Old Files/miami-route-green-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53B17F47B1B005B4063 /* miami-route-orange-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-orange-line.jpg"; path = "Resources/Old Files/miami-route-orange-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53C17F47B1B005B4063 /* miami-route-purple-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-purple-line.jpg"; path = "Resources/Old Files/miami-route-purple-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-red-line.jpg"; path = "Resources/Old Files/miami-route-red-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-tan-line.jpg"; path = "Resources/Old Files/miami-route-tan-line.jpg"; sourceTree = "<group>"; };
+		9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-turquoise-line.jpg"; path = "Resources/Old Files/miami-route-turquoise-line.jpg"; sourceTree = "<group>"; };
 		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidebarViewController.h; path = "MU Bus Tracking/Interface/SidebarView/SidebarViewController.h"; sourceTree = "<group>"; };
 		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidebarViewController.m; path = "MU Bus Tracking/Interface/SidebarView/SidebarViewController.m"; sourceTree = "<group>"; };
 		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewViewController.h; path = "MU Bus Tracking/Interface/OtherViews/NewViewController.h"; sourceTree = "<group>"; };
@@ -160,6 +161,8 @@
 		9D3A99F017F53F5C006FA01E /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stop.h; path = Model/Stop/Stop.h; sourceTree = "<group>"; };
 		9D3A99F117F53F5C006FA01E /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stop.m; path = Model/Stop/Stop.m; sourceTree = "<group>"; };
 		9D3A99F417F638BF006FA01E /* OpeH1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpeH1.png; sourceTree = "<group>"; };
+		9D888C5A18BBF7A10059706E /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsView.h; path = "MU Bus Tracking/Interface/SettingsView/SettingsView.h"; sourceTree = "<group>"; };
+		9D888C5B18BBF7A10059706E /* SettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsView.m; path = "MU Bus Tracking/Interface/SettingsView/SettingsView.m"; sourceTree = "<group>"; };
 		9D8917451807125800C3817E /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Model/Route/Route.h; sourceTree = "<group>"; };
 		9D8917461807125800C3817E /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Route.m; path = Model/Route/Route.m; sourceTree = "<group>"; };
 		9DA50F4F180C513400CD0336 /* ColorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorService.h; path = Service/Color/ColorService.h; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				9DF89259181C650E002B7018 /* SettingsViewController.m */,
 				15B523D41821A0CA005CCB61 /* FavSwitch.h */,
 				15B523D51821A0CA005CCB61 /* FavSwitch.m */,
+				9D888C5A18BBF7A10059706E /* SettingsView.h */,
+				9D888C5B18BBF7A10059706E /* SettingsView.m */,
 			);
 			name = SettingsView;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 				9D3A99F217F53F5C006FA01E /* Stop.m in Sources */,
 				9DF89256181C54CA002B7018 /* MapViewController.m in Sources */,
 				9D8917471807125800C3817E /* Route.m in Sources */,
+				9D888C5C18BBF7A10059706E /* SettingsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
