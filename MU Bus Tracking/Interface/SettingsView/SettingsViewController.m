@@ -15,9 +15,31 @@
 
 @implementation SettingsViewController
 
+@synthesize view;
+@synthesize title;
+@synthesize leftSidebarViewController;
+@synthesize leftSelectedIndexPath;
+
 -(id)initWithRoutes:(NSArray*)routes{
     self = [super init];
     _routes = routes;
+    return self;
+}
+
+-(id)initWithRoutes:(NSArray *)routes withBuses:(NSArray *)buses withName:(NSObject *)object withSidebar:(SidebarViewController *)sidebarViewController withIndexPath:(NSIndexPath *)indexPath {
+    self = [super init];
+    _routes = routes;
+    _buses = buses;
+    _routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
+    _center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
+    _zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
+    [_busRefresh invalidate];
+    
+    view.backgroundColor = [UIColor clearColor];
+    title = (NSString *)object;
+    leftSidebarViewController  = sidebarViewController;
+    leftSelectedIndexPath      = indexPath;
+    
     return self;
 }
 
@@ -208,21 +230,10 @@
     [self.navigationController setRevealedState:JTRevealedStateNo];
     MapViewController *controller = [[MapViewController alloc] init];
     if (indexPath.row < [_routes count] +1) {
-        controller.routes = _routes;
-        controller.buses = _buses;
-        controller.favorites = (indexPath.row == 0? TRUE: FALSE);
-        controller.routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
-        controller.center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
-        controller.zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
-        [_busRefresh invalidate];
-        _busRefresh = nil;
-        
-        controller.view.backgroundColor = [UIColor clearColor];
-        controller.title = (NSString *)object;
-        controller.leftSidebarViewController  = sidebarViewController;
-        controller.leftSelectedIndexPath      = indexPath;
+        controller = [[MapViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
         
         sidebarViewController.sidebarDelegate = controller;
+        
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
             [controller showFavorites:controller.mapView_]; // [self showFavorites];
