@@ -14,6 +14,8 @@
 #import "SidebarViewController.h"
 #import "MapViewController.h"
 #import "FavSwitch.h"
+#import "SettingsView.h"
+
 @interface SettingsViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate>
 
 @property (nonatomic, strong) SidebarViewController   *leftSidebarViewController;
