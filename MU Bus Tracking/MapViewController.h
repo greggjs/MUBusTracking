@@ -39,6 +39,7 @@
 @property (nonatomic) BOOL favorites;
 
 -(id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom;
+-(id)initWithRoutes:(NSArray*)route withBuses:(NSArray*)buses withName:(NSObject*)object withSidebar:(SidebarViewController*)sidebarViewController withIndexPath:(NSIndexPath*)path;
 -(GMSPolyline*)createRouteWithPoints:(NSArray*) points;
 -(void)plotStopsWithStops:(NSArray*)stops withRoute:(Route*)route onMap:(GMSMapView*)map;
 -(void)showBusWithRoute:(Route *)route onMap:(GMSMapView*)map;
