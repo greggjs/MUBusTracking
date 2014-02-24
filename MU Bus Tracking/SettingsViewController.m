@@ -30,10 +30,7 @@
     _zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
     [_busRefresh invalidate];
     
-    _view.backgroundColor = [UIColor whiteColor];
-    _title = (NSString *)object;
-    _leftSidebarViewController  = sidebarViewController;
-    _leftSelectedIndexPath      = indexPath;
+   
     
     return self;
 }
@@ -226,7 +223,15 @@
     MapViewController *controller = [[MapViewController alloc] init];
     if (indexPath.row < [_routes count] +1) {
         controller = [[MapViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
+        
+        // These have to be initialize here due to encapsulation of UIViewController.
+        controller.view.backgroundColor = [UIColor clearColor];
+        controller.title = (NSString *)object;
+        controller.leftSidebarViewController  = sidebarViewController;
+        controller.leftSelectedIndexPath      = indexPath;
+        
         sidebarViewController.sidebarDelegate = controller;
+        
         [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
             [controller showFavorites:controller.mapView_]; // [self showFavorites];
