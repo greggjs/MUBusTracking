@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "FavSwitch.h"
-#import "SidebarViewController.h"
+#import "Route.h"
+
 
 @interface SettingsView : UIView
 

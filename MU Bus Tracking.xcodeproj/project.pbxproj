@@ -123,8 +123,8 @@
 /* Begin PBXFileReference section */
 		152F9142183AFCE00014055F /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		152F9144183B0F870014055F /* busStripped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = busStripped.png; path = Resources/busStripped.png; sourceTree = "<group>"; };
-		1578DC5A17FDE79F006BE126 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
-		1578DC5C17FDE7E0006BE126 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		1578DC5A17FDE79F006BE126 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = "Resources/App Design/Icon.png"; sourceTree = "<group>"; };
+		1578DC5C17FDE7E0006BE126 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/App Design/Icon@2x.png"; sourceTree = "<group>"; };
 		158661AE17F4D2750083BB68 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bus.h; path = Model/Bus/Bus.h; sourceTree = "<group>"; };
 		158661AF17F4D2750083BB68 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bus.m; path = Model/Bus/Bus.m; sourceTree = "<group>"; };
 		158661B217F4D2A90083BB68 /* BusService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusService.h; path = Service/Bus/BusService.h; sourceTree = "<group>"; };

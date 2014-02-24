@@ -22,7 +22,7 @@
 }
 
 -(void)generateView{
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     // Location Services Switch
     UIView *locationServices = [[UIView alloc]initWithFrame:CGRectMake(20, 20, 280, 40)];

@@ -46,65 +46,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    SettingsView *settings = [[SettingsView alloc]initWithFrame:self.view.bounds andRoutes:_routes];
+    [self.view addSubview:settings];
 	// Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
     self.navigationItem.revealSidebarDelegate = self;
-    
-    // Location Services Switch
-    UIView *locationServices = [[UIView alloc]initWithFrame:CGRectMake(20, 20, 280, 40)];
-    locationServices.backgroundColor = [UIColor whiteColor];
-    locationServices.layer.cornerRadius = 5.f;
-    locationServices.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    locationServices.layer.borderWidth = 0.5f;
-    UISwitch *locationSwitch;
-    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-    
-    if ([[ver objectAtIndex:0] intValue] >= 7) {
-        locationSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(220, 5, 40, 40)];
-    }else {
-        locationSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(190, 7, 40, 40)];
-    }
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"location"]) {
-        [locationSwitch setOn:YES];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"location"];
-    } else { //user default has bee assigned
-        BOOL state = [[NSUserDefaults standardUserDefaults] boolForKey:@"location"];
-        [locationSwitch setOn:state];
-    }
-    [locationSwitch addTarget:self action:@selector(changeLocationSettings:) forControlEvents:UIControlEventValueChanged];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
-    label.text = @"Location Services";
-    label.textColor = [UIColor darkTextColor];
-    [locationServices addSubview:label];
-    [locationServices addSubview:locationSwitch];
-    
-    UIView *favLabelView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 40)];
-    favLabelView.backgroundColor = [UIColor whiteColor];
-    favLabelView.layer.cornerRadius = 5.f;
-    favLabelView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    favLabelView.layer.borderWidth = 0.5f;
-    
-    UILabel *favLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
-    favLabel.text = @"Favorites";
-    favLabel.textColor = [UIColor darkTextColor];
-    CGFloat size = 20.f;
-    [favLabel setFont:[UIFont boldSystemFontOfSize:size]];
-    [favLabelView addSubview:favLabel];
-    
-    UIView *favorites = [[UIView alloc]initWithFrame:CGRectMake(20, 140, 280, 40*[_routes count])];
-    favorites.backgroundColor = [UIColor whiteColor];
-    favorites.layer.cornerRadius = 5.f;
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:scrollView];
-    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height*3)];
-    [scrollView addSubview:locationServices];
-    [scrollView addSubview:favLabelView];
-    [scrollView addSubview:favorites];
-    [self generateLabelsOnView:favorites];
 }
 
 - (void)didReceiveMemoryWarning
@@ -228,13 +178,15 @@
 - (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(NSObject *)object atIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
-    MapViewController *controller = [[MapViewController alloc] init];
+    MapViewController *controller = [[MapViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
+    sidebarViewController.sidebarDelegate = controller;
+    
+    [_busRefresh invalidate];
+    _busRefresh = nil;
+    
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+    
     if (indexPath.row < [_routes count] +1) {
-        controller = [[MapViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
-        
-        sidebarViewController.sidebarDelegate = controller;
-        
-        [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
             [controller showFavorites:controller.mapView_]; // [self showFavorites];
         else if (indexPath.row > 0 && indexPath.row < [_routes count]+1)
