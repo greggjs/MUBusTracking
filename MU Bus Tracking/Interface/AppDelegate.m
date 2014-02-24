@@ -23,11 +23,23 @@
     RouteService *rs = [[RouteService alloc] init];
     NSArray *routes = [rs getRouteWithName:@"ALL"];
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON);
+    
     MapViewController *controller = [[MapViewController alloc]initWithRoutes:routes withCenter:center withZoom:MAIN_ZOOM];
     controller.routeName = @"ALL";
+    controller.favorites = TRUE;
+    controller.title = @"Favorites";
+    [controller showFavorites:controller.mapView_];
+    
+    for (Route *r in controller.routes) {
+        if([[NSUserDefaults standardUserDefaults] objectForKey:r.name] == nil){
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:r.name];
+        }
+    }
+    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    ColorService *cs = [[ColorService alloc] init];
+    
     // Create nav bar based on iPhone version.
+    ColorService *cs = [[ColorService alloc] init];
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     if ([[ver objectAtIndex:0] intValue] >= 7) {
         navController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor blackColor],UITextAttributeTextShadowColor,nil];
@@ -40,33 +52,9 @@
     }
     navController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.window.rootViewController = navController;
+    
     [self.window makeKeyAndVisible];
-    // Make the route web service call to get the route coordinates
-    controller.favorites = TRUE;
-    controller.title = @"Favorites";
-    float stroke_width = 10.f;
-    float alpha = 1.f;
-    StopService *ss = [[StopService alloc] init];
-
-    for (Route *r in controller.routes) {
-        if([[NSUserDefaults standardUserDefaults] objectForKey:r.name] == nil){
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:r.name];
-        }
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:r.name]) {
-            NSArray *curr = r.shape;
-            GMSPolyline *routeLine = [controller createRouteWithPoints:curr];
-            routeLine.map = controller.mapView_;
-            const CGFloat *cArr = CGColorGetComponents(r.color.CGColor);
-            UIColor *c = [UIColor colorWithRed:cArr[0] green:cArr[1] blue:cArr[2] alpha:alpha];
-            alpha-= .10f;
-            routeLine.strokeColor = c;
-            routeLine.strokeWidth = stroke_width;
-            routeLine.geodesic = YES;
-            
-            NSArray *stops = [ss getStopsWithRoute:r.name];
-            [controller plotStopsWithStops:stops withRoute:r onMap:controller.mapView_];
-        }
-    }
+    
     NSLog(@"AppDelegate finished params");
    
     return YES;

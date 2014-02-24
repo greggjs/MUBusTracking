@@ -27,6 +27,19 @@
     _routes = route;
     _center = center;
     _zoom = zoom;
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
+    _mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"location"]) {
+        _mapView_.myLocationEnabled = YES;
+    } else {
+        _mapView_.myLocationEnabled = NO;
+    }
+    _mapView_.settings.rotateGestures = NO;
+    _mapView_.delegate = self;
+    _mapView_.accessibilityElementsHidden = NO;
+    self.view = _mapView_;
+    
     return self;
 }
 
@@ -43,12 +56,6 @@
     leftSidebarViewController  = sidebarViewController;
     leftSelectedIndexPath      = indexPath;
 
-    
-    return self;
-}
-
-- (void)loadView
-{
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_center.latitude longitude:_center.longitude zoom:_zoom];
     _mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"location"]) {
@@ -60,6 +67,13 @@
     _mapView_.delegate = self;
     _mapView_.accessibilityElementsHidden = NO;
     self.view = _mapView_;
+    
+    return self;
+}
+
+- (void)loadView
+{
+    
 }
 
 - (void)viewDidLoad
@@ -73,14 +87,17 @@
     self.navigationItem.revealSidebarDelegate = self;
 
     _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
-    
-    NSLog(@"Size of routes: %i", [_routes count]);
+
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
+    if (_busRefresh){
+        NSLog(@"Unloading Bus Refresh");
+        [_busRefresh invalidate];
+        _busRefresh = nil;
+    }
     self.label = nil;
 }
 
@@ -195,6 +212,8 @@
 }
 
 -(void)showFavorites:(GMSMapView*)map {
+    NSLog(@"showFavorites called from %@", self);
+    
     float alpha = 1.f;
     StopService *ss = [[StopService alloc] init];
     for (Route *r in _routes) {
@@ -217,6 +236,7 @@
 }
 
 -(void)showBusWithRoute:(Route *)route onMap:(GMSMapView*)map{
+    NSLog(@"showBusWithRoute called from %@", self);
     
     StopService *ss = [[StopService alloc] init];
     NSArray *stops = [ss getStopsWithRoute:route.name];
@@ -233,8 +253,6 @@
 
 -(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject *)object withIndexPath:(NSIndexPath*)indexPath {
     SettingsViewController *controller = [[SettingsViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
-    [_busRefresh invalidate];
-    _busRefresh = nil;
     
     sidebarViewController.sidebarDelegate = controller;
     
@@ -296,21 +314,29 @@
 - (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(NSObject *)object atIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
-    if (indexPath.row < [_routes count] +1) {
-        MapViewController *controller = [[MapViewController alloc] initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
+     MapViewController *controller = [[MapViewController alloc] initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
+
+    sidebarViewController.sidebarDelegate = controller;
+    
+    if (_busRefresh){
+        NSLog(@"Unloading Bus Refresh");
         [_busRefresh invalidate];
         _busRefresh = nil;
-        
-        sidebarViewController.sidebarDelegate = controller;
-        
-        [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+    }
+    
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+    
+    if (indexPath.row < [_routes count]+1) {
         if (indexPath.row==0)
-            [self showFavorites:controller.mapView_];
+            [controller showFavorites:controller.mapView_];
         else if (indexPath.row > 0 && indexPath.row < [_routes count]+1)
-            [self showBusWithRoute:_routes[indexPath.row-1] onMap:controller.mapView_];
+            [controller showBusWithRoute:_routes[indexPath.row-1] onMap:controller.mapView_];
+        
     }
     else
-        [self displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
+        [controller displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
+
+    
 }
 
 

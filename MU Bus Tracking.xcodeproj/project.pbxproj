@@ -506,13 +506,13 @@
 		9DF8D379181874640041A9B6 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				9DF8D3821818820A0041A9B6 /* Params.h */,
+				9DF8D3831818820A0041A9B6 /* Params.m */,
 				9DCB4A3417E6B3020096698D /* AppDelegate.h */,
 				9DCB4A3517E6B3020096698D /* AppDelegate.m */,
 				9D888C5418BBAFA20059706E /* MapView */,
 				9D888C5518BBAFAB0059706E /* SidebarView */,
 				9D888C5618BBAFC80059706E /* SettingsView */,
-				9DF8D3821818820A0041A9B6 /* Params.h */,
-				9DF8D3831818820A0041A9B6 /* Params.m */,
 				9D888C5718BBAFCF0059706E /* OtherViews */,
 			);
 			name = Interface;

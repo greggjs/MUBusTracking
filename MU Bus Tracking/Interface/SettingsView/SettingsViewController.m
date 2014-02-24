@@ -33,9 +33,8 @@
     _routeName = (indexPath.row == 0 ? @"ALL" :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)(_routes[indexPath.row-1])).name : @"Settings"));
     _center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
     _zoom = (indexPath.row == 0 ? MAIN_ZOOM :(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).zoom:MAIN_ZOOM));
-    [_busRefresh invalidate];
     
-    view.backgroundColor = [UIColor clearColor];
+    view.backgroundColor = [UIColor whiteColor];
     title = (NSString *)object;
     leftSidebarViewController  = sidebarViewController;
     leftSelectedIndexPath      = indexPath;
@@ -48,7 +47,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
@@ -228,13 +227,15 @@
 - (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(NSObject *)object atIndexPath:(NSIndexPath *)indexPath {
     
     [self.navigationController setRevealedState:JTRevealedStateNo];
-    MapViewController *controller = [[MapViewController alloc] init];
+    MapViewController *controller = [[MapViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
+    sidebarViewController.sidebarDelegate = controller;
+    
+    [_busRefresh invalidate];
+    _busRefresh = nil;
+    
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
+    
     if (indexPath.row < [_routes count] +1) {
-        controller = [[MapViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
-        
-        sidebarViewController.sidebarDelegate = controller;
-        
-        [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
         if (indexPath.row==0)
             [controller showFavorites:controller.mapView_]; // [self showFavorites];
         else if (indexPath.row > 0 && indexPath.row < [_routes count]+1)
