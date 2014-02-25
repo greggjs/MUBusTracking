@@ -48,8 +48,8 @@
     [super viewDidLoad];
     
     // Add a settings view to the controller
-    SettingsView *settings = [[SettingsView alloc]initWithFrame:self.view.bounds andRoutes:_routes];
-    [self.view addSubview:settings];
+    _settings = [[SettingsView alloc]initWithFrame:self.view.bounds andRoutes:_routes];
+    [self.view addSubview:_settings];
 	// Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
