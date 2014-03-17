@@ -22,6 +22,7 @@
     // Override point for customization after application launch.
     RouteService *rs = [[RouteService alloc] init];
     NSArray *routes = [rs getRouteWithName:@"ALL"];
+    NSLog(@"%@", routes);
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON);
     MapViewController *controller = [[MapViewController alloc]initWithRoutes:routes withCenter:center withZoom:MAIN_ZOOM];
     controller.routeName = @"ALL";
@@ -31,6 +32,7 @@
     
     for (Route *r in controller.routes) {
         if([[NSUserDefaults standardUserDefaults] objectForKey:r.name] == nil){
+            NSLog(@"%@ does not have entry; Making one.", r);
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:r.name];
         }
     }

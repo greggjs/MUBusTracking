@@ -9,6 +9,7 @@
 #import "MapView.h"
 
 @implementation MapView
+@synthesize center = _center;
 
 - (id)initWithFrame:(CGRect)frame
 {
