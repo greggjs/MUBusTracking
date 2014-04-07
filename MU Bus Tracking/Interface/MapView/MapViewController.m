@@ -153,6 +153,7 @@
     marker.title = bus.busID;
     marker.icon = [UIImage imageNamed:@"bus.png"];
     marker.map = map;
+    bus.marker = marker;
 }
 
 -(GMSPolyline*)createRouteWithPoints:(NSArray*) points{
