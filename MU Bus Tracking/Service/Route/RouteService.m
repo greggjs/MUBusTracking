@@ -57,7 +57,7 @@
                         temp.center = [self determineWindowSizeWithRoute:temp withCooridnates:retpoints];
                         [routes addObject:temp];
                     } @catch (NSException *err) {
-                        NSLog(@"Error reading object: %@\n Attempting to correct by reading it as straight array", items);
+                        //NSLog(@"Error reading object: %@\n Attempting to correct by reading it as straight array", items);
                         Route *temp = [Route alloc];
                         temp.name = (NSString*)[items objectForKey:@"name"];
                         temp.longname = (NSString*)[items objectForKey:@"longname"];
@@ -73,7 +73,7 @@
                                 CLLocationCoordinate2D currentPoint;
                                 currentPoint.latitude = [[pointArray objectAtIndex:1] doubleValue];
                                 currentPoint.longitude = [[pointArray objectAtIndex:0] doubleValue];
-                                NSLog(@"%f, %f", currentPoint.latitude, currentPoint.longitude);
+                                //NSLog(@"%f, %f", currentPoint.latitude, currentPoint.longitude);
                                 [retpoints addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
 
                             }
@@ -132,7 +132,7 @@
     if ([UIScreen mainScreen].scale != 2.0) {
         route.zoom = route.zoom + 1.0f;
     }
-    NSLog(@"%f, %f, %f", center.latitude, center.longitude, route.zoom);
+    //NSLog(@"%f, %f, %f", center.latitude, center.longitude, route.zoom);
     return center;
 }
 @end

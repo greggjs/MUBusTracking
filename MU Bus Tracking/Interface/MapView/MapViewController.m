@@ -19,10 +19,13 @@
 
 - (id)init {
     self = [super init];
+    self.view.backgroundColor = [UIColor clearColor];
     return self;
+    NSLog(@"Called Default Constructor");
 }
 
 - (id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom {
+    NSLog(@"Called Small Constructor");
     self = [super init];
     _routes = route;
     _center = center;
@@ -35,15 +38,18 @@
     } else {
         _mapView_.myLocationEnabled = NO;
     }
+    view.backgroundColor = [UIColor clearColor];
+
     _mapView_.settings.rotateGestures = NO;
     _mapView_.delegate = self;
     _mapView_.accessibilityElementsHidden = NO;
     self.view = _mapView_;
-    
+    NSLog(@"Created MapView and set the view to it");
     return self;
 }
 
 -(id)initWithRoutes:(NSArray*)route withBuses:(NSArray*)buses withName:(NSObject*)object withSidebar:(SidebarViewController*)sidebarViewController withIndexPath:(NSIndexPath*)indexPath{
+    NSLog(@"Called Large Constructor");
     self = [super init];
     _routes = route;
     _center = (indexPath.row == 0 ? CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON):(indexPath.row > 0 && indexPath.row < [_routes count]+1 ? ((Route*)_routes[indexPath.row-1]).center:CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON)));
@@ -71,23 +77,25 @@
     return self;
 }
 
-- (void)loadView
-{
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    NSLog(@"viewDidLoad Called from %@", self);
     self.view.backgroundColor = [UIColor clearColor];
     
     // Add left sidebar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
     self.navigationItem.revealSidebarDelegate = self;
-
-    _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
-    
+    self.view = _mapView_;
     NSLog(@"Size of routes: %i", [_routes count]);
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    [_busRefresh invalidate];
 }
 
 - (void)viewDidUnload
