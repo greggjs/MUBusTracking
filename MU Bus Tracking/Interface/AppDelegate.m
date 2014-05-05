@@ -25,10 +25,12 @@
     //NSLog(@"%@", routes);
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON);
     MapViewController *controller = [[MapViewController alloc]initWithRoutes:routes withCenter:center withZoom:MAIN_ZOOM];
+   
     controller.routeName = @"ALL";
     controller.favorites = TRUE;
     controller.title = @"Favorites";
     [controller showFavorites:controller.mapView_];
+    
     
     for (Route *r in controller.routes) {
         if([[NSUserDefaults standardUserDefaults] objectForKey:r.name] == nil){
@@ -50,6 +52,7 @@
 
     } else {
         navController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
+        [controller viewDidLoad];
     }
     navController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.window.rootViewController = navController;

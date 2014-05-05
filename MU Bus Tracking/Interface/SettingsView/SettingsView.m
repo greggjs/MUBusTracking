@@ -10,10 +10,14 @@
 
 @implementation SettingsView
 
+@synthesize routes = _routes;
+
 - (id)initWithFrame:(CGRect)frame andRoutes:(NSArray*)routes
 {
+    NSLog(@"Called SettingsView Ctor");
     self = [super initWithFrame:frame];
     if (self) {
+        NSLog(@"Self is there");
         // Initialization code
         _routes = routes;
         [self generateView];
@@ -65,12 +69,14 @@
     [favLabel setFont:[UIFont boldSystemFontOfSize:size]];
     [favLabelView addSubview:favLabel];
     
+    int routeHeight = 40*[_routes count];
+    
     UIView *favorites = [[UIView alloc]initWithFrame:CGRectMake(20, 140, 280, 40*[_routes count])];
     favorites.backgroundColor = [UIColor whiteColor];
     favorites.layer.cornerRadius = 5.f;
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     [self addSubview:scrollView];
-    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height*3)];
+    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, routeHeight+230)];
     [scrollView addSubview:locationServices];
     [scrollView addSubview:favLabelView];
     [scrollView addSubview:favorites];

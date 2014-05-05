@@ -48,8 +48,17 @@
     [super viewDidLoad];
     
     // Add a settings view to the controller
-    _settings = [[SettingsView alloc]initWithFrame:self.view.bounds andRoutes:_routes];
-    [self.view addSubview:_settings];
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] < 7) {
+        CGRect bounds = [[UIScreen mainScreen]bounds];
+        _settings = [[SettingsView alloc] initWithFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height) andRoutes:_routes];
+        self.view = _settings;
+    } else {
+        _settings = [[SettingsView alloc]initWithFrame:self.view.bounds andRoutes:_routes];
+        [self.view addSubview:_settings];
+
+    }
+    NSLog(@"Self: %@ SettingsView: %@", self.view, _settings);
 	// Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -119,9 +128,6 @@
     MapViewController *controller = [[MapViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
     sidebarViewController.sidebarDelegate = controller;
     
-    [_busRefresh invalidate];
-    _busRefresh = nil;
-    
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     
     if (indexPath.row < [_routes count] +1) {
@@ -129,9 +135,17 @@
             [controller showFavorites:controller.mapView_]; // [self showFavorites];
         else if (indexPath.row > 0 && indexPath.row < [_routes count]+1)
             [controller showBusWithRoute:_routes[indexPath.row-1] onMap:controller.mapView_];
+        NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+        
+        if ([[ver objectAtIndex:0] intValue] < 7) {
+            [controller viewDidLoad];
+        }
     }
-    else
+    else {
         [controller displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
+        return;
+    }
+    
 }
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {

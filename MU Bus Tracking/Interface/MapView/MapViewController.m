@@ -43,7 +43,7 @@
     _mapView_.settings.rotateGestures = NO;
     _mapView_.delegate = self;
     _mapView_.accessibilityElementsHidden = NO;
-    self.view = _mapView_;
+
     NSLog(@"Created MapView and set the view to it");
     return self;
 }
@@ -72,7 +72,6 @@
     _mapView_.settings.rotateGestures = NO;
     _mapView_.delegate = self;
     _mapView_.accessibilityElementsHidden = NO;
-    self.view = _mapView_;
 
     return self;
 }
@@ -82,19 +81,22 @@
     [super viewDidLoad];
     NSLog(@"viewDidLoad Called from %@", self);
     self.view.backgroundColor = [UIColor clearColor];
-    
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
+    NSLog(@"Button: %@", button);
     // Add left sidebar
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu.png"]  style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
+    self.navigationItem.leftBarButtonItem = button;
     self.navigationItem.revealSidebarDelegate = self;
     self.view = _mapView_;
     NSLog(@"Size of routes: %i", [_routes count]);
 }
 
 -(void) viewDidAppear:(BOOL)animated {
+    NSLog(@"Loading Bus Refresh...");
     _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
 }
 
 -(void) viewDidDisappear:(BOOL)animated {
+    NSLog(@"Unloading Bus Refresh...");
     [_busRefresh invalidate];
 }
 
@@ -255,10 +257,12 @@
 
 -(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject *)object withIndexPath:(NSIndexPath*)indexPath {
     SettingsViewController *controller = [[SettingsViewController alloc]initWithRoutes:_routes withBuses:_buses withName:object withSidebar:sidebarViewController withIndexPath:indexPath];
-    [_busRefresh invalidate];
-    _busRefresh = nil;
     
     sidebarViewController.sidebarDelegate = controller;
+    NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ([[ver objectAtIndex:0] intValue] < 7) {
+        [controller viewDidLoad];
+    }
     
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
 }
@@ -322,24 +326,27 @@
     
     sidebarViewController.sidebarDelegate = controller;
     
-    if (_busRefresh){
-        NSLog(@"Unloading Bus Refresh");
-        [_busRefresh invalidate];
-        _busRefresh = nil;
-    }
-    
     [self.navigationController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
     
     if (indexPath.row < [_routes count]+1) {
+        
         if (indexPath.row==0)
             [controller showFavorites:controller.mapView_];
         else if (indexPath.row > 0 && indexPath.row < [_routes count]+1)
             [controller showBusWithRoute:_routes[indexPath.row-1] onMap:controller.mapView_];
+        NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
         
+        if ([[ver objectAtIndex:0] intValue] < 7) {
+            [controller viewDidLoad];
+        }
     }
-    else
-        [controller displaySettings:sidebarViewController withName:object withIndexPath:indexPath];}
-
+    else {
+        [controller displaySettings:sidebarViewController withName:object withIndexPath:indexPath];
+        return;
+    }
+    
+    
+}
 
 
 - (NSIndexPath *)lastSelectedIndexPathForSidebarViewController:(SidebarViewController *)sidebarViewController {
