@@ -30,33 +30,65 @@
         NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:adata options:kNilOptions error:&parseError];
         NSMutableArray *routes = [[NSMutableArray alloc] init];
         ColorService *cs = [[ColorService alloc] init];
-        if(resultsArray){
-            for (NSDictionary *items in resultsArray) {
-                Route *temp = [Route alloc];
-                temp.name = (NSString*)[items objectForKey:@"name"];
-                temp.longname = (NSString*)[items objectForKey:@"longname"];
-                NSString *hexColor = (NSString*)[items objectForKey:@"color"];
-                temp.color = [cs getColorFromHexString:hexColor];
+        @try {
+            if(resultsArray){
+                for (NSDictionary *items in resultsArray) {
+                    @try {
+                        Route *temp = [Route alloc];
+                        temp.name = (NSString*)[items objectForKey:@"name"];
+                        temp.longname = (NSString*)[items objectForKey:@"longname"];
+                        NSString *hexColor = (NSString*)[items objectForKey:@"color"];
+                        temp.color = [cs getColorFromHexString:hexColor];
                 
-                NSData *nested = [(NSString*)[items objectForKey:@"shape"] dataUsingEncoding:NSUTF8StringEncoding];
-                NSArray *points = [NSJSONSerialization JSONObjectWithData:nested options:kNilOptions error:&parseError];
-                NSMutableArray *retpoints = [[NSMutableArray alloc] init];
-                if (points) {
+                        NSData *nested = [(NSString*)[items objectForKey:@"shape"] dataUsingEncoding:NSUTF8StringEncoding];
+                        NSArray *points = [NSJSONSerialization JSONObjectWithData:nested options:kNilOptions error:&parseError];
+                        NSMutableArray *retpoints = [[NSMutableArray alloc] init];
+                        if (points) {
                     
-                    for(NSDictionary *pointDict in points){
-                        CLLocationCoordinate2D currentPoint;
-                        currentPoint.latitude = [[pointDict objectForKey:@"lat"] doubleValue];
-                        currentPoint.longitude = [[pointDict objectForKey:@"lng"] doubleValue];
-                        [retpoints addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
+                            for(NSDictionary *pointDict in points){
+                                CLLocationCoordinate2D currentPoint;
+                                currentPoint.latitude = [[pointDict objectForKey:@"lat"] doubleValue];
+                                currentPoint.longitude = [[pointDict objectForKey:@"lng"] doubleValue];
+                                [retpoints addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
+                            }
+                        }
+                    
+                        temp.shape = [[NSArray alloc] initWithArray:retpoints];
+                        temp.center = [self determineWindowSizeWithRoute:temp withCooridnates:retpoints];
+                        [routes addObject:temp];
+                    } @catch (NSException *err) {
+                        //NSLog(@"Error reading object: %@\n Attempting to correct by reading it as straight array", items);
+                        Route *temp = [Route alloc];
+                        temp.name = (NSString*)[items objectForKey:@"name"];
+                        temp.longname = (NSString*)[items objectForKey:@"longname"];
+                        NSString *hexColor = (NSString*)[items objectForKey:@"color"];
+                        temp.color = [cs getColorFromHexString:hexColor];
+                        
+                        NSData *nested = [(NSString*)[items objectForKey:@"shape"] dataUsingEncoding:NSUTF8StringEncoding];
+                        NSArray *points = [NSJSONSerialization JSONObjectWithData:nested options:kNilOptions error:&parseError];
+                        NSMutableArray *retpoints = [[NSMutableArray alloc] init];
+                        
+                        if (points) {
+                            for (NSArray *pointArray in points) {
+                                CLLocationCoordinate2D currentPoint;
+                                currentPoint.latitude = [[pointArray objectAtIndex:1] doubleValue];
+                                currentPoint.longitude = [[pointArray objectAtIndex:0] doubleValue];
+                                //NSLog(@"%f, %f", currentPoint.latitude, currentPoint.longitude);
+                                [retpoints addObject:[NSValue valueWithBytes:&currentPoint objCType:@encode(CLLocationCoordinate2D)]];
+
+                            }
+                        }
+                        
+                        temp.shape = [[NSArray alloc] initWithArray:retpoints];
+                        temp.center = [self determineWindowSizeWithRoute:temp withCooridnates:retpoints];
+                        [routes addObject:temp];
                     }
                 }
-                
-                temp.shape = [[NSArray alloc] initWithArray:retpoints];
-                temp.center = [self determineWindowSizeWithRoute:temp withCooridnates:retpoints];
-                [routes addObject:temp];
+            } else {
+                NSLog(@"Parse error %@", requestError);
             }
-        } else {
-            NSLog(@"Parse error %@", requestError);
+        } @catch (NSException *err) {
+            NSLog(@"Error reading results array");
         }
         
         return [[NSArray alloc] initWithArray:routes];

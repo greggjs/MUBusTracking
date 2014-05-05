@@ -21,6 +21,7 @@
 #import "SidebarViewController.h"
 #import "ColorService.h"
 #import "SettingsViewController.h"
+#import "MapView.h"
 
 @interface MapViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate, GMSMapViewDelegate>{
 }
@@ -37,6 +38,7 @@
 @property (nonatomic) float zoom;
 @property (nonatomic, strong) GMSMapView *mapView_;
 @property (nonatomic) BOOL favorites;
+@property (nonatomic, strong) MapView *map;
 
 -(id)initWithRoutes:(NSArray*)route withCenter:(CLLocationCoordinate2D)center withZoom:(float)zoom;
 -(id)initWithRoutes:(NSArray*)route withBuses:(NSArray*)buses withName:(NSObject*)object withSidebar:(SidebarViewController*)sidebarViewController withIndexPath:(NSIndexPath*)path;

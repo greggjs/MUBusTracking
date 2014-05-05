@@ -22,20 +22,25 @@
     // Override point for customization after application launch.
     RouteService *rs = [[RouteService alloc] init];
     NSArray *routes = [rs getRouteWithName:@"ALL"];
+    //NSLog(@"%@", routes);
     CLLocationCoordinate2D center = CLLocationCoordinate2DMake(MAIN_LAT, MAIN_LON);
     MapViewController *controller = [[MapViewController alloc]initWithRoutes:routes withCenter:center withZoom:MAIN_ZOOM];
+   
     controller.routeName = @"ALL";
     controller.favorites = TRUE;
     controller.title = @"Favorites";
     [controller showFavorites:controller.mapView_];
     
+    
     for (Route *r in controller.routes) {
         if([[NSUserDefaults standardUserDefaults] objectForKey:r.name] == nil){
+            NSLog(@"%@ does not have entry; Making one.", r);
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:r.name];
         }
     }
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-
+    UINavigationController *navController = [[UINavigationController alloc] init];
+    NSLog(@"Created navController");
+    navController.viewControllers = [[NSArray alloc] initWithObjects:controller, nil];
     // Create nav bar based on iPhone version.
     ColorService *cs = [[ColorService alloc] init];
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
@@ -47,12 +52,14 @@
 
     } else {
         navController.navigationBar.tintColor = [cs getColorFromHexString:APP_COLOR];
+        [controller viewDidLoad];
     }
     navController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.window.rootViewController = navController;
+    NSLog(@"Make Key and Visible calling");
     [self.window makeKeyAndVisible];
     // Make the route web service call to get the route coordinates
-    
+    NSLog(@"Make Key and Visible called");
     NSLog(@"AppDelegate finished params");
    
     return YES;

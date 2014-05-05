@@ -28,8 +28,9 @@
 @property (nonatomic) CLLocationCoordinate2D center;
 @property (nonatomic) float zoom;
 @property (nonatomic, strong) GMSMapView *mapView_;
+@property (nonatomic, strong) SettingsView *settings;
 
 -(id)initWithRoutes:(NSArray*)routes;
 -(id)initWithRoutes:(NSArray*)routes withBuses:(NSArray*)buses withName:(NSObject*)object withSidebar:(SidebarViewController*)sidebarViewController withIndexPath:(NSIndexPath*)indexPath;
--(void) displaySettings:(SidebarViewController*)sidebarViewController withName:(NSObject*)object withIndexPath:(NSIndexPath*)indexPath;
+
 @end
