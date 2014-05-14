@@ -35,7 +35,9 @@
     // Do any additional setup after loading the view.
     self.title = _stop.name;
     CGRect bounds = [[UIScreen mainScreen]bounds];
-    self.view = [[StopView alloc]initWithFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height) andStop:_stop];
+    StopView *sv = [[StopView alloc]initWithFrame:CGRectMake(0, 0, bounds.size.width, bounds.size.height) andStop:_stop];
+    sv.navController = self.navController;
+    self.view = sv;
 }
 
 - (void)didReceiveMemoryWarning

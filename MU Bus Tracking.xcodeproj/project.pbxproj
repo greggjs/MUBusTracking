@@ -102,6 +102,7 @@
 		9DCB4A8917E6BBB90096698D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */; };
 		9DCB4A8A17E6BBB90096698D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */; };
 		9DCB4A8B17E6BBB90096698D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */; };
+		9DD5D0DA1923EF5E00A835C4 /* BusSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD5D0D91923EF5E00A835C4 /* BusSiteViewController.m */; };
 		9DE46CCE184D394E00144525 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE46CCD184D394E00144525 /* Default-568h@2x.png */; };
 		9DE46CCF184D394E00144525 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE46CCD184D394E00144525 /* Default-568h@2x.png */; };
 		9DECB62218BC22CE003F1685 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DECB62118BC22CE003F1685 /* MapView.m */; };
@@ -215,6 +216,8 @@
 		9DCB4A7D17E6BBB90096698D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9DCB4A7E17E6BBB90096698D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9DCB4A7F17E6BBB90096698D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9DD5D0D81923EF5E00A835C4 /* BusSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusSiteViewController.h; path = "MU Bus Tracking/Interface/StopView/BusSiteViewController.h"; sourceTree = "<group>"; };
+		9DD5D0D91923EF5E00A835C4 /* BusSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusSiteViewController.m; path = "MU Bus Tracking/Interface/StopView/BusSiteViewController.m"; sourceTree = "<group>"; };
 		9DE46CCD184D394E00144525 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9DECB62018BC22CE003F1685 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapView.h; path = "MU Bus Tracking/Interface/MapView/MapView.h"; sourceTree = "<group>"; };
 		9DECB62118BC22CE003F1685 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapView.m; path = "MU Bus Tracking/Interface/MapView/MapView.m"; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 				9D3116ED1919B9E6006D25D1 /* StopViewController.m */,
 				9D3116E91919B9D1006D25D1 /* StopView.h */,
 				9D3116EA1919B9D1006D25D1 /* StopView.m */,
+				9DD5D0D81923EF5E00A835C4 /* BusSiteViewController.h */,
+				9DD5D0D91923EF5E00A835C4 /* BusSiteViewController.m */,
 			);
 			name = StopView;
 			sourceTree = "<group>";
@@ -739,6 +744,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD5D0DA1923EF5E00A835C4 /* BusSiteViewController.m in Sources */,
 				9DCB4A3217E6B3020096698D /* main.m in Sources */,
 				9D3A99EA17F4DAED006FA01E /* StopService.m in Sources */,
 				9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */,

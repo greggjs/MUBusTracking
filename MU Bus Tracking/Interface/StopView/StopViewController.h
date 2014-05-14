@@ -13,6 +13,7 @@
 @interface StopViewController : UIViewController
 
 @property (nonatomic, strong) Stop* stop;
+@property (nonatomic, strong) UINavigationController* navController;
 
 -(id) initWithStop:(Stop*)stop;
 

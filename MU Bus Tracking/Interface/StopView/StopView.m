@@ -52,10 +52,34 @@
     freqLabel.text = [NSString stringWithFormat:@"Arrives every %@ minutes", [_stop.freq substringToIndex:range.location]];
     infoLabel.textColor = [UIColor darkTextColor];
     
+    UIView *linkView = [[UIView alloc] initWithFrame:CGRectMake(20, 420, 280, 100)];
+    UILabel *linkText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 100)];
+    linkText.text = @"More Accurate Time Schedule...";
+    linkText.textColor = [UIColor darkTextColor];
+    
+    UIButton *link = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 280, 100)];
+    
+    [link setTitle:@"BCRTA Schedule" forState:UIControlStateNormal];
+    [link setEnabled:YES];
+    [link addTarget:self action:@selector(openURL:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [linkView addSubview:link];
+    [linkView addSubview:linkText];
+    [self addSubview:linkView];
+    
     [infoView addSubview:infoLabel];
     [infoView addSubview:freqLabel];
     [self addSubview:infoView];
     return self;
+}
+
+-(void)openURL:(id)sender {
+    
+    BusSiteViewController *bsvc = [[BusSiteViewController alloc]initWithRoute:_stop.route];
+    [self.navController pushViewController:bsvc animated:YES];
+    
+    
+    //[[UIApplication sharedApplication] openURL:[ NSURL URLWithString:@"http://google.com"]];
 }
 
 /*
