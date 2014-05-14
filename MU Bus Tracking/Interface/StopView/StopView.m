@@ -36,18 +36,20 @@
     UILabel *freqLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 280, 50)];
     
     NSDate *now = [NSDate date];
-    
-    NSDateFormatter *getHours = [[NSDateFormatter alloc] init];
-    getHours.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"HH" options:0 locale:[NSLocale currentLocale]];
-    NSString *hours = [getHours stringFromDate:now];
-    
     NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate:now];
-    NSInteger hour = [comps hour];
-
-    infoLabel.text = [NSString stringWithFormat:@"Arrives Next at %d:%@", hour, _stop.stopsAt];
+    NSInteger hour = [comps hour]%12;
+    NSLog(@"%d", [comps hour]);
+    if (hour == 0) {
+        hour = 12;
+    }
+    NSString *ampm = ([comps hour] >= 12 ? @"pm" : @"am");
+    
+    infoLabel.text = [NSString stringWithFormat:@"Arrives Next at %d:%@ %@", hour, _stop.stopsAt, ampm];
     infoLabel.textColor  = [UIColor darkTextColor];
     
-    freqLabel.text = [NSString stringWithFormat:@"Arrives every %@ minutes", _stop.freq];
+    NSRange range = [_stop.freq rangeOfString:@"."];
+    NSLog(@"range.location: %d", range.location);
+    freqLabel.text = [NSString stringWithFormat:@"Arrives every %@ minutes", [_stop.freq substringToIndex:range.location]];
     infoLabel.textColor = [UIColor darkTextColor];
     
     [infoView addSubview:infoLabel];

@@ -22,9 +22,18 @@
 
 -(id)initWithFrame:(CGRect)frame andBus:(Bus *)bus {
     self = [self initWithFrame:frame];
-    
     _bus = bus;
-    UIView *routeView = [[UIView alloc]initWithFrame:CGRectMake(20, 20, 300, 140)];
+    
+    _panoView_ = [[GMSPanoramaView alloc] initWithFrame:CGRectMake(0, 0, 280, 300)];
+    UIView *pview = [[UIView alloc]initWithFrame:CGRectMake(20, 20, 280, 300)];
+    [pview addSubview:_panoView_];
+    [self addSubview:pview];
+    CGFloat lat = (CGFloat)[_bus.latitude floatValue];
+    CGFloat lng = (CGFloat)[_bus.longitude floatValue];
+    [_panoView_ moveNearCoordinate:CLLocationCoordinate2DMake(lat, lng)];
+    
+    
+    UIView *routeView = [[UIView alloc]initWithFrame:CGRectMake(20, 300, 300, 140)];
     UILabel *routeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 140)];
     routeLabel.text = [NSString stringWithFormat:@"Route: %@", _bus.route];
     routeLabel.textColor = [UIColor darkTextColor];
