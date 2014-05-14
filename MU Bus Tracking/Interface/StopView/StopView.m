@@ -30,7 +30,7 @@
     [self addSubview:pview];
     
     [_panoView_ moveNearCoordinate:_stop.location];
-    
+    /*
     UIView *infoView = [[UIView alloc]initWithFrame:CGRectMake(20, 320, 280, 100)];
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
     UILabel *freqLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 280, 50)];
@@ -51,10 +51,10 @@
     NSLog(@"range.location: %d", range.location);
     freqLabel.text = [NSString stringWithFormat:@"Arrives every %@ minutes", [_stop.freq substringToIndex:range.location]];
     infoLabel.textColor = [UIColor darkTextColor];
-    
-    UIView *linkView = [[UIView alloc] initWithFrame:CGRectMake(20, 420, 280, 100)];
+    */
+    UIView *linkView = [[UIView alloc] initWithFrame:CGRectMake(20, 320, 280, 100)];
     UILabel *linkText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 100)];
-    linkText.text = @"More Accurate Time Schedule...";
+    linkText.text = @"Click to View Time Schedule";
     linkText.textColor = [UIColor darkTextColor];
     
     UIButton *link = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 280, 100)];
@@ -66,10 +66,11 @@
     [linkView addSubview:link];
     [linkView addSubview:linkText];
     [self addSubview:linkView];
-    
+    /*
     [infoView addSubview:infoLabel];
     [infoView addSubview:freqLabel];
     [self addSubview:infoView];
+     */
     return self;
 }
 
