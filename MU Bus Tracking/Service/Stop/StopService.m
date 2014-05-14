@@ -41,6 +41,8 @@
                 [stop setRoute:[pointDict objectForKey:@"route"]];
                 [stop setLocation:currentPoint];
                 [stop setName:[pointDict objectForKey:@"name"]];
+                [stop setStopsAt:[pointDict objectForKey:@"stopsAt"]];
+                [stop setFreq:[pointDict objectForKey:@"freq"]];
                 
                 [points addObject:stop];
                 

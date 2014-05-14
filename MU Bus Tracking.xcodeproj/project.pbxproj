@@ -50,6 +50,10 @@
 		9D2CB56117F47B1B005B4063 /* miami-route-tan-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */; };
 		9D2CB56217F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
 		9D2CB56317F47B1B005B4063 /* miami-route-turquoise-line.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */; };
+		9D3116E41919B7D7006D25D1 /* BusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3116E31919B7D7006D25D1 /* BusViewController.m */; };
+		9D3116E71919B7F2006D25D1 /* BusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3116E61919B7F2006D25D1 /* BusView.m */; };
+		9D3116EB1919B9D1006D25D1 /* StopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3116EA1919B9D1006D25D1 /* StopView.m */; };
+		9D3116EE1919B9E6006D25D1 /* StopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3116ED1919B9E6006D25D1 /* StopViewController.m */; };
 		9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6417E76702000D2F36 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6217E76702000D2F36 /* SidebarViewController.m */; };
 		9D31FA6717E76722000D2F36 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D31FA6617E76722000D2F36 /* NewViewController.m */; };
@@ -151,6 +155,14 @@
 		9D2CB53D17F47B1B005B4063 /* miami-route-red-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-red-line.jpg"; path = "Resources/Old Files/miami-route-red-line.jpg"; sourceTree = "<group>"; };
 		9D2CB53E17F47B1B005B4063 /* miami-route-tan-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-tan-line.jpg"; path = "Resources/Old Files/miami-route-tan-line.jpg"; sourceTree = "<group>"; };
 		9D2CB53F17F47B1B005B4063 /* miami-route-turquoise-line.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "miami-route-turquoise-line.jpg"; path = "Resources/Old Files/miami-route-turquoise-line.jpg"; sourceTree = "<group>"; };
+		9D3116E21919B7D7006D25D1 /* BusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusViewController.h; path = "MU Bus Tracking/Interface/BusView/BusViewController.h"; sourceTree = "<group>"; };
+		9D3116E31919B7D7006D25D1 /* BusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusViewController.m; path = "MU Bus Tracking/Interface/BusView/BusViewController.m"; sourceTree = "<group>"; };
+		9D3116E51919B7F2006D25D1 /* BusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusView.h; path = "MU Bus Tracking/Interface/BusView/BusView.h"; sourceTree = "<group>"; };
+		9D3116E61919B7F2006D25D1 /* BusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusView.m; path = "MU Bus Tracking/Interface/BusView/BusView.m"; sourceTree = "<group>"; };
+		9D3116E91919B9D1006D25D1 /* StopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopView.h; path = "MU Bus Tracking/Interface/StopView/StopView.h"; sourceTree = "<group>"; };
+		9D3116EA1919B9D1006D25D1 /* StopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StopView.m; path = "MU Bus Tracking/Interface/StopView/StopView.m"; sourceTree = "<group>"; };
+		9D3116EC1919B9E6006D25D1 /* StopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopViewController.h; path = "MU Bus Tracking/Interface/StopView/StopViewController.h"; sourceTree = "<group>"; };
+		9D3116ED1919B9E6006D25D1 /* StopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StopViewController.m; path = "MU Bus Tracking/Interface/StopView/StopViewController.m"; sourceTree = "<group>"; };
 		9D31FA6117E76702000D2F36 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidebarViewController.h; path = "MU Bus Tracking/Interface/SidebarView/SidebarViewController.h"; sourceTree = "<group>"; };
 		9D31FA6217E76702000D2F36 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidebarViewController.m; path = "MU Bus Tracking/Interface/SidebarView/SidebarViewController.m"; sourceTree = "<group>"; };
 		9D31FA6517E76722000D2F36 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewViewController.h; path = "MU Bus Tracking/Interface/OtherViews/NewViewController.h"; sourceTree = "<group>"; };
@@ -271,6 +283,28 @@
 				9D888C5018BBAEBF0059706E /* Color */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		9D3116E11919B7A3006D25D1 /* BusView */ = {
+			isa = PBXGroup;
+			children = (
+				9D3116E21919B7D7006D25D1 /* BusViewController.h */,
+				9D3116E31919B7D7006D25D1 /* BusViewController.m */,
+				9D3116E51919B7F2006D25D1 /* BusView.h */,
+				9D3116E61919B7F2006D25D1 /* BusView.m */,
+			);
+			name = BusView;
+			sourceTree = "<group>";
+		};
+		9D3116E81919B9B9006D25D1 /* StopView */ = {
+			isa = PBXGroup;
+			children = (
+				9D3116EC1919B9E6006D25D1 /* StopViewController.h */,
+				9D3116ED1919B9E6006D25D1 /* StopViewController.m */,
+				9D3116E91919B9D1006D25D1 /* StopView.h */,
+				9D3116EA1919B9D1006D25D1 /* StopView.m */,
+			);
+			name = StopView;
 			sourceTree = "<group>";
 		};
 		9D888C4C18BBAEA10059706E /* Bus */ = {
@@ -515,9 +549,11 @@
 			children = (
 				9DCB4A3417E6B3020096698D /* AppDelegate.h */,
 				9DCB4A3517E6B3020096698D /* AppDelegate.m */,
+				9D3116E11919B7A3006D25D1 /* BusView */,
 				9D888C5418BBAFA20059706E /* MapView */,
-				9D888C5518BBAFAB0059706E /* SidebarView */,
 				9D888C5618BBAFC80059706E /* SettingsView */,
+				9D888C5518BBAFAB0059706E /* SidebarView */,
+				9D3116E81919B9B9006D25D1 /* StopView */,
 				9DF8D3821818820A0041A9B6 /* Params.h */,
 				9DF8D3831818820A0041A9B6 /* Params.m */,
 				9D888C5718BBAFCF0059706E /* OtherViews */,
@@ -587,6 +623,7 @@
 		9DCB4A1A17E6B3020096698D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jake Gregg";
 				TargetAttributes = {
@@ -707,8 +744,11 @@
 				9DCB4A3617E6B3020096698D /* AppDelegate.m in Sources */,
 				9DF8925A181C650E002B7018 /* SettingsViewController.m in Sources */,
 				15B523D61821A0CA005CCB61 /* FavSwitch.m in Sources */,
+				9D3116EE1919B9E6006D25D1 /* StopViewController.m in Sources */,
 				9DCB4A6A17E6B5C50096698D /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
 				9DCB4A6C17E6B5C50096698D /* UIViewController+JTRevealSidebarV2.m in Sources */,
+				9D3116E41919B7D7006D25D1 /* BusViewController.m in Sources */,
+				9D3116EB1919B9D1006D25D1 /* StopView.m in Sources */,
 				9D31FA6317E76702000D2F36 /* SidebarViewController.m in Sources */,
 				9DF8D3841818820A0041A9B6 /* Params.m in Sources */,
 				9DECB62218BC22CE003F1685 /* MapView.m in Sources */,
@@ -716,6 +756,7 @@
 				158661B017F4D2750083BB68 /* Bus.m in Sources */,
 				9DA50F51180C513400CD0336 /* ColorService.m in Sources */,
 				158661B417F4D2A90083BB68 /* BusService.m in Sources */,
+				9D3116E71919B7F2006D25D1 /* BusView.m in Sources */,
 				158661B717F4D2DC0083BB68 /* RouteService.m in Sources */,
 				9D3A99F217F53F5C006FA01E /* Stop.m in Sources */,
 				9DF89256181C54CA002B7018 /* MapViewController.m in Sources */,

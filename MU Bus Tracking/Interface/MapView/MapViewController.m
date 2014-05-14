@@ -92,6 +92,7 @@
 
 -(void) viewDidAppear:(BOOL)animated {
     NSLog(@"Loading Bus Refresh...");
+    [self checkBuses];
     _busRefresh = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(checkBuses) userInfo:nil repeats:YES];
 }
 
@@ -182,6 +183,7 @@
 
 -(void)plotStopsWithStops:(NSArray*)stops withRoute:(Route*)route onMap:(GMSMapView*)map{
     Stop *stop;
+    NSMutableArray *arr = [[NSMutableArray alloc]initWithArray:_stops];
     for (int i=0; i< [stops count]; i++) {
         GMSMarker *marker = [[GMSMarker alloc]init];
         stop = [stops objectAtIndex:i];
@@ -189,7 +191,9 @@
         marker.title = stop.name;
         marker.icon = [self createColoredCircle: route.color withSize:22.0];
         marker.map = map;
+        [arr addObject:stop];
     }
+    _stops = [NSArray arrayWithArray:arr];
 }
 
 -(void)checkBuses {
@@ -354,6 +358,30 @@
 }
 
 # pragma mark GMSMapViewDelegate
+
+-(void)mapView:(GMSMapView*)mapView didTapMarker:(GMSMarker *)marker {
+    NSLog(@"Tapped marker");
+    NSLog(@"Marker: %@", marker);
+    BOOL foundBus = NO;
+    for (Bus *b in _buses) {
+        if (marker.title == b.busID) {
+            foundBus = YES;
+            BusViewController *bvc = [[BusViewController alloc]initWithBus:b];
+            [self.navigationController pushViewController:bvc animated:YES];
+        }
+    }
+    if (foundBus == NO) {
+        for (Stop* s in _stops) {
+            if (marker.title == s.name) {
+                StopViewController *stc = [[StopViewController alloc]initWithStop:s];
+                [self.navigationController pushViewController:stc animated:YES];
+                return;
+            }
+        }
+    }
+
+    
+}
 
 -(void)mapView:(GMSMapView*)mapView didBeginDraggingMarker:(GMSMarker *)marker {
     NSLog(@"didBeginDraggingMarker");
