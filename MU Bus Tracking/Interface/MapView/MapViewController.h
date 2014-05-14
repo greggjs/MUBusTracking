@@ -22,6 +22,8 @@
 #import "ColorService.h"
 #import "SettingsViewController.h"
 #import "MapView.h"
+#import "BusViewController.h"
+#import "StopViewController.h"
 
 @interface MapViewController : UIViewController<JTRevealSidebarV2Delegate, UITableViewDelegate, GMSMapViewDelegate>{
 }

@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic) CLLocationCoordinate2D location;
 @property (nonatomic, strong) NSString *route;
+@property (nonatomic, strong) NSString *stopsAt;
+@property (nonatomic, strong) NSString *freq;
 @end
