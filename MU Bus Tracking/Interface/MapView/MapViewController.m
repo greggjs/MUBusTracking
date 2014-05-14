@@ -373,7 +373,9 @@
     if (foundBus == NO) {
         for (Stop* s in _stops) {
             if (marker.title == s.name) {
+                NSLog(@"stop route: %@", s.route);
                 StopViewController *stc = [[StopViewController alloc]initWithStop:s];
+                stc.navController = self.navigationController;
                 [self.navigationController pushViewController:stc animated:YES];
                 return;
             }

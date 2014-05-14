@@ -38,7 +38,7 @@
                 currentPoint.latitude = [[pointDict objectForKey:@"latitude"] doubleValue];
                 currentPoint.longitude = [[pointDict objectForKey:@"longitude"] doubleValue];
                 Stop *stop = [[Stop alloc] init];
-                [stop setRoute:[pointDict objectForKey:@"route"]];
+                [stop setRoute:route];
                 [stop setLocation:currentPoint];
                 [stop setName:[pointDict objectForKey:@"name"]];
                 [stop setStopsAt:[pointDict objectForKey:@"stopsAt"]];

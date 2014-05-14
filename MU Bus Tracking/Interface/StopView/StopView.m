@@ -30,7 +30,7 @@
     [self addSubview:pview];
     
     [_panoView_ moveNearCoordinate:_stop.location];
-    
+    /*
     UIView *infoView = [[UIView alloc]initWithFrame:CGRectMake(20, 320, 280, 100)];
     UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
     UILabel *freqLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 280, 50)];
@@ -51,11 +51,36 @@
     NSLog(@"range.location: %d", range.location);
     freqLabel.text = [NSString stringWithFormat:@"Arrives every %@ minutes", [_stop.freq substringToIndex:range.location]];
     infoLabel.textColor = [UIColor darkTextColor];
+    */
+    UIView *linkView = [[UIView alloc] initWithFrame:CGRectMake(20, 320, 280, 100)];
+    UILabel *linkText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 100)];
+    linkText.text = @"Click to View Time Schedule";
+    linkText.textColor = [UIColor darkTextColor];
     
+    UIButton *link = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 280, 100)];
+    
+    [link setTitle:@"BCRTA Schedule" forState:UIControlStateNormal];
+    [link setEnabled:YES];
+    [link addTarget:self action:@selector(openURL:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [linkView addSubview:link];
+    [linkView addSubview:linkText];
+    [self addSubview:linkView];
+    /*
     [infoView addSubview:infoLabel];
     [infoView addSubview:freqLabel];
     [self addSubview:infoView];
+     */
     return self;
+}
+
+-(void)openURL:(id)sender {
+    
+    BusSiteViewController *bsvc = [[BusSiteViewController alloc]initWithRoute:_stop.route];
+    [self.navController pushViewController:bsvc animated:YES];
+    
+    
+    //[[UIApplication sharedApplication] openURL:[ NSURL URLWithString:@"http://google.com"]];
 }
 
 /*
